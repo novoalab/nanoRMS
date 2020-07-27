@@ -1,6 +1,9 @@
 # NanoRMS: predicting NANOpore Rna Modification Stoichiometry
 Prediction of RNA modification stoichiometry in direct RNA sequencing datasets from per-read current intensity information 
 
+![alt text](./img/init_fig.png "init_fig")
+
+
 ## General description
 NanoRMS predicts modification stoichiometries by identifying those reads that show distinct current intensity distributions in the query dataset, compared to those observed in a control dataset (i.e. ideally an unmodifi dataset for that site of interest).
 
