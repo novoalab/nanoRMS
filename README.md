@@ -32,16 +32,23 @@ DETAILS HERE
 ```
 
 
-### STEP 2. Visualize 
+### STEP 2. Visualize current intensity information of modified sites
+
+#### Distribution of current intensities at the modified site (position 0)
+```
+DETAILS HERE
+```
 
 #### Mean current intensity plots centered in the modified sites
 ```
 DETAILS HERE
 ```
+
 #### Per-read current intensity plots centered in the modified sites
 ```
 DETAILS HERE
 ```
+
 #### PCA plots from the per-read 15-mer current intensity data
 ```
 DETAILS HERE
