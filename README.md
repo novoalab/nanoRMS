@@ -1,4 +1,4 @@
-# Nanopore RNAModStoichiometry (NanoRMS)
+# NanoRMS: predicting NANOpore Rna Modification Stoichiometry
 Prediction of RNA modification stoichiometry from per-read current intensity information in direct RNA sequencing datasets
 
 ## General description
