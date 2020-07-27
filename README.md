@@ -4,7 +4,7 @@ Prediction of RNA modification stoichiometry from per-read current intensity inf
 ## General description
 This code uses Nanopolish eventalign output files and performs the following steps:
 
-* Step 1. Convert Nanopolish eventalign outputs into processed output for each 15-mer region 
+* Step 1.  Convert Nanopolish eventalign outputs into processed output for each 15-mer region 
 * Step 2. Visualization of the per-read results (PCA, per-read current intensities)
 * Step 3. Stoichiometry prediction, using either KMEANS or KNN.
 
@@ -18,6 +18,48 @@ Note, the KNN should only be used if you have a training set with 0% modified (e
 
 ## Running the code:
 
+Before you start, you first need to run **Nanopolish eventalign** on the raw FAST5 reads using the following command line: 
+
+```
+DETAILS HERE
+```
+
+
+### STEP 1. Create 15-mer windows of per-read current intensities centered in positions of interest
+
+```
+DETAILS HERE
+```
+
+
+### STEP 2. Visualize 
+
+#### Mean current intensity plots centered in the modified sites
+```
+DETAILS HERE
+```
+#### Per-read current intensity plots centered in the modified sites
+```
+DETAILS HERE
+```
+#### PCA plots from the per-read 15-mer current intensity data
+```
+DETAILS HERE
+```
+
+### STEP 3. Predict RNA modification stoichiometry 
+
+### a) Using KMEANS
+
+```
+DETAILS HERE
+```
+
+### b) Using KNN
+
+```
+DETAILS HERE
+```
 
 ## Citation: 
 
