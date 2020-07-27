@@ -2,19 +2,24 @@
 Prediction of RNA modification stoichiometry in direct RNA sequencing datasets from per-read current intensity information 
 
 ## General description
-This code uses Nanopolish eventalign output files and performs the following steps:
+NanoRMS predicts modification stoichiometries by identifying those reads that show distinct current intensity distributions in the query dataset, compared to those observed in a control dataset (i.e. ideally an unmodifi dataset for that site of interest).
+
+NanoRMS uses as input Nanopolish eventalign output files, and then performs the following steps:
 
 * Step 1.  Convert Nanopolish eventalign outputs into processed output for each 15-mer region 
 * Step 2. Visualization of the per-read results (PCA, per-read current intensities)
 * Step 3. Stoichiometry prediction, using either KMEANS or KNN.
 
-Note, the KNN should only be used if you have a training set with 0% modified (e.g. IVT, knockout condition) and 100% (or quasi-100%) modified sites (e.g. rRNAs, IVT products). If this is not the case, KMEANS is recommended.
-
+## Considerations when using nanoRMS 
+* NanoRMS requires two different datasets to be executed (query-control)
+* NanoRMS can be used to predict absolute stoichiometry of a given site, if reference dataset given is 0% modified (e.g. IVT, knockout condition) for that given site.
+* Alternatively, NanoRMS can also be used to quantitatively estimate stoichiometry changes between two conditions (e.g. normal vs stress). In this scenario, it cannot predict the absolute stoichiometry of each individual site.
 
 ## Requirements/dependencies
 
-* Nanopolish (tested with version xxx)
-* R (tested version 3.6.3)
+* Nanopolish (tested version: xxx)
+* R (tested version: 3.6.3)
+* R libraries that are used in the nanoRMS.R script (listed at the top of the script) 
 
 ## Running the code:
 
