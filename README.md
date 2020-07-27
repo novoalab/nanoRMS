@@ -1,5 +1,5 @@
 # NanoRMS: predicting NANOpore Rna Modification Stoichiometry
-Prediction of RNA modification stoichiometry from per-read current intensity information in direct RNA sequencing datasets
+Prediction of RNA modification stoichiometry in direct RNA sequencing datasets from per-read current intensity information 
 
 ## General description
 This code uses Nanopolish eventalign output files and performs the following steps:
