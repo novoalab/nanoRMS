@@ -54,7 +54,7 @@ DETAILS HERE
 DETAILS HERE
 ```
 
-### STEP 3. Predict RNA modification stoichiometry
+### STEP 3. Predict changes in RNA modification stoichiometry
 
 #### a) Using KMEANS
 
