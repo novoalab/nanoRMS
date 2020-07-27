@@ -54,18 +54,23 @@ DETAILS HERE
 DETAILS HERE
 ```
 
-### STEP 3. Predict RNA modification stoichiometry 
+### STEP 3. Predict RNA modification stoichiometry
 
-### a) Using KMEANS
-
-```
-DETAILS HERE
-```
-
-### b) Using KNN
+#### a) Using KMEANS
 
 ```
-DETAILS HERE
+R --vanilla < nanoRMS.R --args file1.tsv file2.tsv kmeans
+```
+
+#### b) Using KMEANS on PCAed data
+```
+R --vanilla < nanoRMS.R --args file1.tsv file2.tsv kmeans_pca
+```
+
+#### c) Using KNN
+
+```
+R --vanilla < nanoRMS.R --args file1.tsv file2.tsv knn
 ```
 
 ## Citation: 
