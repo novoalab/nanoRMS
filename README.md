@@ -28,10 +28,17 @@ NanoRMS uses as input Nanopolish eventalign output files, and then performs the 
 ## Before running the code:
 
 ### Run Nanopolish on your FAST5: getting per-read current intensities
-Before you start, you first need to run **Nanopolish eventalign** on the raw FAST5 reads using the following command line: 
+Before you start, you first need to run **Nanopolish index** **Nanopolish eventalign** on the raw FAST5 reads using the following command line: 
 
-```
-DETAILS HERE
+```bash
+nanopolish index -d fast5_file fastq_file -s sequencing_summary_file
+#Index file should be in the same path as the fastq file
+
+nanopolish eventalign \
+    --reads path/to/fastq_file \
+    --bam  path/to/bam_file \
+    --genome path/to/reference_file.fasta \
+    --scale-events > output.txt
 ```
 
 ### Run EpiNano 1.1 on your FASTQ: getting predicted RNA-modified sites
