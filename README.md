@@ -48,12 +48,14 @@ To convert EpiNano outputs into Summed_Errors, you can use the code below:
 ```
 Rscript summed_errors.R epinano_file output_file
 ```
+
 Example using test data:
+
 ```
 Rscript summed_errors.R test_data/xxxx testdata_output_file.txt
 
 DETAILS HERE
-
+```
 
 
 ## Running the code:
