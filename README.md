@@ -17,6 +17,7 @@ NanoRMS uses as input Nanopolish eventalign output files, and then performs the 
 * NanoRMS requires two different datasets to be executed (query-control)
 * NanoRMS can be used to predict absolute stoichiometry of a given site, if reference dataset given is 0% modified (e.g. IVT, knockout condition) for that given site.
 * Alternatively, NanoRMS can also be used to quantitatively estimate stoichiometry changes between two conditions (e.g. normal vs stress). In this scenario, it cannot predict the absolute stoichiometry of each individual site.
+* NanoRMS should only be run on sites that have previously been identified as RNA-modified sites (e.g. using EpiNano or similar softwares). It is not aimed at  de novo prediction of RNA modified sites. 
 
 ## Requirements/dependencies
 
@@ -24,16 +25,28 @@ NanoRMS uses as input Nanopolish eventalign output files, and then performs the 
 * R (tested version: 3.6.3)
 * R libraries that are used in the nanoRMS.R script (listed at the top of the script) 
 
-## Running the code:
+## Before running the code:
 
+### Run Nanopolish on your FAST5: getting per-read current intensities
 Before you start, you first need to run **Nanopolish eventalign** on the raw FAST5 reads using the following command line: 
 
 ```
 DETAILS HERE
 ```
 
+### Run EpiNano 1.1 on your FASTQ: getting predicted RNA-modified sites
+You need a list of predicted RNA-modified sites to select the 15-mer regions where you will run nanoRMS on. You can choose your regions of interest by running for example, **EpiNano** (https://github.com/enovoa/EpiNano) on your paired datasets. We recommend to use "Summed_Errors" (difference in mismatch, deletion, insertion) rather than SVM-based predictions to obtain a list of candidate sites, which will be applicable to any given RNA modification as well as be more independent of the base-calling algorithm used. 
+
+To convert EpiNano outputs into Summed_Errors, you can use the code below: 
+```
+DETAILS HERE
+```
+
+## Running the code:
+
 
 ### STEP 1. Create 15-mer windows of per-read current intensities centered in positions of interest
+
 
 ```
 DETAILS HERE
