@@ -53,7 +53,7 @@ DETAILS HERE
 ```
 
 
-### STEP 2. Visualize current intensity information of modified sites
+### STEP 2. Visualize current intensity information of modified sites (optional)
 
 #### Distribution of current intensities at the modified site (position 0)
 ```
@@ -81,15 +81,25 @@ DETAILS HERE
 
 ### STEP 3. Predict changes in RNA modification stoichiometry
 
-#### a) Using KMEANS
+#### a) Using KMEANS 
 
 ```
 R --vanilla < nanoRMS.R --args file1.tsv file2.tsv kmeans
 ```
 
+Example using test data:
+```
+R --vanilla < nanoRMS.R --args test_data/25s_2880.wt.15mer.perread.h.tsv test_data/25s_2880.sn34.15mer.perread.h.tsv kmeans
+```
+
+
 #### b) Using KMEANS on PCAed data
 ```
 R --vanilla < nanoRMS.R --args file1.tsv file2.tsv kmeans_pca
+```
+Example using test data:
+```
+R --vanilla < nanoRMS.R --args test_data/25s_2880.wt.15mer.perread.h.tsv test_data/25s_2880.sn34.15mer.perread.h.tsv kmeans
 ```
 
 #### c) Using KNN
@@ -97,7 +107,10 @@ R --vanilla < nanoRMS.R --args file1.tsv file2.tsv kmeans_pca
 ```
 R --vanilla < nanoRMS.R --args file1.tsv file2.tsv knn
 ```
-
+Example using test data:
+```
+R --vanilla < nanoRMS.R --args test_data/25s_2880.wt.15mer.perread.h.tsv test_data/25s_2880.sn34.15mer.perread.h.tsv knn
+```
 ## Citation: 
 
 Begik O*, Lucas MC*, Ramirez JM, Milenkovic I, Cruciani S, Vieira HGS, Medina R, Liu H, Sas-Chen A, Mattick JS, Schwartz S and Novoa EM. Decoding ribosomal RNA modification dynamics at single molecule resolution. bioRxiv 2020. doi: https://doi.org/10.1101/2020.07.06.189969
