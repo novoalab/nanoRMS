@@ -99,7 +99,7 @@ R --vanilla < nanoRMS.R --args file1.tsv file2.tsv kmeans_pca
 ```
 Example using test data:
 ```
-R --vanilla < nanoRMS.R --args test_data/25s_2880.wt.15mer.perread.h.tsv test_data/25s_2880.sn34.15mer.perread.h.tsv kmeans
+R --vanilla < nanoRMS.R --args test_data/25s_2880.wt.15mer.perread.h.tsv test_data/25s_2880.sn34.15mer.perread.h.tsv kmeans_pca
 ```
 
 #### c) Using KNN
