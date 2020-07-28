@@ -97,7 +97,7 @@ DETAILS HERE
 
 ### 3. Predict changes in RNA modification stoichiometry
 
-#### a) Using KMEANS 
+#### a) Using KMEANS clustering
 
 ```
 R --vanilla < nanoRMS.R --args file1.tsv file2.tsv kmeans
@@ -118,7 +118,7 @@ Example using test data:
 R --vanilla < nanoRMS.R --args test_data/25s_2880.wt.15mer.perread.h.tsv test_data/25s_2880.sn34.15mer.perread.h.tsv kmeans_pca
 ```
 
-#### c) Using KNN
+#### c) Using K-nearest neighbour (KNN)
 
 ```
 R --vanilla < nanoRMS.R --args file1.tsv file2.tsv knn
