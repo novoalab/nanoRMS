@@ -46,7 +46,7 @@ You need a list of predicted RNA-modified sites to select the 15-mer regions whe
 
 To convert EpiNano outputs into Summed_Errors, you can use the code below: 
 ```
-DETAILS HERE
+Rscript summed_errors.R epinano_file output_file
 ```
 
 ## Running the code:
