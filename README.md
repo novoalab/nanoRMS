@@ -76,23 +76,29 @@ DETAILS HERE
 DETAILS HERE
 ```
 
+![alt text](./img/density.png "Density")
+
+
 #### Mean current intensity plots centered in the modified sites
 ```
 DETAILS HERE
 ```
 
-![alt text](./img/mean_current.png "Mean_current")
+![alt text](./img/per_read_current.png "Per_read")
 
 
 #### Per-read current intensity plots centered in the modified sites
 ```
 DETAILS HERE
 ```
+![alt text](./img/mean_current.png "Mean_current")
+
 
 #### PCA plots from the per-read 15-mer current intensity data
 ```
 DETAILS HERE
 ```
+![alt text](./img/pca.png "PCA")
 
 
 ### 3. Predict changes in RNA modification stoichiometry
