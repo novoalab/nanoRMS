@@ -46,7 +46,9 @@ You need a list of predicted RNA-modified sites to select the 15-mer regions whe
 
 Obtain EpiNano base-calling error information from mapped BAM files:
 ```
-DETAILS HERE
+samtools view -h bamfile.bam | java -jar sam2tsv.jar -r reference_file  > bamfile.bam.tsv 
+
+python3.7 TSV_to_Variants_Freq.py3 -f bamfile.bam.tsv -t 10 
 ```
 
 
