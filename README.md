@@ -52,7 +52,7 @@ Rscript summed_errors.R epinano_file output_file
 Example using test data:
 
 ```
-Rscript summed_errors.R test_data/xxxx testdata_output_file.txt
+Rscript summed_errors.R test_data/wt_epinano.csv testdata_output_file.txt
 ```
 
 
@@ -68,7 +68,7 @@ python3 per_read_mean.py event_align_file
 Example using test data:
 
 ```
-python3 per_read_mean.py test_data/xxxx 
+python3 per_read_mean.py test_data/data1_eventalign_output.txt
 ```
 
 
@@ -84,7 +84,7 @@ Rscript --vanilla nanopolish_window.R positions_file input_table label
 Example using test data:
 
 ```
-Rscript --vanilla nanopolish_window.R test_data/positions test_data/bc1_300000_subset.txt_processed_perpos_mean.csv bc1
+Rscript --vanilla nanopolish_window.R test_data/positions test_data/data1_eventalign_output.txt_processed_perpos_mean.csv data1
 ```
 
 
@@ -100,7 +100,7 @@ Rscript --vanilla density_nanopolish.R window_file1 window_file2 window_file3(op
 Example using test data:
 
 ```
-Rscript --vanilla density_nanopolish.R test_data/bc1_window_file.tsv test_data/bc2_window_file.tsv
+Rscript --vanilla density_nanopolish.R test_data/sn34_window_file.tsv test_data/wt_window_file.tsv
 ```
 
 ![alt text](./img/density.png "Density")
@@ -113,7 +113,7 @@ Rscript --vanilla nanopolish_meanlineplot.R window_file1 window_file2 window_fil
 Example using test data:
 
 ```
-Rscript --vanilla nanopolish_meanlineplot.R test_data/bc1_window_file.tsv test_data/bc2_window_file.tsv
+Rscript --vanilla nanopolish_meanlineplot.R test_data/sn34_window_file.tsv test_data/wt_window_file.tsv
 ```
 
 
@@ -128,7 +128,7 @@ Rscript --vanilla nanopolish_perreadlineplot.R window_file1 window_file2 window_
 Example using test data:
 
 ```
-Rscript --vanilla nanopolish_perreadlineplot.R test_data/bc1_window_file.tsv test_data/bc2_window_file.tsv
+Rscript --vanilla nanopolish_perreadlineplot.R test_data/sn34_window_file.tsv test_data/wt_window_file.tsv
 ```
 
 
@@ -141,7 +141,7 @@ Rscript --vanilla nanopolish_pca.R data1 data2 data3(optional) data4(optional)
 Example using test data:
 
 ```
-Rscript --vanilla nanopolish_pca.R test_data/bc1_window_file.tsv test_data/bc2_window_file.tsv
+Rscript --vanilla nanopolish_pca.R test_data/sn34_window_file.tsv test_data/wt_window_file.tsv
 ```
 
 
