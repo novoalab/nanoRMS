@@ -60,14 +60,14 @@ if (len == 1) {
 merged2<- merged[,c("modification","sample","read_index", "reference", "event_level_mean" )]
 windows_casted<- dcast(merged2, modification+sample+read_index ~ reference )
 windows_naomit<- na.omit(windows_casted)
-colnames(windows_naomit)<- c("modification","Strain","read_index", "-7", "-6", "-5", "-4", "-3", "-2", "-1", "0", "1", "2","3","4","5","6", "7")
+colnames(windows_naomit)<- c("unique","Strain","read_index", "-7", "-6", "-5", "-4", "-3", "-2", "-1", "0", "1", "2","3","4","5","6", "7")
 
 
 
 for (strain in unique(windows_naomit$Strain)) {
   subs_strain <- subset(windows_naomit, Strain==strain)
-    for (uniq in unique(windows_naomit$modification)) {
-      subs_uniq<- subset(subs_strain, modification==uniq)
+    for (uniq in unique(windows_naomit$unique)) {
+      subs_uniq<- subset(subs_strain, unique==uniq)
       write.table(subs_uniq, file=paste(uniq, strain, "15mer.perread.tsv", sep="_"), quote=FALSE, sep="\t")
     }
   }

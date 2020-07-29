@@ -53,27 +53,54 @@ Example using test data:
 
 ```
 Rscript summed_errors.R test_data/xxxx testdata_output_file.txt
-
-DETAILS HERE
 ```
 
 
 ## Running the code:
 
-
-### 1. Create 15-mer windows of per-read current intensities centered in positions of interest
-
+### 1. Pre-processing the Nanopolish Event-align output 
+This script removes misaligned events, which has NNNNN "model_kmer" and collapsed all the multiple observations in a given position from a single read.
 
 ```
-python3 per_read_mean.py nanopolish_eventalign_output.txt
+python3 per_read_mean.py event_align_file
+```
+
+Example using test data:
+
+```
+python3 per_read_mean.py test_data/xxxx 
 ```
 
 
-### 2. Visualize current intensity information of modified sites (optional)
+### 2. Create 15-mer windows of per-read current intensities centered in positions of interest
+You need the output of Nanopolish Event-align 
+
+```
+Rscript --vanilla nanopolish_window.R positions_file input_table label
+```
+
+
+
+Example using test data:
+
+```
+Rscript --vanilla nanopolish_window.R test_data/positions test_data/bc1_300000_subset.txt_processed_perpos_mean.csv bc1
+```
+
+
+
+### 3. Visualize current intensity information of modified sites (optional)
 
 #### Distribution of current intensities at the modified site (position 0)
+
 ```
-DETAILS HERE
+Rscript --vanilla density_nanopolish.R window_file1 window_file2 window_file3(optional) window_file4(optional)
+```
+
+Example using test data:
+
+```
+Rscript --vanilla density_nanopolish.R test_data/bc1_window_file.tsv test_data/bc2_window_file.tsv
 ```
 
 ![alt text](./img/density.png "Density")
@@ -81,23 +108,43 @@ DETAILS HERE
 
 #### Mean current intensity plots centered in the modified sites
 ```
-DETAILS HERE
+Rscript --vanilla nanopolish_meanlineplot.R window_file1 window_file2 window_file3(optional) window_file4(optional)
 ```
+Example using test data:
+
+```
+Rscript --vanilla nanopolish_meanlineplot.R test_data/bc1_window_file.tsv test_data/bc2_window_file.tsv
+```
+
 
 ![alt text](./img/per_read_current.png "Per_read")
 
 
 #### Per-read current intensity plots centered in the modified sites
 ```
-DETAILS HERE
+Rscript --vanilla nanopolish_perreadlineplot.R window_file1 window_file2 window_file3(optional) window_file4(optional)
 ```
+Example using test data:
+
+```
+Rscript --vanilla nanopolish_perreadlineplot.R test_data/bc1_window_file.tsv test_data/bc2_window_file.tsv
+```
+
 ![alt text](./img/mean_current.png "Mean_current")
 
 
 #### PCA plots from the per-read 15-mer current intensity data
 ```
-DETAILS HERE
+Rscript --vanilla nanopolish_pca.R data1 data2 data3(optional) data4(optional)
 ```
+
+Example using test data:
+
+```
+Rscript --vanilla nanopolish_pca.R test_data/bc1_window_file.tsv test_data/bc2_window_file.tsv
+```
+
+
 ![alt text](./img/pca.png "PCA")
 
 

@@ -61,15 +61,15 @@ if (len == 1) {
 merged2<- merged[,c("modification","sample","read_index", "reference", "event_level_mean" )]
 windows_casted<- dcast(merged2, modification+sample+read_index ~ reference )
 windows_naomit<- na.omit(windows_casted)
-colnames(windows_naomit)<- c("modification","Strain","read_index", "-7", "-6", "-5", "-4", "-3", "-2", "-1", "0", "1", "2","3","4","5","6", "7")
-windows_naomit_melt<-  melt(windows_naomit, id.vars = c("modification", "Strain", "read_index"))
+colnames(windows_naomit)<- c("unique","Strain","read_index", "-7", "-6", "-5", "-4", "-3", "-2", "-1", "0", "1", "2","3","4","5","6", "7")
+windows_naomit_melt<-  melt(windows_naomit, id.vars = c("unique", "Strain", "read_index"))
 windows_naomit_melt$strain_readid<- paste(windows_naomit_melt$Strain, windows_naomit_melt$read_index)
-colnames(windows_naomit_melt)<- c("modification","Strain", "read_index", "Position", "Event_Level_Mean","strain_readid" )
+colnames(windows_naomit_melt)<- c("unique","Strain", "read_index", "Position", "Event_Level_Mean","strain_readid" )
 
 
 
-  for (mod in unique(windows_naomit_melt$modification)){
-    subs<- subset(windows_naomit_melt, modification==mod)
+  for (mod in unique(windows_naomit_melt$unique)){
+    subs<- subset(windows_naomit_melt, unique==mod)
     subs$Position <- factor(subs$Position, levels = unique(subs$Position))
     pdf(file=paste(mod, "perread_lineplot.pdf",sep="_"),height=5,width=15,onefile=FALSE)
     print(ggplot(subs, aes(x=Position, y=Event_Level_Mean, group=strain_readid, color= Strain)) +
