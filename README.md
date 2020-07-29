@@ -27,8 +27,8 @@ NanoRMS uses as input Nanopolish eventalign output files, and then performs the 
 
 ## Before running the code:
 
-### Run Nanopolish on your FAST5: getting per-read current intensities
-Before you start, you first need to run **Nanopolish index** **Nanopolish eventalign** on the raw FAST5 reads using the following command line: 
+### 1. Run Nanopolish on your FAST5: getting per-read current intensities
+Before you start, you first need to run **Nanopolish index** and **Nanopolish eventalign** on the raw FAST5 reads using the following command line: 
 
 ```bash
 nanopolish index -d fast5_file fastq_file -s sequencing_summary_file
@@ -41,7 +41,7 @@ nanopolish eventalign \
     --scale-events > output.txt
 ```
 
-### Run EpiNano 1.1 on your FASTQ: getting predicted RNA-modified sites
+### 2. Run EpiNano 1.1 on your FASTQ: getting predicted RNA-modified sites
 You need a list of predicted RNA-modified sites to select the 15-mer regions where you will run nanoRMS on. You can choose your regions of interest by running for example, **EpiNano** (https://github.com/enovoa/EpiNano) on your paired datasets. We recommend to use "Summed_Errors" (difference in mismatch, deletion, insertion) rather than SVM-based predictions to obtain a list of candidate sites, which will be applicable to any given RNA modification as well as be more independent of the base-calling algorithm used. 
 
 To convert EpiNano outputs into Summed_Errors, you can use the code below: 
@@ -49,10 +49,19 @@ To convert EpiNano outputs into Summed_Errors, you can use the code below:
 Rscript summed_errors.R epinano_file output_file
 ```
 
+Example using test data:
+
+```
+Rscript summed_errors.R test_data/xxxx testdata_output_file.txt
+
+DETAILS HERE
+```
+
+
 ## Running the code:
 
 
-### STEP 1. Create 15-mer windows of per-read current intensities centered in positions of interest
+### 1. Create 15-mer windows of per-read current intensities centered in positions of interest
 
 
 ```
@@ -60,35 +69,41 @@ python3 per_read_mean.py nanopolish_eventalign_output.txt
 ```
 
 
-### STEP 2. Visualize current intensity information of modified sites (optional)
+### 2. Visualize current intensity information of modified sites (optional)
 
 #### Distribution of current intensities at the modified site (position 0)
 ```
 DETAILS HERE
 ```
 
+![alt text](./img/density.png "Density")
+
+
 #### Mean current intensity plots centered in the modified sites
 ```
 DETAILS HERE
 ```
 
-![alt text](./img/mean_current.png "Mean_current")
+![alt text](./img/per_read_current.png "Per_read")
 
 
 #### Per-read current intensity plots centered in the modified sites
 ```
 DETAILS HERE
 ```
+![alt text](./img/mean_current.png "Mean_current")
+
 
 #### PCA plots from the per-read 15-mer current intensity data
 ```
 DETAILS HERE
 ```
+![alt text](./img/pca.png "PCA")
 
 
-### STEP 3. Predict changes in RNA modification stoichiometry
+### 3. Predict changes in RNA modification stoichiometry
 
-#### a) Using KMEANS 
+#### a) Using KMEANS clustering
 
 ```
 R --vanilla < nanoRMS.R --args file1.tsv file2.tsv kmeans
@@ -109,7 +124,7 @@ Example using test data:
 R --vanilla < nanoRMS.R --args test_data/25s_2880.wt.15mer.perread.h.tsv test_data/25s_2880.sn34.15mer.perread.h.tsv kmeans_pca
 ```
 
-#### c) Using KNN
+#### c) Using K-nearest neighbour (KNN)
 
 ```
 R --vanilla < nanoRMS.R --args file1.tsv file2.tsv knn
