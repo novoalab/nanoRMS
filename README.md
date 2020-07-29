@@ -52,7 +52,7 @@ DETAILS HERE
 
 Then, convert EpiNano outputs into Summed_Errors, using the code below: 
 ```
-Rscript summed_errors.R epinano_file output_file
+Rscript summed_errors.R <epinano_file> <output_file>
 ```
 
 Example using test data:
@@ -68,7 +68,7 @@ Rscript summed_errors.R test_data/wt_epinano.csv testdata_output_file.txt
 This script removes misaligned events, which has NNNNN "model_kmer" and collapsed all the multiple observations in a given position from a single read.
 
 ```
-python3 per_read_mean.py event_align_file
+python3 per_read_mean.py <event_align_file>
 ```
 
 Example using test data:
@@ -82,9 +82,8 @@ python3 per_read_mean.py test_data/data1_eventalign_output.txt
 You need the output of Nanopolish Event-align 
 
 ```
-Rscript --vanilla nanopolish_window.R positions_file input_table label
+Rscript --vanilla nanopolish_window.R positions_file <input_table> <label>
 ```
-
 
 
 Example using test data:
@@ -100,7 +99,7 @@ Rscript --vanilla nanopolish_window.R test_data/positions test_data/data1_eventa
 #### Distribution of current intensities at the modified site (position 0)
 
 ```
-Rscript --vanilla density_nanopolish.R window_file1 window_file2 window_file3(optional) window_file4(optional)
+Rscript --vanilla density_nanopolish.R <window_file1> <window_file2> <window_file3(optional)> <window_file4(optional)>
 ```
 
 Example using test data:
@@ -114,14 +113,13 @@ Rscript --vanilla density_nanopolish.R test_data/sn34_window_file.tsv test_data/
 
 #### Mean current intensity plots centered in the modified sites
 ```
-Rscript --vanilla nanopolish_meanlineplot.R window_file1 window_file2 window_file3(optional) window_file4(optional)
+Rscript --vanilla nanopolish_meanlineplot.R <window_file1> <window_file2> <window_file3(optional)> <window_file4(optional)>
 ```
 Example using test data:
 
 ```
 Rscript --vanilla nanopolish_meanlineplot.R test_data/sn34_window_file.tsv test_data/wt_window_file.tsv
 ```
-
 
 
 ![alt text](./img/mean_current.png "Mean_current")
@@ -139,6 +137,8 @@ Rscript --vanilla nanopolish_perreadlineplot.R test_data/sn34_window_file.tsv te
 
 
 ![alt text](./img/per_read_current.png "Per_read")
+
+
 #### PCA plots from the per-read 15-mer current intensity data
 ```
 Rscript --vanilla nanopolish_pca.R data1 data2 data3(optional) data4(optional)
@@ -149,7 +149,6 @@ Example using test data:
 ```
 Rscript --vanilla nanopolish_pca.R test_data/sn34_window_file.tsv test_data/wt_window_file.tsv
 ```
-
 
 ![alt text](./img/pca.png "PCA")
 
