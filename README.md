@@ -56,7 +56,7 @@ Rscript summed_errors.R epinano_file output_file
 
 
 ```
-DETAILS HERE
+python3 per_read_mean.py nanopolish_eventalign_output.txt
 ```
 
 
