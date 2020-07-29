@@ -117,7 +117,8 @@ Rscript --vanilla nanopolish_meanlineplot.R test_data/bc1_window_file.tsv test_d
 ```
 
 
-![alt text](./img/per_read_current.png "Per_read")
+
+![alt text](./img/mean_current.png "Mean_current")
 
 
 #### Per-read current intensity plots centered in the modified sites
@@ -130,9 +131,8 @@ Example using test data:
 Rscript --vanilla nanopolish_perreadlineplot.R test_data/bc1_window_file.tsv test_data/bc2_window_file.tsv
 ```
 
-![alt text](./img/mean_current.png "Mean_current")
 
-
+![alt text](./img/per_read_current.png "Per_read")
 #### PCA plots from the per-read 15-mer current intensity data
 ```
 Rscript --vanilla nanopolish_pca.R data1 data2 data3(optional) data4(optional)
