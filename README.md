@@ -153,7 +153,7 @@ Rscript --vanilla nanopolish_pca.R test_data/sn34_window_file.tsv test_data/wt_w
 ![alt text](./img/pca.png "PCA")
 
 
-### 4. Predict changes in RNA modification stoichiometry
+### 4.Estimation of RNA modification via binning RNA reads into 2 clusters (modified and unmodified)
 
 #### a) Using KMEANS clustering
 
@@ -176,7 +176,7 @@ Example using test data:
 R --vanilla < nanoRMS.R --args test_data/25s_2880.wt.15mer.perread.h.tsv test_data/25s_2880.sn34.15mer.perread.h.tsv kmeans_pca
 ```
 
-#### c) Using K-nearest neighbour (KNN)
+#### c) Using K-nearest neighbour (KNN)-- of note: this option should be used when 0% and 100% (or close values) modified datasets are available, e.g. rRNAs
 
 ```
 R --vanilla < nanoRMS.R --args <file1.tsv> <file2.tsv> knn
