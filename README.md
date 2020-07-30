@@ -7,13 +7,15 @@ Prediction of RNA modification stoichiometry in direct RNA sequencing datasets f
 ## General description
 NanoRMS predicts modification stoichiometries by identifying reads that show distinct current intensity distributions in the query dataset, compared to those observed in a reference dataset.
 
+NanoRMS is not a software to predict RNA modifications. It  uses the candidate sites predicted by third-party software (e.g. EpiNano) to estimate modification stoichiometries and their dynamics. 
+
 NanoRMS uses as input Nanopolish eventalign output files, and then performs the following steps:
 
 * Step 1. Collapse Nanopolish eventalign output
 * Step 2: Convert Nanopolish eventalign outputs into processed output for each 15-mer region 
 * Step 3. Visualization of the per-read results (PCA, per-read current intensities) -- optional step, but highly recommended to see how your samples look like in terms of modified/unmodified reads
-* Step 4a. Stoichiometry prediction in PAIRED mode (2 samples), using either KMEANS or KNN.
-* *(Step 4b. Stoichiometry prediction in DE NOVO mode (1 sample), using modPhred denovo  -- UNDER DEVELOPMENT)*
+* Step 4. Stoichiometry prediction in PAIRED mode (2 samples), using either KMEANS or KNN.
+* *(Step 5. Stoichiometry prediction in DE NOVO mode (1 sample), using modPhred denovo  -- UNDER DEVELOPMENT)*
 
 ## Considerations when using nanoRMS 
 * NanoRMS requires two different datasets to be executed (query-control)
