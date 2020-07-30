@@ -22,7 +22,7 @@ NanoRMS uses as input Nanopolish eventalign output files, and then performs the 
 
 * Alternatively, NanoRMS can also be used to quantitatively estimate stoichiometry changes between two conditions (e.g. normal vs stress). In this scenario, it cannot predict the absolute stoichiometry of each individual site.
 
-* NanoRMS should only be run on sites that have previously been identified as RNA-modified sites (e.g. using EpiNano or similar softwares). *NanoRMS is NOT aimed at *de novo* prediction of RNA modified sites*. 
+* NanoRMS should only be run on sites that have previously been identified as RNA-modified sites (e.g. using EpiNano or similar softwares). **NanoRMS is NOT aimed at *de novo* prediction of RNA modified sites**. 
 
 ## Requirements/dependencies
 
