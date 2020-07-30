@@ -200,9 +200,8 @@ R --vanilla < read_clustering.R --args test_data/25s_2880.wt.15mer.perread.h.tsv
 
 ### 5. Estimation of RNA modification stoichiometry via modPhred denovo
 
-```
 UNDER DEVELOPMENT
-```
+
 
 ## Citation: 
 #
