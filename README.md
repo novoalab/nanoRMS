@@ -158,33 +158,48 @@ Rscript --vanilla nanopolish_pca.R test_data/sn34_window_file.tsv test_data/wt_w
 #### a) Using KMEANS clustering
 
 ```
-R --vanilla < nanoRMS.R --args <file1.tsv> <file2.tsv> kmeans
+R --vanilla < read_clustering.R --args <file1.tsv> <file2.tsv> kmeans
 ```
 
 Example using test data:
 ```
-R --vanilla < nanoRMS.R --args test_data/25s_2880.wt.15mer.perread.h.tsv test_data/25s_2880.sn34.15mer.perread.h.tsv kmeans
+R --vanilla < read_clustering.R --args test_data/25s_2880.wt.15mer.perread.h.tsv test_data/25s_2880.sn34.15mer.perread.h.tsv kmeans
 ```
 
 
 #### b) Using KMEANS on PCAed data
 ```
-R --vanilla < nanoRMS.R --args <file1.ts>v <file2.tsv> kmeans_pca
+R --vanilla < read_clustering.R --args <file1.ts>v <file2.tsv> kmeans_pca
 ```
 Example using test data:
 ```
-R --vanilla < nanoRMS.R --args test_data/25s_2880.wt.15mer.perread.h.tsv test_data/25s_2880.sn34.15mer.perread.h.tsv kmeans_pca
+R --vanilla < read_clustering.R --args test_data/25s_2880.wt.15mer.perread.h.tsv test_data/25s_2880.sn34.15mer.perread.h.tsv kmeans_pca
 ```
 
-#### c) Using K-nearest neighbour (KNN)-- of note: this option should be used when 0% and 100% (or close values) modified datasets are available, e.g. rRNAs
+#### c) Using K-nearest neighbour (KNN) 
+Important note: this option should be only used when 0% and 100% (or similar) modified datasets are available for training, e.g. rRNAs coupled with KO condition. 
 
 ```
-R --vanilla < nanoRMS.R --args <file1.tsv> <file2.tsv> knn
+R --vanilla < read_clustering.R --args <file1.tsv> <file2.tsv> knn
 ```
+
 Example using test data:
 ```
-R --vanilla < nanoRMS.R --args test_data/25s_2880.wt.15mer.perread.h.tsv test_data/25s_2880.sn34.15mer.perread.h.tsv knn
+R --vanilla < read_clustering.R --args test_data/25s_2880.wt.15mer.perread.h.tsv test_data/25s_2880.sn34.15mer.perread.h.tsv knn
 ```
+
+Example using test data that includes predictions in independent validation data:
+
+```
+R --vanilla < read_clustering.R --args test_data/25s_2880.wt.15mer.perread.h.tsv test_data/25s_2880.sn34.15mer.perread.h.tsv test_data/25s_2880.sn3.15mer.perread.h.tsv test_data/25s_2880.sn36.15mer.perread.h.tsv  knn_4_samples
+```
+
+# 5. Estimation of RNA modification stoichiometry via modPhred denovo
+
+```
+UNDER DEVELOPMENT
+```
+
 ## Citation: 
 
 Begik O*, Lucas MC*, Ramirez JM, Milenkovic I, Cruciani S, Vieira HGS, Medina R, Liu H, Sas-Chen A, Mattick JS, Schwartz S and Novoa EM. Decoding ribosomal RNA modification dynamics at single molecule resolution. bioRxiv 2020. doi: https://doi.org/10.1101/2020.07.06.189969
