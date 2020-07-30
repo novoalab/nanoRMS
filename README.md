@@ -11,7 +11,7 @@ NanoRMS uses as input Nanopolish eventalign output files, and then performs the 
 
 * Step 1. Collapse Nanopolish eventalign output
 * Step 2: Convert Nanopolish eventalign outputs into processed output for each 15-mer region 
-* Step 3. Visualization of the per-read results (PCA, per-read current intensities)
+* Step 3. Visualization of the per-read results (PCA, per-read current intensities) -- optional step, but highly recommended to see how your samples look like in terms of modified/unmodified reads
 * Step 4a. Stoichiometry prediction in PAIRED mode (2 samples), using either KMEANS or KNN.
 * *(Step 4b. Stoichiometry prediction in DE NOVO mode (1 sample), using modPhred denovo  -- UNDER DEVELOPMENT)*
 
