@@ -127,7 +127,7 @@ Rscript --vanilla nanopolish_meanlineplot.R test_data/sn34_window_file.tsv test_
 
 #### Per-read current intensity plots centered in the modified sites
 ```
-Rscript --vanilla nanopolish_perreadlineplot.R window_file1 window_file2 window_file3(optional) window_file4(optional)
+Rscript --vanilla nanopolish_perreadlineplot.R <window_file1> <window_file2> <window_file3(optional)> <window_file4(optional)>
 ```
 Example using test data:
 
@@ -141,7 +141,7 @@ Rscript --vanilla nanopolish_perreadlineplot.R test_data/sn34_window_file.tsv te
 
 #### PCA plots from the per-read 15-mer current intensity data
 ```
-Rscript --vanilla nanopolish_pca.R data1 data2 data3(optional) data4(optional)
+Rscript --vanilla nanopolish_pca.R <window_file1.tsv> <window_file2.tsv> <window_file3.tsv(optional)> <window_file4.tsv(optional)>
 ```
 
 Example using test data:
@@ -158,7 +158,7 @@ Rscript --vanilla nanopolish_pca.R test_data/sn34_window_file.tsv test_data/wt_w
 #### a) Using KMEANS clustering
 
 ```
-R --vanilla < nanoRMS.R --args file1.tsv file2.tsv kmeans
+R --vanilla < nanoRMS.R --args <file1.tsv> <file2.tsv> kmeans
 ```
 
 Example using test data:
@@ -169,7 +169,7 @@ R --vanilla < nanoRMS.R --args test_data/25s_2880.wt.15mer.perread.h.tsv test_da
 
 #### b) Using KMEANS on PCAed data
 ```
-R --vanilla < nanoRMS.R --args file1.tsv file2.tsv kmeans_pca
+R --vanilla < nanoRMS.R --args <file1.ts>v <file2.tsv> kmeans_pca
 ```
 Example using test data:
 ```
@@ -179,7 +179,7 @@ R --vanilla < nanoRMS.R --args test_data/25s_2880.wt.15mer.perread.h.tsv test_da
 #### c) Using K-nearest neighbour (KNN)
 
 ```
-R --vanilla < nanoRMS.R --args file1.tsv file2.tsv knn
+R --vanilla < nanoRMS.R --args <file1.tsv> <file2.tsv> knn
 ```
 Example using test data:
 ```
