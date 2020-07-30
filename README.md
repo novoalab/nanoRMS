@@ -17,9 +17,12 @@ NanoRMS uses as input Nanopolish eventalign output files, and then performs the 
 
 ## Considerations when using nanoRMS 
 * NanoRMS requires two different datasets to be executed (query-control)
-* NanoRMS can be used to predict absolute stoichiometry of a given site, if reference dataset given is 0% modified (e.g. IVT, knockout condition) for that given site.
+
+* NanoRMS can be used to predict absolute stoichiometry of a given site, if it has been previously trained with unmodified and modified data (for that given site), e.g. rRNA-modified sites coupled to knockout strains. The model can then be tested in independent datasets to obtain quantitative measurements. 
+
 * Alternatively, NanoRMS can also be used to quantitatively estimate stoichiometry changes between two conditions (e.g. normal vs stress). In this scenario, it cannot predict the absolute stoichiometry of each individual site.
-* NanoRMS should only be run on sites that have previously been identified as RNA-modified sites (e.g. using EpiNano or similar softwares). It is not aimed at  de novo prediction of RNA modified sites. 
+
+* NanoRMS should only be run on sites that have previously been identified as RNA-modified sites (e.g. using EpiNano or similar softwares). *NanoRMS is NOT aimed at *de novo* prediction of RNA modified sites*. 
 
 ## Requirements/dependencies
 
@@ -45,15 +48,15 @@ nanopolish eventalign \
 ### 2. Run EpiNano 1.1 on your FASTQ: getting predicted RNA-modified sites
 You need a list of predicted RNA-modified sites to select the 15-mer regions where you will run nanoRMS on. You can choose your regions of interest by running for example, **[EpiNano](https://github.com/enovoa/EpiNano)** on your paired datasets. We recommend to use "Summed_Errors" (difference in mismatch, deletion, insertion) rather than SVM-based predictions to obtain a list of candidate sites, which will be applicable to any given RNA modification as well as be more independent of the base-calling algorithm used. 
 
-Obtain EpiNano base-calling error information from mapped BAM files:
+Obtain *EpiNano* base-calling error information from mapped BAM files:
 ```
-DETAILS HERE
+<DETAILS HERE ON HOW TO LAUNCH EPINANO>
 ```
 
 
-Then, convert EpiNano outputs into Summed_Errors, using the code below: 
+Then, convert *EpiNano* outputs into Summed_Errors, using the code below: 
 ```
-Rscript summed_errors.R <epinano_file> <output_file>
+Rscript summed_errors.R <epinano_file> <summed_errors_output_file>
 ```
 
 Example using test data:
