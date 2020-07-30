@@ -214,6 +214,7 @@ if (exists("method")=="FALSE") {
 }
 
 ## Run prediction based on choice:
+set.seed(101)
 if (method=="kmeans_pca") {	
 	dat.kmeans_pca<-do_kmeans_pca(dat)
 } else if  (method=="kmeans") {	
