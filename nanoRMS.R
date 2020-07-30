@@ -7,7 +7,6 @@
 ## Epitranscriptomics and RNA Dynamics Lab  #########
 ## Center for Genomic Regulation (CRG)      #########
 ## License: MIT                             #########
-## Author: Eva Maria Novoa                  #########
 #####################################################
 
 
@@ -18,6 +17,7 @@ library(reshape2)
 library(grid)
 library(gridExtra)
 library(ggExtra)
+library(caTools)
 
 # Reading arguments from command line
 args = commandArgs(trailingOnly=TRUE)
@@ -142,7 +142,6 @@ do_kmeans<-function(dat) {
 
 subdivide_training_testing<-function(dat, type, split_ratio) {
 	# Get reproducible "sampling"	
-	require(caTools)
 	set.seed(101) 
 	print(head(dat))
 	sample_case = sample.split(dat$sample, SplitRatio = split_ratio)	
