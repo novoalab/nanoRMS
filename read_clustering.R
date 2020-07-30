@@ -80,7 +80,7 @@ if (length(args)==2) {
 	
 	dat<-merge_with_wt_2samples(wt,ko1)
 } else {
-	stop("At least two arguments must be supplied.\n--> Usage: R --vanilla < nanoRMS.R --args file1.tsv file2.tsv \n--> An optional third argument can be provided, being the clustering method to use: kmeans, kmeans_pca or knn\n", call.=FALSE)
+	stop("At least two arguments must be supplied.\n--> Usage: R --vanilla < read_clustering.R --args file1.tsv file2.tsv \n--> An optional third argument can be provided, being the clustering method to use: kmeans, kmeans_pca or knn\n", call.=FALSE)
 }
 
 
