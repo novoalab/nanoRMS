@@ -28,7 +28,7 @@ NanoRMS uses as input Nanopolish eventalign output files, and then performs the 
 ## Before running the code:
 
 ### 1. Run Nanopolish on your FAST5: getting per-read current intensities
-Before you start, you first need to run **Nanopolish index** and **Nanopolish eventalign** on the raw FAST5 reads using the following command line: 
+Before you start, you first need to run **[Nanopolish](https://github.com/jts/nanopolish) index** and **Nanopolish eventalign** on the raw FAST5 reads using the following command line: 
 
 ```bash
 nanopolish index -d fast5_file fastq_file -s sequencing_summary_file
