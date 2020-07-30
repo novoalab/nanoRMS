@@ -65,7 +65,7 @@ Rscript summed_errors.R test_data/wt_epinano.csv testdata_output_file.txt
 ## Running the code:
 
 ### 1. Pre-processing the Nanopolish Event-align output 
-This script removes misaligned events, which has NNNNN "model_kmer" and collapsed all the multiple observations in a given position from a single read.
+Generate a collapsed Nanopolish event align output, by collapsing all the multiple observations for a given position from a same read.
 
 ```
 python3 per_read_mean.py <event_align_file>
