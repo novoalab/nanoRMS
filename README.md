@@ -22,9 +22,8 @@ NanoRMS uses as input Nanopolish eventalign output files, and then performs the 
 
 ## Requirements/dependencies
 
-* Nanopolish (tested version: xxx)
-* R (tested version: 3.6.3)
-* R libraries that are used in the R scripts: stringr, ggplot2, reshape2,grid, gridExtra, ggExtra, caTools
+* [Nanopolish](https://github.com/jts/nanopolish) (tested version: 0.12.4)
+* [EpiNano](https://github.com/enovoa/EpiNano) (tested version 1.1)
 
 ## Before running the code:
 
@@ -43,7 +42,7 @@ nanopolish eventalign \
 ```
 
 ### 2. Run EpiNano 1.1 on your FASTQ: getting predicted RNA-modified sites
-You need a list of predicted RNA-modified sites to select the 15-mer regions where you will run nanoRMS on. You can choose your regions of interest by running for example, **EpiNano** (https://github.com/enovoa/EpiNano) on your paired datasets. We recommend to use "Summed_Errors" (difference in mismatch, deletion, insertion) rather than SVM-based predictions to obtain a list of candidate sites, which will be applicable to any given RNA modification as well as be more independent of the base-calling algorithm used. 
+You need a list of predicted RNA-modified sites to select the 15-mer regions where you will run nanoRMS on. You can choose your regions of interest by running for example, **[EpiNano](https://github.com/enovoa/EpiNano)** on your paired datasets. We recommend to use "Summed_Errors" (difference in mismatch, deletion, insertion) rather than SVM-based predictions to obtain a list of candidate sites, which will be applicable to any given RNA modification as well as be more independent of the base-calling algorithm used. 
 
 Obtain EpiNano base-calling error information from mapped BAM files:
 ```
