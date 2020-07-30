@@ -9,9 +9,10 @@ NanoRMS predicts modification stoichiometries by identifying those reads that sh
 
 NanoRMS uses as input Nanopolish eventalign output files, and then performs the following steps:
 
-* Step 1.  Convert Nanopolish eventalign outputs into processed output for each 15-mer region 
-* Step 2. Visualization of the per-read results (PCA, per-read current intensities)
-* Step 3. Stoichiometry prediction, using either KMEANS or KNN.
+* Step 1. Collapse Nanopolish eventalign output
+* Step 2: Convert Nanopolish eventalign outputs into processed output for each 15-mer region 
+* Step 3. Visualization of the per-read results (PCA, per-read current intensities)
+* Step 4. Stoichiometry prediction, using either KMEANS or KNN.
 
 ## Considerations when using nanoRMS 
 * NanoRMS requires two different datasets to be executed (query-control)
@@ -153,7 +154,7 @@ Rscript --vanilla nanopolish_pca.R test_data/sn34_window_file.tsv test_data/wt_w
 ![alt text](./img/pca.png "PCA")
 
 
-### 3. Predict changes in RNA modification stoichiometry
+### 4. Predict changes in RNA modification stoichiometry
 
 #### a) Using KMEANS clustering
 
