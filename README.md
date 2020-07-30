@@ -44,36 +44,68 @@ nanopolish eventalign \
 ### 2. Run EpiNano 1.1 on your FASTQ: getting predicted RNA-modified sites
 You need a list of predicted RNA-modified sites to select the 15-mer regions where you will run nanoRMS on. You can choose your regions of interest by running for example, **EpiNano** (https://github.com/enovoa/EpiNano) on your paired datasets. We recommend to use "Summed_Errors" (difference in mismatch, deletion, insertion) rather than SVM-based predictions to obtain a list of candidate sites, which will be applicable to any given RNA modification as well as be more independent of the base-calling algorithm used. 
 
-To convert EpiNano outputs into Summed_Errors, you can use the code below: 
+Obtain EpiNano base-calling error information from mapped BAM files:
 ```
-Rscript summed_errors.R epinano_file output_file
+DETAILS HERE
+```
+
+
+Then, convert EpiNano outputs into Summed_Errors, using the code below: 
+```
+Rscript summed_errors.R <epinano_file> <output_file>
 ```
 
 Example using test data:
 
 ```
-Rscript summed_errors.R test_data/xxxx testdata_output_file.txt
-
-DETAILS HERE
+Rscript summed_errors.R test_data/wt_epinano.csv testdata_output_file.txt
 ```
 
 
 ## Running the code:
 
-
-### 1. Create 15-mer windows of per-read current intensities centered in positions of interest
-
+### 1. Pre-processing the Nanopolish Event-align output 
+This script removes misaligned events, which has NNNNN "model_kmer" and collapsed all the multiple observations in a given position from a single read.
 
 ```
-DETAILS HERE
+python3 per_read_mean.py <event_align_file>
+```
+
+Example using test data:
+
+```
+python3 per_read_mean.py test_data/data1_eventalign_output.txt
 ```
 
 
-### 2. Visualize current intensity information of modified sites (optional)
+### 2. Create 15-mer windows of per-read current intensities centered in positions of interest
+You need the output of Nanopolish Event-align 
+
+```
+Rscript --vanilla nanopolish_window.R positions_file <input_table> <label>
+```
+
+
+Example using test data:
+
+```
+Rscript --vanilla nanopolish_window.R test_data/positions test_data/data1_eventalign_output.txt_processed_perpos_mean.csv data1
+```
+
+
+
+### 3. Visualize current intensity information of modified sites (optional)
 
 #### Distribution of current intensities at the modified site (position 0)
+
 ```
-DETAILS HERE
+Rscript --vanilla density_nanopolish.R <window_file1> <window_file2> <window_file3(optional)> <window_file4(optional)>
+```
+
+Example using test data:
+
+```
+Rscript --vanilla density_nanopolish.R test_data/sn34_window_file.tsv test_data/wt_window_file.tsv
 ```
 
 ![alt text](./img/density.png "Density")
@@ -81,23 +113,43 @@ DETAILS HERE
 
 #### Mean current intensity plots centered in the modified sites
 ```
-DETAILS HERE
+Rscript --vanilla nanopolish_meanlineplot.R <window_file1> <window_file2> <window_file3(optional)> <window_file4(optional)>
+```
+Example using test data:
+
+```
+Rscript --vanilla nanopolish_meanlineplot.R test_data/sn34_window_file.tsv test_data/wt_window_file.tsv
 ```
 
-![alt text](./img/per_read_current.png "Per_read")
+
+![alt text](./img/mean_current.png "Mean_current")
 
 
 #### Per-read current intensity plots centered in the modified sites
 ```
-DETAILS HERE
+Rscript --vanilla nanopolish_perreadlineplot.R window_file1 window_file2 window_file3(optional) window_file4(optional)
 ```
-![alt text](./img/mean_current.png "Mean_current")
+Example using test data:
+
+```
+Rscript --vanilla nanopolish_perreadlineplot.R test_data/sn34_window_file.tsv test_data/wt_window_file.tsv
+```
+
+
+![alt text](./img/per_read_current.png "Per_read")
 
 
 #### PCA plots from the per-read 15-mer current intensity data
 ```
-DETAILS HERE
+Rscript --vanilla nanopolish_pca.R data1 data2 data3(optional) data4(optional)
 ```
+
+Example using test data:
+
+```
+Rscript --vanilla nanopolish_pca.R test_data/sn34_window_file.tsv test_data/wt_window_file.tsv
+```
+
 ![alt text](./img/pca.png "PCA")
 
 
