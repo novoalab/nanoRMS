@@ -13,6 +13,7 @@ NanoRMS uses as input Nanopolish eventalign output files, and then performs the 
 * Step 2: Convert Nanopolish eventalign outputs into processed output for each 15-mer region 
 * Step 3. Visualization of the per-read results (PCA, per-read current intensities)
 * Step 4. Stoichiometry prediction, using either KMEANS or KNN.
+* *Step 5. Alternative: Stoichiometry prediction using modPhred denovo (UNDER DEVELOPMENT)*
 
 ## Considerations when using nanoRMS 
 * NanoRMS requires two different datasets to be executed (query-control)
@@ -194,14 +195,14 @@ Example using test data that includes predictions in independent validation data
 R --vanilla < read_clustering.R --args test_data/25s_2880.wt.15mer.perread.h.tsv test_data/25s_2880.sn34.15mer.perread.h.tsv test_data/25s_2880.sn3.15mer.perread.h.tsv test_data/25s_2880.sn36.15mer.perread.h.tsv  knn_4_samples
 ```
 
-# 5. Estimation of RNA modification stoichiometry via modPhred denovo
+### 5. Estimation of RNA modification stoichiometry via modPhred denovo
 
 ```
 UNDER DEVELOPMENT
 ```
 
 ## Citation: 
-
+#
 Begik O*, Lucas MC*, Ramirez JM, Milenkovic I, Cruciani S, Vieira HGS, Medina R, Liu H, Sas-Chen A, Mattick JS, Schwartz S and Novoa EM. Decoding ribosomal RNA modification dynamics at single molecule resolution. bioRxiv 2020. doi: https://doi.org/10.1101/2020.07.06.189969
 
 ## Questions/doubts?
