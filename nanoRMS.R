@@ -1,4 +1,4 @@
-#!/usr/bin/env Rscript
+#!/usr/env/Rscript 
 
 #####################################################
 ##         RNA modification stoichiometry          ##
@@ -65,8 +65,8 @@ if (length(args)==2) {
 	wt_input<- read.delim(args[1], col.names=colnames)
 	ko1_input<- read.delim(args[2], col.names=colnames)
 	
-	wt<-clean_input(wt_input,"wt")
-	ko1<-clean_input(ko1_input,"ko1")
+	wt<-clean_input(wt_input,"sample1")
+	ko1<-clean_input(ko1_input,"sample2")
 	
 	dat<-merge_with_wt_2samples(wt,ko1)
 	
@@ -75,8 +75,8 @@ if (length(args)==2) {
 	ko1_input<- read.delim(args[2], col.names=colnames)
 	method<-args[3]
 	
-	wt<-clean_input(wt_input,"wt")
-	ko1<-clean_input(ko1_input,"ko1")
+	wt<-clean_input(wt_input,"sample1")
+	ko1<-clean_input(ko1_input,"sample2")
 	
 	dat<-merge_with_wt_2samples(wt,ko1)
 } else {
@@ -214,16 +214,16 @@ if (exists("method")=="FALSE") {
 }
 
 ## Run prediction based on choice:
-
 if (method=="kmeans_pca") {	
 	dat.kmeans_pca<-do_kmeans_pca(dat)
 } else if  (method=="kmeans") {	
 	dat.kmeans<-do_kmeans(dat)
 } else if  (method=="knn") {	
-	knn_model<-get_knn(dat,c("wt","ko1"),7)
+	knn_model<-get_knn(dat,c("sample1","sample2"),7)
 #} else if (method=="knn_4samples") {	
 #	knn_model_4samples<-get_knn_4samples(dat,c("wt","ko1"),7)
 } else {
 	print ("ERROR: Please choose among the following methods: kmeans_pca, kmeans, knn")
 }
+# Have a nice day! :)
 
