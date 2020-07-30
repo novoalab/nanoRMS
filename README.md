@@ -5,7 +5,7 @@ Prediction of RNA modification stoichiometry in direct RNA sequencing datasets f
 
 
 ## General description
-NanoRMS predicts modification stoichiometries by identifying those reads that show distinct current intensity distributions in the query dataset, compared to those observed in a control dataset (i.e. ideally an unmodifi dataset for that site of interest).
+NanoRMS predicts modification stoichiometries by identifying reads that show distinct current intensity distributions in the query dataset, compared to those observed in a reference dataset.
 
 NanoRMS uses as input Nanopolish eventalign output files, and then performs the following steps:
 
@@ -181,7 +181,7 @@ R --vanilla < read_clustering.R --args test_data/25s_2880.wt.15mer.perread.h.tsv
 Important note: this option should be only used when 0% and 100% (or similar) modified datasets are available for training, e.g. rRNAs coupled with KO condition. 
 
 ```
-R --vanilla < read_clustering.R --args <file1.tsv> <file2.tsv> knn
+R --vanilla < read_clustering.R --args <file1.tsv> <file2_UNM.tsv> <validation_set.tsv(optional)> knn
 ```
 
 Example using test data:
@@ -192,7 +192,7 @@ R --vanilla < read_clustering.R --args test_data/25s_2880.wt.15mer.perread.h.tsv
 Example using test data that includes predictions in independent validation data:
 
 ```
-R --vanilla < read_clustering.R --args test_data/25s_2880.wt.15mer.perread.h.tsv test_data/25s_2880.sn34.15mer.perread.h.tsv test_data/25s_2880.sn3.15mer.perread.h.tsv test_data/25s_2880.sn36.15mer.perread.h.tsv  knn_4_samples
+R --vanilla < read_clustering.R --args test_data/25s_2880.wt.15mer.perread.h.tsv test_data/25s_2880.sn34.15mer.perread.h.tsv test_data/25s_2880.sn3.15mer.perread.h.tsv test_data/25s_2880.sn36.15mer.perread.h.tsv  knn_validation
 ```
 
 ### 5. Estimation of RNA modification stoichiometry via modPhred denovo
