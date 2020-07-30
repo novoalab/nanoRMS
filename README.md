@@ -23,7 +23,7 @@ NanoRMS uses as input Nanopolish eventalign output files, and then performs the 
 
 * Nanopolish (tested version: xxx)
 * R (tested version: 3.6.3)
-* R libraries that are used in the nanoRMS.R script (listed at the top of the script) 
+* R libraries that are used in the R scripts: stringr, ggplot2, reshape2,grid, gridExtra, ggExtra, caTools
 
 ## Before running the code:
 
