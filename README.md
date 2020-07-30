@@ -20,7 +20,7 @@ NanoRMS uses as input Nanopolish eventalign output files and a list of predicted
 ## Considerations when using nanoRMS 
 * NanoRMS requires two different datasets to be executed (query-control)
 
-* NanoRMS can be used to predict absolute stoichiometry of a given site, if it has been previously trained with unmodified and modified data (for that given site), e.g. rRNA-modified sites coupled to knockout strains. The model can then be tested in independent datasets to obtain quantitative measurements. 
+* NanoRMS can be used to predict absolute stoichiometry of a given site, if it has been previously trained with unmodified and modified data, e.g. rRNA-modified sites coupled to knockout strains. The model can then be tested in independent datasets to obtain quantitative measurements. 
 
 * Alternatively, NanoRMS can also be used to quantitatively estimate stoichiometry changes between two conditions (e.g. normal vs stress). In this scenario, it cannot predict the absolute stoichiometry of each individual site.
 
