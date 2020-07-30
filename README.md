@@ -105,7 +105,7 @@ Rscript --vanilla density_nanopolish.R <window_file1> <window_file2> <window_fil
 Example using test data:
 
 ```
-Rscript --vanilla density_nanopolish.R test_data/sn34_window_file.tsv test_data/wt_window_file.tsv
+Rscript --vanilla nanopolish_density_plot.R test_data/sn34_window_file.tsv test_data/wt_window_file.tsv
 ```
 
 ![alt text](./img/density.png "Density")
