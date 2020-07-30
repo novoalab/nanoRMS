@@ -26,7 +26,7 @@ NanoRMS uses as input Nanopolish eventalign output files and a list of predicted
 
 * NanoRMS should only be run on sites that have previously been identified as RNA-modified sites (e.g. using EpiNano or similar softwares). 
 
-* NanoRMS is does **NOT** perform *de novo* predictions of RNA-modified sites**. 
+* NanoRMS  does **NOT** perform *de novo* predictions of RNA-modified sites. 
 
 ## Requirements/dependencies
 
