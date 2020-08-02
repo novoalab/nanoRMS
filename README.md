@@ -24,7 +24,7 @@ NanoRMS uses as input Nanopolish eventalign output files and a list of predicted
 
 * Alternatively, NanoRMS can also be used to quantitatively estimate stoichiometry changes between two conditions (e.g. normal vs stress). In this scenario, it cannot predict the absolute stoichiometry of each individual site.
 
-* NanoRMS should only be run on sites that have previously been identified as RNA-modified sites (e.g. using EpiNano or similar softwares). 
+* NanoRMS should only be run on sites that have previously been identified as RNA-modified sites (e.g. RNA modifications can be predicted using [EpiNano](https://github.com/enovoa/EpiNano) or similar softwares). 
 
 * NanoRMS  does **NOT** perform *de novo* predictions of RNA-modified sites. 
 
@@ -161,7 +161,7 @@ Rscript --vanilla nanopolish_pca.R test_data/sn34_window_file.tsv test_data/wt_w
 ![alt text](./img/pca.png "PCA")
 
 
-### 4.Estimation of RNA modification via binning RNA reads into 2 clusters (modified and unmodified)
+### 4.Estimation of RNA modification via RNA read binning into 2 clusters -modified and unmodified- (*paired* mode)
 
 #### a) Using KMEANS clustering
 
@@ -202,7 +202,7 @@ Example using test data that includes predictions in independent validation data
 R --vanilla < read_clustering.R --args test_data/25s_2880.wt.15mer.perread.h.tsv test_data/25s_2880.sn34.15mer.perread.h.tsv test_data/25s_2880.sn3.15mer.perread.h.tsv test_data/25s_2880.sn36.15mer.perread.h.tsv  knn_validation
 ```
 
-### 5. Estimation of RNA modification stoichiometry via modPhred denovo
+### 5. Estimation of RNA modification stoichiometry using Isolation Forest (*de novo* mode)
 
 UNDER DEVELOPMENT
 
