@@ -9,7 +9,7 @@ NanoRMS predicts modification stoichiometries by identifying reads that show dis
 
 NanoRMS is not a software to predict RNA modifications. It  uses the candidate sites predicted by third-party software (e.g. EpiNano) to estimate modification stoichiometries and their dynamics. 
 
-NanoRMS uses as input Nanopolish eventalign output files and a list of predicted candidate RNA modification sites, and then performs the following steps:
+NanoRMS uses as input: i) Nanopolish eventalign output files and ii) a list of predicted candidate RNA modification sites. It then performs the following steps:
 
 * Step 1. Collapse Nanopolish eventalign output
 * Step 2: Convert Nanopolish eventalign outputs into processed output for each 15-mer region 
