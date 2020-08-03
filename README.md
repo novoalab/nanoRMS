@@ -52,22 +52,23 @@ nanopolish eventalign \
 ### 2. Run EpiNano 1.1 on your FASTQ: getting predicted RNA-modified sites
 You need a list of predicted RNA-modified sites to select the 15-mer regions where you will run nanoRMS on. You can choose your regions of interest by running for example, **[EpiNano](https://github.com/enovoa/EpiNano)** on your paired datasets. We recommend to use "Summed_Errors" (difference in mismatch, deletion, insertion) rather than SVM-based predictions to obtain a list of candidate sites, which will be applicable to any given RNA modification as well as be more independent of the base-calling algorithm used. 
 
-Obtain *EpiNano* base-calling error information from mapped BAM files:
+#### 2.1 Obtain *EpiNano* base-calling error information from mapped BAM files:
 ```
-<<<<<<< HEAD
+## WHATEVER THIS IS DOING
 samtools view -h bamfile.bam | java -jar sam2tsv.jar -r reference_file  > bamfile.bam.tsv 
 
+## Run EpiNano
 python3.7 TSV_to_Variants_Freq.py3 -f bamfile.bam.tsv -t 10 
-=======
 
+```
+Example using test data:
+```
 samtools view -h test_data/test.bam | java -jar sam2tsv.jar -r test_data/yeast_rRNA_ref  > test.bam.tsv 
 
 python3.7 TSV_to_Variants_Freq.py3 -f test.bam.tsv -t 10 
-
 ```
 
-
-Then, convert *EpiNano* outputs into Summed_Errors, using the code below: 
+#### 2.2. Then, convert *EpiNano* outputs into Summed_Errors, using the code below: 
 ```
 Rscript summed_errors.R <epinano_file> <summed_errors_output_file>
 ```
@@ -77,9 +78,15 @@ Example using test data:
 ```
 Rscript summed_errors.R test_data/wt_epinano.csv
 ```
+#### 2.3. You can visualize your EpiNano results using the following code:
+
+```
+EXAMPLE HERE
+```
 
 
-## Running the code:
+
+## Running nanoRMS:
 
 ### 1. Pre-processing the Nanopolish Event-align output 
 Generate a collapsed Nanopolish event align output, by collapsing all the multiple observations for a given position from a same read.
