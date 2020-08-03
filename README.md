@@ -49,12 +49,12 @@ nanopolish eventalign \
     --scale-events > output.txt
 ```
 
-### 2. Run EpiNano 1.1 on your FASTQ: getting predicted RNA-modified sites
+### 2. Run EpiNano 1.1 on your BAM: getting predicted RNA-modified sites
 You need a list of predicted RNA-modified sites to select the 15-mer regions where you will run nanoRMS on. You can choose your regions of interest by running for example, **[EpiNano](https://github.com/enovoa/EpiNano)** on your paired datasets. We recommend to use "Summed_Errors" (difference in mismatch, deletion, insertion) rather than SVM-based predictions to obtain a list of candidate sites, which will be applicable to any given RNA modification as well as be more independent of the base-calling algorithm used. 
 
 #### 2.1 Obtain *EpiNano* base-calling error information from mapped BAM files:
 ```
-## WHATEVER THIS IS DOING
+## Convert BAM to TSV
 samtools view -h bamfile.bam | java -jar sam2tsv.jar -r reference_file  > bamfile.bam.tsv 
 
 ## Run EpiNano
