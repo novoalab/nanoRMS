@@ -25,7 +25,7 @@ data <- read.delim(input1,sep=",")
 #add the sum column
 data$sum <- data$mis + data$del + data$ins 
 #Export the new table
-write.table(data, file=input2, quote=FALSE, sep=",", rownames=FALSE)
+write.table(data, file=input2, quote=FALSE, sep=",")
 
 
 
