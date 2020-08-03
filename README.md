@@ -59,8 +59,11 @@ samtools view -h bamfile.bam | java -jar sam2tsv.jar -r reference_file  > bamfil
 
 python3.7 TSV_to_Variants_Freq.py3 -f bamfile.bam.tsv -t 10 
 =======
-<DETAILS HERE ON HOW TO LAUNCH EPINANO>
->>>>>>> 903c4928a12a37748492b8242915334181502aa1
+
+samtools view -h test_data/test.bam | java -jar sam2tsv.jar -r test_data/yeast_rRNA_ref  > test.bam.tsv 
+
+python3.7 TSV_to_Variants_Freq.py3 -f test.bam.tsv -t 10 
+
 ```
 
 
