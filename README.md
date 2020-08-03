@@ -75,7 +75,7 @@ Rscript summed_errors.R <epinano_file> <summed_errors_output_file>
 Example using test data:
 
 ```
-Rscript summed_errors.R test_data/wt_epinano.csv testdata_output_file.txt
+Rscript summed_errors.R test_data/wt_epinano.csv
 ```
 
 
