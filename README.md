@@ -177,7 +177,7 @@ Rscript --vanilla nanopolish_pca.R test_data/sn34_window_file.tsv test_data/wt_w
 ![alt text](./img/pca.png "PCA")
 
 
-### 4.Estimation of RNA modification via RNA read binning into 2 clusters -modified and unmodified- (*paired* mode)
+### 4. Estimation of RNA modification via RNA read binning into 2 clusters -modified and unmodified- (*paired* mode)
 
 #### a) Using KMEANS clustering
 
