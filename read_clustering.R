@@ -1,4 +1,4 @@
-#!/usr/bin/env Rscript
+#!/usr/env/Rscript 
 
 #####################################################
 ##         RNA modification stoichiometry          ##
@@ -7,7 +7,6 @@
 ## Epitranscriptomics and RNA Dynamics Lab  #########
 ## Center for Genomic Regulation (CRG)      #########
 ## License: MIT                             #########
-## Author: Eva Maria Novoa                  #########
 #####################################################
 
 
@@ -18,6 +17,7 @@ library(reshape2)
 library(grid)
 library(gridExtra)
 library(ggExtra)
+library(caTools)
 
 # Reading arguments from command line
 args = commandArgs(trailingOnly=TRUE)
@@ -65,8 +65,8 @@ if (length(args)==2) {
 	wt_input<- read.delim(args[1], col.names=colnames)
 	ko1_input<- read.delim(args[2], col.names=colnames)
 	
-	wt<-clean_input(wt_input,"wt")
-	ko1<-clean_input(ko1_input,"ko1")
+	wt<-clean_input(wt_input,"sample1")
+	ko1<-clean_input(ko1_input,"sample2")
 	
 	dat<-merge_with_wt_2samples(wt,ko1)
 	
@@ -75,12 +75,12 @@ if (length(args)==2) {
 	ko1_input<- read.delim(args[2], col.names=colnames)
 	method<-args[3]
 	
-	wt<-clean_input(wt_input,"wt")
-	ko1<-clean_input(ko1_input,"ko1")
+	wt<-clean_input(wt_input,"sample1")
+	ko1<-clean_input(ko1_input,"sample2")
 	
 	dat<-merge_with_wt_2samples(wt,ko1)
 } else {
-	stop("At least two arguments must be supplied.\n--> Usage: R --vanilla < nanoRMS.R --args file1.tsv file2.tsv \n--> An optional third argument can be provided, being the clustering method to use: kmeans, kmeans_pca or knn\n", call.=FALSE)
+	stop("At least two arguments must be supplied.\n--> Usage: R --vanilla < read_clustering.R --args file1.tsv file2.tsv \n--> An optional third argument can be provided, being the clustering method to use: kmeans, kmeans_pca or knn\n", call.=FALSE)
 }
 
 
@@ -142,7 +142,6 @@ do_kmeans<-function(dat) {
 
 subdivide_training_testing<-function(dat, type, split_ratio) {
 	# Get reproducible "sampling"	
-	require(caTools)
 	set.seed(101) 
 	print(head(dat))
 	sample_case = sample.split(dat$sample, SplitRatio = split_ratio)	
@@ -214,16 +213,17 @@ if (exists("method")=="FALSE") {
 }
 
 ## Run prediction based on choice:
-
+set.seed(101)
 if (method=="kmeans_pca") {	
 	dat.kmeans_pca<-do_kmeans_pca(dat)
 } else if  (method=="kmeans") {	
 	dat.kmeans<-do_kmeans(dat)
 } else if  (method=="knn") {	
-	knn_model<-get_knn(dat,c("wt","ko1"),7)
+	knn_model<-get_knn(dat,c("sample1","sample2"),7)
 #} else if (method=="knn_4samples") {	
 #	knn_model_4samples<-get_knn_4samples(dat,c("wt","ko1"),7)
 } else {
 	print ("ERROR: Please choose among the following methods: kmeans_pca, kmeans, knn")
 }
+# Have a nice day! :)
 
