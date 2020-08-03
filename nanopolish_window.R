@@ -35,9 +35,13 @@ process <- function(data, label) {
     window<- c(mod-7,mod-6, mod-5, mod-4, mod-3, mod-2, mod-1,mod, mod+1, mod+2, mod+3, mod+4,mod+5, mod+6, mod+7)
       for(wind in window[1:length(window)]) {
         subs2<- subset(subs, position==wind)
-        subs2$modification<- paste(chr, mod, sep="_")
-        subs2$reference<- paste(wind-mod)
-        windows<-rbind(windows, subs2)
+          if (nrow(subs2) > 1) {
+              subs2$modification<- paste(chr, mod, sep="_")
+              subs2$reference<- paste(wind-mod)
+              windows<-rbind(windows, subs2)
+            } else {
+              windows <- windows
+            }
       }
   }
 return(windows)
