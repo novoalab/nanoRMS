@@ -236,6 +236,10 @@ Example using test data that includes predictions in independent validation data
 R --vanilla < read_clustering.R --args test_data/25s_2880.wt.15mer.perread.h.tsv test_data/25s_2880.sn34.15mer.perread.h.tsv test_data/25s_2880.sn3.15mer.perread.h.tsv test_data/25s_2880.sn36.15mer.perread.h.tsv  knn_validation
 ```
 
+
+![alt text](./img/KNN_plots.png "KNN_plots")
+(Note: PCA is not used for stoichiometry prediction when using KNN - the PCA has only been used for illustration purposes)
+
 ### 5. Estimation of RNA modification stoichiometry in INDIVIDUAL SAMPLES (*de novo* mode)
 
 UNDER DEVELOPMENT
