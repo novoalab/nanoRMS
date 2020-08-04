@@ -1,5 +1,5 @@
 # NanoRMS: predicting NANOpore Rna Modification Stoichiometry
-Prediction of RNA modification stoichiometry in direct RNA sequencing datasets from per-read current intensity information 
+Prediction and visualization of RNA modification stoichiometry in direct RNA sequencing datasets from per-read current intensity information 
 
 ![alt text](./img/init_fig.png "init_fig")
 
