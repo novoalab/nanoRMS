@@ -80,10 +80,25 @@ Rscript summed_errors.R test_data/wt_epinano.csv
 ```
 #### 2.3. You can visualize your EpiNano results using the following code:
 
+#### a) Scatterplot representations
+
+```
+EXAMPLE HERE
+```
+Example with test data:
 ```
 EXAMPLE HERE
 ```
 
+#### b) Per-transcript representations
+
+```
+EXAMPLE HERE
+```
+Example with test data:
+```
+EXAMPLE HERE
+```
 
 
 ## Running nanoRMS:
