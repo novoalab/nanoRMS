@@ -188,8 +188,9 @@ get_knn<-function(dat) {
 	dev.off()
 
 	
-	pdf(file="knn_colorBY_predictedModStatus.pdf", height=5,width=6)
-	ggplot(pcadat2, aes(PC1,PC2,color=as.factor(knn)))+geom_point(alpha=0.1) 
+	pdf(file="knn_colorBY_predictedModStatus.pdf", height=5,width=10)
+	#ggplot(pcadat2, aes(PC1,PC2,color=as.factor(knn)))+geom_point(alpha=0.1)
+	ggplot(pcadat2, aes(PC1,PC2,color=as.factor(knn)))+geom_point(alpha=0.1) +facet_wrap(~test$sample,  ncol=2)
 	dev.off()
 
 
