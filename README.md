@@ -80,7 +80,7 @@ Rscript summed_errors.R test_data/wt_epinano.csv wt
 ```
 #### 2.3. You can visualize your EpiNano results using the following code:
 (Feature can be "mis", "ins", "del", "q_mean", "q_median", "q_std" and "sum" if you are using the input with sum errors)
-##### Scatter Plots
+#### a) Scatterplot representations
 ```
 Rscript epinano_scatterplot.R input1 label1 input2 label2 feature
 ```
@@ -93,34 +93,20 @@ Rscript epinano_scatterplot.R test_data/wt_epinano.csv wt test_data/sn34ko_epina
 ![alt text](./img/mis_scatter.png "Mismatch Scatter Plot")
 
 
-##### Delta 
+#### b) Per-transcript representations
 
 ```
 Rscript epinano_barplot.R input1 label1 input2 label2 feature
-```
-
-Example using test data:
-
-#### a) Scatterplot representations
-
-```
-EXAMPLE HERE
 ```
 Example with test data:
 ```
 Rscript epinano_barplot.R test_data/wt_epinano.csv wt test_data/sn34ko_epinano.csv sn34ko mis
 ```
+
+
 ![alt text](./img/delta_mis_barplot.png "Delta Mismatch Barplot Plot")
 
-#### b) Per-transcript representations
 
-```
-EXAMPLE HERE
-```
-Example with test data:
-```
-EXAMPLE HERE
-```
 
 
 ## Running nanoRMS:
