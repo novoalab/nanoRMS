@@ -78,7 +78,7 @@ Example using test data:
 ```
 Rscript summed_errors.R test_data/wt_epinano.csv wt
 ```
-#### 2.3. You can visualize your EpiNano results using the following code:
+#### 2.3. You can visualize your EpiNano results using the following code (optional):
 (Feature can be "mis", "ins", "del", "q_mean", "q_median", "q_std" and "sum" if you are using the input with sum errors)
 #### a) Scatterplot representations
 ```
