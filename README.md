@@ -90,7 +90,7 @@ Example using test data:
 ```
 Rscript epinano_scatterplot.R test_data/wt_epinano.csv wt test_data/sn34ko_epinano.csv sn34ko mis
 ```
-![alt text](./img/mis_scatter "Mismatch Scatter Plot")
+![alt text](./img/mis_scatter.png "Mismatch Scatter Plot")
 
 
 ##### Delta 
