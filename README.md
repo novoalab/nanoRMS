@@ -200,6 +200,9 @@ Example using test data:
 R --vanilla < read_clustering.R --args test_data/25s_2880.wt.15mer.perread.h.tsv test_data/25s_2880.sn34.15mer.perread.h.tsv kmeans_pca
 ```
 
+![alt text](./img/KMEANS_PCA_plots.png "KMEANS_PCA_plots")
+
+
 #### c) Using K-nearest neighbour (KNN) 
 Important note: this option should be only used when 0% and 100% (or similar) modified datasets are available for training, e.g. rRNAs coupled with KO condition. 
 
