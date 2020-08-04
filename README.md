@@ -15,10 +15,10 @@ NanoRMS uses as input: i) Nanopolish eventalign output files and ii) a list of p
 * 2. Convert Nanopolish eventalign outputs into processed output for each 15-mer region 
 * 3. Visualization of the per-read results (PCA, per-read current intensities) -- optional step, but highly recommended to see how your samples look like in terms of modified/unmodified reads
 * 4. Stoichiometry prediction in PAIRED mode (2 samples), using either KMEANS or KNN.
-* 5. Stoichiometry prediction in DE NOVO mode (1 sample) *-- UNDER DEVELOPMENT--*
+* 5. Stoichiometry prediction in SINGLE mode (1 sample) *-- UNDER DEVELOPMENT--*
 
 ## Considerations when using nanoRMS 
-* NanoRMS requires two different datasets to be executed (query-control)
+* NanoRMS currently requires two different datasets to be executed (query-control). While prediction of stoichiometry from individual samples is possible, code is currently being updated to allow for stoichiometry predictions on individual samples. 
 
 * NanoRMS can be used to predict absolute stoichiometry of a given site, if it has been previously trained with unmodified and modified data, e.g. rRNA-modified sites coupled to knockout strains. The model can then be tested in independent datasets to obtain quantitative measurements. 
 
