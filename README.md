@@ -76,13 +76,35 @@ Rscript summed_errors.R <epinano_file> <summed_errors_output_file>
 Example using test data:
 
 ```
-Rscript summed_errors.R test_data/wt_epinano.csv
+Rscript summed_errors.R test_data/wt_epinano.csv wt
 ```
 #### 2.3. You can visualize your EpiNano results using the following code:
+(Feature can be "mis", "ins", "del", "q_mean", "q_median", "q_std" and "sum" if you are using the input with sum errors)
+##### Scatter Plots
+```
+Rscript epinano_scatterplot.R input1 label1 input2 label2 feature
+```
+
+Example using test data:
 
 ```
-EXAMPLE HERE
+Rscript epinano_scatterplot.R test_data/wt_epinano.csv wt test_data/sn34ko_epinano.csv sn34ko mis
 ```
+![alt text](./img/scatter_mis.pdf "Mismatch Scatter Plot")
+
+
+##### Delta 
+
+```
+Rscript epinano_barplot.R input1 label1 input2 label2 feature
+```
+
+Example using test data:
+
+```
+Rscript epinano_barplot.R test_data/wt_epinano.csv wt test_data/sn34ko_epinano.csv sn34ko mis
+```
+![alt text](./img/bar_mis.pdf "Delta Mismatch Barplot Plot")
 
 
 
