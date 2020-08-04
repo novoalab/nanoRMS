@@ -107,6 +107,7 @@ Rscript epinano_barplot.R test_data/wt_epinano.csv wt test_data/sn34ko_epinano.c
 ![alt text](./img/delta_mis_barplot.png "Delta Mismatch Barplot Plot")
 
 
+Result: There are two regions that show distinct mismatch profiles when comparing WT and snR34-KO, one centered in 25s_rRNA:2880 and one centered in 25s_rRNA:2826. These are actually the two exact locations that are expected to be affected by snR34 depletion. You can check predicted target sites of snoRNAs in yeast [here](https://people.biochem.umass.edu/sfournier/fournierlab/snornadb/snrs/snr34_ta.php).
 
 
 ## Running nanoRMS:
