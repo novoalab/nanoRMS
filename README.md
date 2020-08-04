@@ -15,7 +15,7 @@ NanoRMS uses as input: i) Nanopolish eventalign output files and ii) a list of p
 * 2. Convert Nanopolish eventalign outputs into processed output for each 15-mer region 
 * 3. Visualization of the per-read results (PCA, per-read current intensities) -- optional step, but highly recommended to see how your samples look like in terms of modified/unmodified reads
 * 4. Stoichiometry prediction in PAIRED mode (2 samples), using either KMEANS or KNN.
-* 5. Stoichiometry prediction in DE NOVO mode (1 sample), using ISOLATION FOREST *-- UNDER DEVELOPMENT--*
+* 5. Stoichiometry prediction in DE NOVO mode (1 sample) *-- UNDER DEVELOPMENT--*
 
 ## Considerations when using nanoRMS 
 * NanoRMS requires two different datasets to be executed (query-control)
@@ -221,7 +221,7 @@ Example using test data that includes predictions in independent validation data
 R --vanilla < read_clustering.R --args test_data/25s_2880.wt.15mer.perread.h.tsv test_data/25s_2880.sn34.15mer.perread.h.tsv test_data/25s_2880.sn3.15mer.perread.h.tsv test_data/25s_2880.sn36.15mer.perread.h.tsv  knn_validation
 ```
 
-### 5. Estimation of RNA modification stoichiometry using Isolation Forest (*de novo* mode)
+### 5. Estimation of RNA modification stoichiometry in INDIVIDUAL SAMPLES (*de novo* mode)
 
 UNDER DEVELOPMENT
 
