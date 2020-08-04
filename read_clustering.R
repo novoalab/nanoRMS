@@ -109,7 +109,7 @@ do_kmeans_pca<-function(dat) {
 	pcadat2<-cbind(as.data.frame(pca$x),dat$sample, kmeans_fit$cluster)
 	colnames(pcadat2)<-c(paste("PC",rep(1:15),sep=""),"sample","cluster")
 	
-	# Color by 
+	# Color by sample
 	pdf(file="kmeans_pca_colorBY_SAMPLE.pdf", height=5,width=6)
 	ggplot(pcadat, aes(PC1,PC2,color=sample))+geom_point(alpha=0.1)
 	dev.off()
@@ -135,8 +135,19 @@ do_kmeans<-function(dat) {
 	results<-table(kmeans_clusters)
 	write.table(results,file="kmeans.txt",quote=F, sep="\t", row.names=T, col.names=T)
 
-	pcadat2<-cbind(as.data.frame(x),dat$sample, kmeans_fit$cluster)
-	colnames(pcadat2)<-c(paste("PC",rep(1:15),sep=""),"sample","cluster")
+	
+	# Color by sample
+	#pca<-prcomp(x)	
+	#pcadat2<-cbind(as.data.frame(pca$x),dat$sample, kmeans_clusters)
+	#colnames(pcadat2)<-c(paste("PC",rep(1:15),sep=""),"sample","cluster")
+	#pdf(file="kmeans_colorBY_SAMPLE.pdf", height=5,width=6)
+	#ggplot(pcadat2, aes(PC1,PC2,color=sample))+geom_point(alpha=0.1)
+	#dev.off()
+	
+	# Color by cluster
+	#pdf(file="kmeans_colorBY_predictedModStatus.pdf", height=5,width=10)
+	#ggplot(pcadat2, aes(PC1,PC2,color=as.factor(cluster)))+geom_point(alpha=0.1) +facet_wrap(~sample,  ncol=2)
+	#dev.off()
 		
 	return(kmeans_fit)
 }
