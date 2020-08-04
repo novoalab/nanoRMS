@@ -90,7 +90,7 @@ Example using test data:
 ```
 Rscript epinano_scatterplot.R test_data/wt_epinano.csv wt test_data/sn34ko_epinano.csv sn34ko mis
 ```
-![alt text](./img/scatter_mis.pdf "Mismatch Scatter Plot")
+![alt text](./img/mis_scatter "Mismatch Scatter Plot")
 
 
 ##### Delta 
@@ -110,7 +110,7 @@ Example with test data:
 ```
 Rscript epinano_barplot.R test_data/wt_epinano.csv wt test_data/sn34ko_epinano.csv sn34ko mis
 ```
-![alt text](./img/bar_mis.pdf "Delta Mismatch Barplot Plot")
+![alt text](./img/delta_mis_barplot.png "Delta Mismatch Barplot Plot")
 
 #### b) Per-transcript representations
 

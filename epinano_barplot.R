@@ -69,6 +69,7 @@ for (chr in unique(data$Chr)) {
         axis.title.x = element_text(color="black", size=15, face="bold"),
         axis.title.y = element_text(color="black", size=15, face="bold"),
         panel.background = element_blank(),
+        legend.position = "none",
         axis.line = element_line(colour = "black", size=0.5)))
   dev.off()
 }

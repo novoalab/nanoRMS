@@ -63,7 +63,7 @@ for (chr in unique(data$Chr)) {
      		geom_text_repel(data=subset(subs, score>threshold), aes(label=chr_pos), colour="black",segment.size  = 0.4,segment.color = "grey50",size=5)+
      		ggtitle(feature)+
 			xlab(label1)+
-			ylab(label1) +
+			ylab(label2) +
 			theme_bw()+
 			theme(axis.text.x = element_text(face="bold", color="black",size=11),
 				 axis.text.y = element_text(face="bold", color="black", size=11),
