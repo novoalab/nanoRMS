@@ -15,10 +15,10 @@ NanoRMS uses as input: i) Nanopolish eventalign output files and ii) a list of p
 * 2. Convert Nanopolish eventalign outputs into processed output for each 15-mer region 
 * 3. Visualization of the per-read results (PCA, per-read current intensities) -- optional step, but highly recommended to see how your samples look like in terms of modified/unmodified reads
 * 4. Stoichiometry prediction in PAIRED mode (2 samples), using either KMEANS or KNN.
-* 5. Stoichiometry prediction in DE NOVO mode (1 sample), using ISOLATION FOREST *-- UNDER DEVELOPMENT--*
+* 5. Stoichiometry prediction in SINGLE mode (1 sample) *-- UNDER DEVELOPMENT--*
 
 ## Considerations when using nanoRMS 
-* NanoRMS requires two different datasets to be executed (query-control)
+* NanoRMS currently requires two different datasets to be executed (query-control). While prediction of stoichiometry from individual samples is possible, code is currently being updated to allow for stoichiometry predictions on individual samples. 
 
 * NanoRMS can be used to predict absolute stoichiometry of a given site, if it has been previously trained with unmodified and modified data, e.g. rRNA-modified sites coupled to knockout strains. The model can then be tested in independent datasets to obtain quantitative measurements. 
 
@@ -101,11 +101,26 @@ Rscript epinano_barplot.R input1 label1 input2 label2 feature
 
 Example using test data:
 
+#### a) Scatterplot representations
+
+```
+EXAMPLE HERE
+```
+Example with test data:
 ```
 Rscript epinano_barplot.R test_data/wt_epinano.csv wt test_data/sn34ko_epinano.csv sn34ko mis
 ```
 ![alt text](./img/bar_mis.pdf "Delta Mismatch Barplot Plot")
 
+#### b) Per-transcript representations
+
+```
+EXAMPLE HERE
+```
+Example with test data:
+```
+EXAMPLE HERE
+```
 
 
 ## Running nanoRMS:
@@ -222,6 +237,9 @@ Example using test data:
 R --vanilla < read_clustering.R --args test_data/25s_2880.wt.15mer.perread.h.tsv test_data/25s_2880.sn34.15mer.perread.h.tsv kmeans_pca
 ```
 
+![alt text](./img/KMEANS_PCA_plots.png "KMEANS_PCA_plots")
+
+
 #### c) Using K-nearest neighbour (KNN) 
 Important note: this option should be only used when 0% and 100% (or similar) modified datasets are available for training, e.g. rRNAs coupled with KO condition. 
 
@@ -240,13 +258,17 @@ Example using test data that includes predictions in independent validation data
 R --vanilla < read_clustering.R --args test_data/25s_2880.wt.15mer.perread.h.tsv test_data/25s_2880.sn34.15mer.perread.h.tsv test_data/25s_2880.sn3.15mer.perread.h.tsv test_data/25s_2880.sn36.15mer.perread.h.tsv  knn_validation
 ```
 
-### 5. Estimation of RNA modification stoichiometry using Isolation Forest (*de novo* mode)
+
+![alt text](./img/KNN_plots.png "KNN_plots")
+(Note: PCA is not used for stoichiometry prediction when using KNN - the PCA has only been used for illustration purposes)
+
+### 5. Estimation of RNA modification stoichiometry in INDIVIDUAL SAMPLES (*de novo* mode)
 
 UNDER DEVELOPMENT
 
 
 ## Citation: 
-#
+
 Begik O*, Lucas MC*, Ramirez JM, Milenkovic I, Cruciani S, Vieira HGS, Medina R, Liu H, Sas-Chen A, Mattick JS, Schwartz S and Novoa EM. Decoding ribosomal RNA modification dynamics at single molecule resolution. bioRxiv 2020. doi: https://doi.org/10.1101/2020.07.06.189969
 
 ## Questions/doubts?

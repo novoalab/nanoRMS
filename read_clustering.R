@@ -19,6 +19,7 @@ library(gridExtra)
 library(ggExtra)
 library(caTools)
 
+
 # Reading arguments from command line
 args = commandArgs(trailingOnly=TRUE)
 
@@ -97,18 +98,26 @@ do_kmeans_pca<-function(dat) {
 	
 	pcadat<-cbind(as.data.frame(pca$x),dat$sample)
 	colnames(pcadat)<-c(paste("PC",rep(1:15),sep=""),"sample")
-	require(ggplot2)
-	ggplot(pcadat, aes(PC1,PC2,color=sample))+geom_point(alpha=0.1)
 	
 	kmeans_fit<-kmeans(pca$x[,1:2],2)
-	#kmeans_fit<-kmeans(pca$x,2)
 
 	kmeans_clusters<-cbind(as.data.frame(kmeans_fit$cluster),dat$sample)
 	print(table(kmeans_clusters))
+	results<-table(kmeans_clusters)
+	write.table(results,file="kmeans_pca.txt",quote=F, sep="\t", row.names=T, col.names=T)
 	
 	pcadat2<-cbind(as.data.frame(pca$x),dat$sample, kmeans_fit$cluster)
 	colnames(pcadat2)<-c(paste("PC",rep(1:15),sep=""),"sample","cluster")
-	ggplot(pcadat2, aes(PC1,PC2,color=cluster))+geom_point(alpha=0.1)
+	
+	# Color by sample
+	pdf(file="kmeans_pca_colorBY_SAMPLE.pdf", height=5,width=6)
+	ggplot(pcadat, aes(PC1,PC2,color=sample))+geom_point(alpha=0.1)
+	dev.off()
+	
+	# Color by cluster
+	pdf(file="kmeans_pca_colorBY_predictedModStatus.pdf", height=5,width=10)
+	ggplot(pcadat2, aes(PC1,PC2,color=as.factor(cluster)))+geom_point(alpha=0.1) +facet_wrap(~sample,  ncol=2)
+	dev.off()
 	
 	return(kmeans_fit)
 }
@@ -118,21 +127,28 @@ do_kmeans_pca<-function(dat) {
 
 do_kmeans<-function(dat) {
 	x<-scale(as.matrix(dat[,4:18]), center=TRUE) # data without labels (only 15 positions)
-	
-	pcadat<-cbind(as.data.frame(x),dat$sample)
-	colnames(pcadat)<-c(paste("PC",rep(1:15),sep=""),"sample")
-	require(ggplot2)
-	ggplot(pcadat, aes(PC1,PC2,color=sample))+geom_point(alpha=0.1)
-	
-	kmeans_fit<-kmeans(x,2)
+		
+	kmeans_fit<-kmeans(x,2) 
 	
 	kmeans_clusters<-cbind(as.data.frame(kmeans_fit$cluster),dat$sample)
 	print(table(kmeans_clusters))
+	results<-table(kmeans_clusters)
+	write.table(results,file="kmeans.txt",quote=F, sep="\t", row.names=T, col.names=T)
+
 	
-	pcadat2<-cbind(as.data.frame(x),dat$sample, kmeans_fit$cluster)
-	colnames(pcadat2)<-c(paste("PC",rep(1:15),sep=""),"sample","cluster")
-	ggplot(pcadat2, aes(PC1,PC2,color=cluster))+geom_point(alpha=0.1)
+	# Color by sample
+	#pca<-prcomp(x)	
+	#pcadat2<-cbind(as.data.frame(pca$x),dat$sample, kmeans_clusters)
+	#colnames(pcadat2)<-c(paste("PC",rep(1:15),sep=""),"sample","cluster")
+	#pdf(file="kmeans_colorBY_SAMPLE.pdf", height=5,width=6)
+	#ggplot(pcadat2, aes(PC1,PC2,color=sample))+geom_point(alpha=0.1)
+	#dev.off()
 	
+	# Color by cluster
+	#pdf(file="kmeans_colorBY_predictedModStatus.pdf", height=5,width=10)
+	#ggplot(pcadat2, aes(PC1,PC2,color=as.factor(cluster)))+geom_point(alpha=0.1) +facet_wrap(~sample,  ncol=2)
+	#dev.off()
+		
 	return(kmeans_fit)
 }
 		
@@ -160,17 +176,35 @@ subdivide_training_testing<-function(dat, type, split_ratio) {
 	}	
 }
 
-get_knn<-function(dat.2129,label_vector,x) { 
+get_knn<-function(dat) { 
 	
 	# subdivide into train and test
-	dat<-dat.2129[dat.2129$sample %in% label_vector,]
 	train<-subdivide_training_testing(dat,"train",0.5) # 50% training
 	test<-subdivide_training_testing(dat,"test",0.5)  # 50% testing
 	
 	# knn
 	library(class)
-	knn <- knn(train=train[,4:18], test=test[,4:18], cl=as.factor(train$sample), k=x)
+	knn <- knn(train=train[,4:18], test=test[,4:18], cl=as.factor(train$sample), k=7)
 	print(table(knn,test$sample))
+	results<-table(knn,test$sample)
+	write.table(results,file="knn.txt",quote=F, sep="\t", row.names=T, col.names=T)
+	
+	# Plot - color by predicted KNN status
+	x<-scale(as.matrix(test[,4:18]), center=TRUE) 
+	pca<-prcomp(x)	
+	pcadat2<-cbind(as.data.frame(pca$x),test$sample, knn)
+	
+	pdf(file="knn_colorBY_SAMPLE.pdf", height=5,width=6)
+	ggplot(pcadat2, aes(PC1,PC2,color=as.factor(test$sample)))+geom_point(alpha=0.1) 
+	dev.off()
+
+	
+	pdf(file="knn_colorBY_predictedModStatus.pdf", height=5,width=10)
+	#ggplot(pcadat2, aes(PC1,PC2,color=as.factor(knn)))+geom_point(alpha=0.1)
+	ggplot(pcadat2, aes(PC1,PC2,color=as.factor(knn)))+geom_point(alpha=0.1) +facet_wrap(~test$sample,  ncol=2)
+	dev.off()
+
+
 	#accuracy<-mean(knn == test$sample)
 	#print(paste("Accuracy:", accuracy))
 	return(knn)
@@ -209,7 +243,6 @@ get_knn_4samples<-function(dat.2129,label_vector,x) {
 ## Choose default method
 if (exists("method")=="FALSE") {
 	method="kmeans"
-	#print ("Using kmeans")
 }
 
 ## Run prediction based on choice:
@@ -219,7 +252,7 @@ if (method=="kmeans_pca") {
 } else if  (method=="kmeans") {	
 	dat.kmeans<-do_kmeans(dat)
 } else if  (method=="knn") {	
-	knn_model<-get_knn(dat,c("sample1","sample2"),7)
+	knn_model<-get_knn(dat)
 #} else if (method=="knn_4samples") {	
 #	knn_model_4samples<-get_knn_4samples(dat,c("wt","ko1"),7)
 } else {
