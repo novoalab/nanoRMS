@@ -14,8 +14,7 @@ NanoRMS uses as input: i) Nanopolish eventalign output files and ii) a list of p
 * 1. Collapse Nanopolish eventalign output
 * 2. Convert Nanopolish eventalign outputs into processed output for each 15-mer region 
 * 3. Visualization of the per-read results (PCA, per-read current intensities) -- optional step, but highly recommended to see how your samples look like in terms of modified/unmodified reads
-* 4. Stoichiometry prediction in PAIRED mode (2 samples), using either KMEANS or KNN.
-* 5. Stoichiometry prediction in SINGLE mode (1 sample) *-- UNDER DEVELOPMENT--*
+* 4. Stoichiometry prediction, using either KMEANS or KNN.
 
 ## Considerations when using nanoRMS 
 * NanoRMS currently requires two different datasets to be executed (query-control). While prediction of stoichiometry from individual samples is possible, code is currently being updated to allow for stoichiometry predictions on individual samples. 
@@ -204,7 +203,7 @@ Rscript --vanilla nanopolish_pca.R test_data/sn34_window_file.tsv test_data/wt_w
 ![alt text](./img/pca.png "PCA")
 
 
-### 4. Estimation of RNA modification via RNA read binning into 2 clusters -modified and unmodified- (*paired* mode)
+### 4. Estimation of RNA modification stoichiometry via RNA read binning into 2 clusters (modified and unmodified)
 
 #### a) Using KMEANS clustering
 
@@ -251,10 +250,6 @@ R --vanilla < read_clustering.R --args test_data/25s_2880.wt.15mer.perread.h.tsv
 
 ![alt text](./img/KNN_plots.png "KNN_plots")
 (Note: PCA is not used for stoichiometry prediction when using KNN - the PCA has only been used for illustration purposes)
-
-### 5. Estimation of RNA modification stoichiometry in INDIVIDUAL SAMPLES (*de novo* mode)
-
-UNDER DEVELOPMENT
 
 
 ## Citation: 
