@@ -15,9 +15,6 @@ Prediction and visualization of RNA modification stoichiometry in direct RNA seq
 - [Citation](#Citation) 
 - [Contact](#Contact) 
  
-    ### 4. Estimation of RNA modification stoichiometry 
-### 2. Create 15-mer windows of per-read current intensities centered in positions of interest
-
 
 ## General description
 NanoRMS predicts modification stoichiometries by identifying reads that show distinct current intensity distributions in the query dataset, compared to those observed in a reference dataset.
