@@ -1,5 +1,5 @@
 # NanoRMS: predicting NANOpore Rna Modification Stoichiometry
-Prediction of RNA modification stoichiometry in direct RNA sequencing datasets from per-read current intensity information 
+Prediction and visualization of RNA modification stoichiometry in direct RNA sequencing datasets from per-read current intensity information 
 
 ![alt text](./img/init_fig.png "init_fig")
 
@@ -14,8 +14,7 @@ NanoRMS uses as input: i) Nanopolish eventalign output files and ii) a list of p
 * 1. Collapse Nanopolish eventalign output
 * 2. Convert Nanopolish eventalign outputs into processed output for each 15-mer region 
 * 3. Visualization of the per-read results (PCA, per-read current intensities) -- optional step, but highly recommended to see how your samples look like in terms of modified/unmodified reads
-* 4. Stoichiometry prediction in PAIRED mode (2 samples), using either KMEANS or KNN.
-* 5. Stoichiometry prediction in SINGLE mode (1 sample) *-- UNDER DEVELOPMENT--*
+* 4. Stoichiometry prediction, using either KMEANS or KNN.
 
 ## Considerations when using nanoRMS 
 * NanoRMS currently requires two different datasets to be executed (query-control). While prediction of stoichiometry from individual samples is possible, code is currently being updated to allow for stoichiometry predictions on individual samples. 
@@ -50,7 +49,7 @@ nanopolish eventalign \
 ```
 
 ### 2. Run EpiNano 1.1 on your BAM: getting predicted RNA-modified sites
-You need a list of predicted RNA-modified sites to select the 15-mer regions where you will run nanoRMS on. You can choose your regions of interest by running for example, **[EpiNano](https://github.com/enovoa/EpiNano)** on your paired datasets. We recommend to use "Summed_Errors" (difference in mismatch, deletion, insertion) rather than SVM-based predictions to obtain a list of candidate sites, which will be applicable to any given RNA modification as well as be more independent of the base-calling algorithm used. 
+You need a list of predicted RNA-modified sites to select the 15-mer regions where you will run nanoRMS on. You can choose your regions of interest by running for example, **[EpiNano](https://github.com/enovoa/EpiNano)** on your paired datasets. We recommend to use "Summed_Errors" (difference in mismatch, deletion, insertion) rather than SVM-based predictions to obtain a list of candidate sites, which will be applicable to any given RNA modification as well as be more independent of the base-calling algorithm used. See example below on how to use EpiNano to detect RNA modifications using base-calling 'errors'. 
 
 #### 2.1 Obtain *EpiNano* base-calling error information from mapped BAM files:
 ```
@@ -78,11 +77,14 @@ Example using test data:
 ```
 Rscript summed_errors.R test_data/wt_epinano.csv wt
 ```
-#### 2.3. You can visualize your EpiNano results using the following code:
-(Feature can be "mis", "ins", "del", "q_mean", "q_median", "q_std" and "sum" if you are using the input with sum errors)
+#### 2.3. You can visualize your EpiNano results using the following code (optional):
+
 #### a) Scatterplot representations
 ```
-Rscript epinano_scatterplot.R input1 label1 input2 label2 feature
+Rscript epinano_scatterplot.R <input1> <label1> <input2> <label2> <feature>
+
+## Feature can be: "mis", "ins", "del", "q_mean", "q_median", "q_std" and "sum" if you are using the input with sum errors
+
 ```
 
 Example using test data:
@@ -107,6 +109,7 @@ Rscript epinano_barplot.R test_data/wt_epinano.csv wt test_data/sn34ko_epinano.c
 ![alt text](./img/delta_mis_barplot.png "Delta Mismatch Barplot Plot")
 
 
+Result: There are two regions that show distinct mismatch profiles when comparing WT and snR34-KO, one centered in 25s_rRNA:2880 and one centered in 25s_rRNA:2826. These are actually the two exact locations that are expected to be affected by snR34 depletion. You can check predicted target sites of snR34 as well as of other snoRNAs in yeast [here](https://people.biochem.umass.edu/sfournier/fournierlab/snornadb/snrs/snr34_ta.php).
 
 
 ## Running nanoRMS:
@@ -200,7 +203,7 @@ Rscript --vanilla nanopolish_pca.R test_data/sn34_window_file.tsv test_data/wt_w
 ![alt text](./img/pca.png "PCA")
 
 
-### 4. Estimation of RNA modification via RNA read binning into 2 clusters -modified and unmodified- (*paired* mode)
+### 4. Estimation of RNA modification stoichiometry via RNA read binning into 2 clusters (modified and unmodified)
 
 #### a) Using KMEANS clustering
 
@@ -247,10 +250,6 @@ R --vanilla < read_clustering.R --args test_data/25s_2880.wt.15mer.perread.h.tsv
 
 ![alt text](./img/KNN_plots.png "KNN_plots")
 (Note: PCA is not used for stoichiometry prediction when using KNN - the PCA has only been used for illustration purposes)
-
-### 5. Estimation of RNA modification stoichiometry in INDIVIDUAL SAMPLES (*de novo* mode)
-
-UNDER DEVELOPMENT
 
 
 ## Citation: 
