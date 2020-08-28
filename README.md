@@ -3,7 +3,7 @@ Prediction and visualization of RNA modification stoichiometry in direct RNA seq
 
 ![alt text](./img/init_fig.png "init_fig")
 
-
+###
 ## Table of Contents  
 - [General Description](#General-description)
     - [Considerations when using nanoRMS](#Considerations-when-using-nanoRMS)
