@@ -126,7 +126,7 @@ Result: There are two regions that show distinct mismatch profiles when comparin
 
 ## Running nanoRMS:
 
-### 1. Pre-processing the Nanopolish Event-align output 
+### 1. Pre-processing the Nanopolish event align output 
 Generate a collapsed Nanopolish event align output, by collapsing all the multiple observations for a given position from a same read.
 
 ```
@@ -141,7 +141,8 @@ python3 per_read_mean.py test_data/data1_eventalign_output.txt
 
 
 ### 2. Create 15-mer windows of per-read current intensities centered in positions of interest
-You need the output of Nanopolish Event-align 
+
+The output of Nanopolish event align generated in the previous step is used as input in this script.
 
 ```
 Rscript --vanilla nanopolish_window.R positions_file <input_table> <label>
