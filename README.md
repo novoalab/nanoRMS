@@ -9,7 +9,7 @@ Prediction and visualization of RNA modification stoichiometry in direct RNA seq
     - [Considerations when using nanoRMS](#Considerations-when-using-nanoRMS)
     - [Requirements/dependencies](#Requirements/dependencies)
 - [Before running the code](#Before-running-the-code)
-    - [1. Run Nanopolish on your FAST5](#1.-Run-Nanopolish-on-your-FAST5)
+    - [1. Run Nanopolish on your FAST5](#1- Run-Nanopolish-on-your-FAST5:-getting-per-read-current-intensities)
     - [2. Run EpiNano on your BAM](#2.Run-EpiNano-on-your-BAM)
 - [Running nanoRMS](#Running-nanoRMS) 
 - [Citation](#Citation) 
