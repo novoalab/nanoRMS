@@ -6,16 +6,12 @@ Prediction and visualization of RNA modification stoichiometry in direct RNA seq
 
 ## Table of Contents  
 - [General Description](#General-description)
-- [Considerations when using nanoRMS](#Considerations-when-using-nanoRMS)
-- [Requirements/dependencies](#Requirements/dependencies)
+    - [Considerations when using nanoRMS](#Considerations-when-using-nanoRMS)
+    - [Requirements/dependencies](#Requirements/dependencies)
 - [Before running the code](#Before-running-the-code)
     - [1. Run Nanopolish on your FAST5](#1.-Run-Nanopolish-on-your-FAST5)
     - [2. Run EpiNano on your BAM](#2.Run-EpiNano-on-your-BAM)
 - [Running nanoRMS](#Running-nanoRMS) 
-    - [1. Pre-processing Nanopolish eventalign output](#1.-Pre-processing-the-Nanopolish-Event-align-output)
-    - [2. Create 15-mer windows of per-read current intensities centered in positions of interest](#2.-Create 15-mer-windows-of-per-read-current-intensities-centered-in-positions-of-interest)
-    - [3. Visualize current intensity information of modified sites](# 3.-Visualize-current-intensity-information-of-modified-sites)
-    - [4. Estimation of RNA modification stoichiometry](#4.-Estimation-of-RNA-modification-stoichiometry)
 - [Citation](#Citation) 
 - [Contact](#Contact) 
  
@@ -35,7 +31,7 @@ NanoRMS uses as input: i) Nanopolish eventalign output files and ii) a list of p
 * 3. Visualization of the per-read results (PCA, per-read current intensities) -- optional step, but highly recommended to see how your samples look like in terms of modified/unmodified reads
 * 4. Stoichiometry prediction, using either KMEANS or KNN.
 
-## Considerations when using nanoRMS 
+### Considerations when using nanoRMS 
 * NanoRMS currently requires two different datasets to be executed (query-control). While prediction of stoichiometry from individual samples is possible, code is currently being updated to allow for stoichiometry predictions on individual samples. 
 
 * NanoRMS can be used to predict absolute stoichiometry of a given site, if it has been previously trained with unmodified and modified data, e.g. rRNA-modified sites coupled to knockout strains. The model can then be tested in independent datasets to obtain quantitative measurements. 
@@ -46,7 +42,7 @@ NanoRMS uses as input: i) Nanopolish eventalign output files and ii) a list of p
 
 * NanoRMS  does **NOT** perform *de novo* predictions of RNA-modified sites. 
 
-## Requirements/dependencies
+### Requirements/dependencies
 
 * [Nanopolish](https://github.com/jts/nanopolish) (tested version: 0.12.4)
 * [EpiNano](https://github.com/enovoa/EpiNano) (tested version 1.1)
