@@ -5,12 +5,12 @@ Prediction and visualization of RNA modification stoichiometry in direct RNA seq
 
 
 ## Table of Contents  
-- [General Description](#General-description) 
-- [Considerations when using nanoRMS](#Considerations-when-using-nanoRMS)  
+- [General Description](#General-description)
+- [Considerations when using nanoRMS](#Considerations-when-using-nanoRMS)
 - [Requirements/dependencies](#Requirements/dependencies)
 - [Before running the code](#Before-running-the-code)
     - [1. Run Nanopolish on your FAST5](#1.-Run-Nanopolish-on-your-FAST5)
-    - [2. Run EpiNano on your BAM](#2.Run EpiNano-on-your-BAM)
+    - [2. Run EpiNano on your BAM](#2.Run-EpiNano-on-your-BAM)
 - [Running nanoRMS](#Running-nanoRMS) 
     - [1. Pre-processing Nanopolish eventalign output](#1.-Pre-processing-the-Nanopolish-Event-align-output)
     - [2. Create 15-mer windows of per-read current intensities centered in positions of interest](#2.-Create 15-mer-windows-of-per-read-current-intensities-centered-in-positions-of-interest)
