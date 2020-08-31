@@ -3,11 +3,23 @@ Prediction and visualization of RNA modification stoichiometry in direct RNA seq
 
 ![alt text](./img/init_fig.png "init_fig")
 
+###
+## Table of Contents  
+- [General Description](#General-description)
+    - [Considerations when using nanoRMS](#Considerations-when-using-nanoRMS)
+    - [Requirements/dependencies](#Requirements/dependencies)
+- [Before running the code](#Before-running-the-code)
+    - [1. Run Nanopolish on your FAST5](#Before-running-the-code)
+    - [2. Run EpiNano on your BAM](#Before-running-the-code)
+- [Running nanoRMS](#Running-nanoRMS) 
+- [Citation](#Citation) 
+- [Contact](#Contact) 
+ 
 
 ## General description
 NanoRMS predicts modification stoichiometries by identifying reads that show distinct current intensity distributions in the query dataset, compared to those observed in a reference dataset.
 
-NanoRMS is not a software to predict RNA modifications. It  uses the candidate sites predicted by third-party software (e.g. EpiNano) to estimate modification stoichiometries and their dynamics. 
+NanoRMS is *not* a software to predict RNA modifications. It  uses the candidate sites predicted by third-party software (e.g. [EpiNano](https://github.com/enovoa/EpiNano)) to then estimate modification stoichiometries and their dynamics. 
 
 NanoRMS uses as input: i) Nanopolish eventalign output files and ii) a list of predicted candidate RNA modification sites. It then performs the following steps:
 
@@ -16,7 +28,7 @@ NanoRMS uses as input: i) Nanopolish eventalign output files and ii) a list of p
 * 3. Visualization of the per-read results (PCA, per-read current intensities) -- optional step, but highly recommended to see how your samples look like in terms of modified/unmodified reads
 * 4. Stoichiometry prediction, using either KMEANS or KNN.
 
-## Considerations when using nanoRMS 
+### Considerations when using nanoRMS 
 * NanoRMS currently requires two different datasets to be executed (query-control). While prediction of stoichiometry from individual samples is possible, code is currently being updated to allow for stoichiometry predictions on individual samples. 
 
 * NanoRMS can be used to predict absolute stoichiometry of a given site, if it has been previously trained with unmodified and modified data, e.g. rRNA-modified sites coupled to knockout strains. The model can then be tested in independent datasets to obtain quantitative measurements. 
@@ -27,7 +39,7 @@ NanoRMS uses as input: i) Nanopolish eventalign output files and ii) a list of p
 
 * NanoRMS  does **NOT** perform *de novo* predictions of RNA-modified sites. 
 
-## Requirements/dependencies
+### Requirements/dependencies
 
 * [Nanopolish](https://github.com/jts/nanopolish) (tested version: 0.12.4)
 * [EpiNano](https://github.com/enovoa/EpiNano) (tested version 1.1)
@@ -48,7 +60,7 @@ nanopolish eventalign \
     --scale-events > output.txt
 ```
 
-### 2. Run EpiNano 1.1 on your BAM: getting predicted RNA-modified sites
+### 2. Run EpiNano on your BAM: getting predicted RNA-modified sites
 You need a list of predicted RNA-modified sites to select the 15-mer regions where you will run nanoRMS on. You can choose your regions of interest by running for example, **[EpiNano](https://github.com/enovoa/EpiNano)** on your paired datasets. We recommend to use "Summed_Errors" (difference in mismatch, deletion, insertion) rather than SVM-based predictions to obtain a list of candidate sites, which will be applicable to any given RNA modification as well as be more independent of the base-calling algorithm used. See example below on how to use EpiNano to detect RNA modifications using base-calling 'errors'. 
 
 #### 2.1 Obtain *EpiNano* base-calling error information from mapped BAM files:
@@ -114,7 +126,7 @@ Result: There are two regions that show distinct mismatch profiles when comparin
 
 ## Running nanoRMS:
 
-### 1. Pre-processing the Nanopolish Event-align output 
+### 1. Pre-processing the Nanopolish event align output 
 Generate a collapsed Nanopolish event align output, by collapsing all the multiple observations for a given position from a same read.
 
 ```
@@ -129,7 +141,8 @@ python3 per_read_mean.py test_data/data1_eventalign_output.txt
 
 
 ### 2. Create 15-mer windows of per-read current intensities centered in positions of interest
-You need the output of Nanopolish Event-align 
+
+The output of Nanopolish event align generated in the previous step is used as input in this script.
 
 ```
 Rscript --vanilla nanopolish_window.R positions_file <input_table> <label>
@@ -141,7 +154,6 @@ Example using test data:
 ```
 Rscript --vanilla nanopolish_window.R test_data/positions test_data/data1_eventalign_output.txt_processed_perpos_mean.csv data1
 ```
-
 
 
 ### 3. Visualize current intensity information of modified sites (optional)
@@ -203,7 +215,7 @@ Rscript --vanilla nanopolish_pca.R test_data/sn34_window_file.tsv test_data/wt_w
 ![alt text](./img/pca.png "PCA")
 
 
-### 4. Estimation of RNA modification stoichiometry via RNA read binning into 2 clusters (modified and unmodified)
+### 4. Estimation of RNA modification stoichiometry 
 
 #### a) Using KMEANS clustering
 
@@ -256,5 +268,5 @@ R --vanilla < read_clustering.R --args test_data/25s_2880.wt.15mer.perread.h.tsv
 
 Begik O*, Lucas MC*, Ramirez JM, Milenkovic I, Cruciani S, Vieira HGS, Medina R, Liu H, Sas-Chen A, Mattick JS, Schwartz S and Novoa EM. Decoding ribosomal RNA modification dynamics at single molecule resolution. bioRxiv 2020. doi: https://doi.org/10.1101/2020.07.06.189969
 
-## Questions/doubts?
+## Contact
 Please open an issue in the GitHub repo if you have any questions/doubts/suggestions about how to use this software. Thanks!
