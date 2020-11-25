@@ -59,7 +59,14 @@ Single sample de novo RNA modification prediction has been tested for predicting
 
 ### b) Paired sample RNA modification prediction
 
-OGUZHAN CODE HERE 
+```
+Rscript predict_twoSample_transcript.R <epinanofile_rep1_normal> <epinanofile_rep1_heatshock> <epinanofile_rep2_normal> <epinanofile_rep2_heatshock>
+```
+
+Example using test data: 
+```
+Rscript predict_twoSample_transcript.R ncRNA_normal_rep1_epinano.csv ncRNA_heatshock_rep1_epinano.csv ncRNA_normal_rep2_epinano.csv ncRNA_heatshock_rep2_epinano.csv
+```
 
 ## Predicting RNA modification stoichiometry using Nanopolish resquiggling 
 

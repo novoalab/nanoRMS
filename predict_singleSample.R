@@ -1,9 +1,9 @@
 #####################################################################
-######## SCRIPTS FOR CUSTOM FILTERING RIBOSOMAL RNAS  ###############
+######## SCRIPTS FOR PREDICTING Y FROM SINGLE SAMPLE  ###############
 #####################################################################
 ###################### BY OGUZHAN BEGIK #############################
 #####################################################################
-#Rscript prediction_mitrRNA.R wt_epinano.csv sn3_epinano.csv sn36_epinano.csv
+#Rscript predict_singleSample.R wt_epinano.csv sn3_epinano.csv sn36_epinano.csv
 
 
 ## Loading libraries
