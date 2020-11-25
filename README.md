@@ -7,8 +7,8 @@ Prediction and visualization of RNA modification stoichiometry in direct RNA seq
 ## Table of Contents  
 - [General Description](#General-description)
 - [De novo prediction of RNA modified sites](#De-novo-prediction-of-RNA-modified-sites)
-- [Predicting RNA modification stoichiometry using Nanopolish resquiggling (not recommended)](#Predicting-RNA-modification-stoichiometry-using-nanopolish-resquiggling)
-- [Predicting RNA modification stoichiometry using Tombo resquiggling (recommended)](#Predicting-RNA-modification-stoichiometry-using-tombo-resquiggling)
+- [RNA modification stoichiometry estimation using Nanopolish resquiggling (not recommended)](#RNA-modification-stoichiometry-estimation-using-nanopolish-resquiggling)
+- [RNA modification stoichiometry estimation using Tombo resquiggling (recommended)](#RNA-modification-stoichiometry-estimation-using-tombo-resquiggling)
 - [Visualization of per-read current intensities at individual sites](Visualization-of-per-read-current-intensities-at-individual-sites)
 - [Citation](#Citation) 
 - [Contact](#Contact) 
@@ -22,15 +22,17 @@ Prediction and visualization of RNA modification stoichiometry in direct RNA seq
 
 ## De novo prediction of RNA modified sites
 
-### Epinano-RMS analysis 
+### 1. Extract base-calling features using Epinano-RMS 
 
-#### Creating a dictionary file from reference fasta
-We need to create a dictionary file from the reference fasta file
+#### Create a dictionary file from reference fasta
+Please note that we are using  a modified version of [EpiNano](https://github.com/enovoa/EpiNano/blob/master/README.md) that was specifically developed for nanoRMS. 
+
+Firstly, we need to create a dictionary file from the reference fasta file
 ```
 java -jar epinano_RMS/picard.jar CreateSequenceDictionary REFERENCE=reference.fasta OUTPUT= reference.fasta.dict
 ```
 
-#### Running Epinano-RMS
+#### Run Epinano-RMS
 Requires python3
 
 ```
@@ -42,8 +44,9 @@ Example using test data:
 python3 epinano_RMS/epinano_rms.py -R test_data/yeast_rRNA_ref -b test_data/wt_sorted.bam -s epinano_RMS/sam2tsv
 ```
 
-### a) Single sample RNA modification prediction
-Using identified pseudouridine base-calling error signatures, nanoRMS can  predict RNA modifications de novo in single samples, as long as if the stoichiometry of modification is sufficiently high (i.e. to be distinguished from background base-calling error of direct RNA sequencing).
+### 2. Predict RNA modifications
+
+#### a) Single sample RNA modification prediction
 
 Prediction of pseudouridine sites on mitochondrial ribosomal RNAs using three biological replicates:
 
@@ -57,7 +60,9 @@ Rscript predict_singleSample.R wt_epinano.csv sn3_epinano.csv sn36_epinano.csv
 ```
 Single sample de novo RNA modification prediction has been tested for predicting pseudouridine RNA modifications in mitochondrial rRNAs, and the novel predicted sites were afterwards validated using CMC-based probing followed by sequencing), validating 2 out of the 2 sites that were predicted in all 3 biological replicates. 
 
-### b) Paired sample RNA modification prediction
+Using identified pseudouridine base-calling error signatures, nanoRMS can  predict RNA modifications de novo in single samples, as long as if the stoichiometry of modification is sufficiently high (i.e. to be distinguished from background base-calling error of direct RNA sequencing).
+
+#### b) Paired sample RNA modification prediction
 
 ```
 Rscript predict_twoSample_transcript.R <epinanofile_rep1_normal> <epinanofile_rep1_heatshock> <epinanofile_rep2_normal> <epinanofile_rep2_heatshock>
@@ -68,12 +73,12 @@ Example using test data:
 Rscript predict_twoSample_transcript.R ncRNA_normal_rep1_epinano.csv ncRNA_heatshock_rep1_epinano.csv ncRNA_normal_rep2_epinano.csv ncRNA_heatshock_rep2_epinano.csv
 ```
 
-## Predicting RNA modification stoichiometry using Nanopolish resquiggling 
+## RNA modification stoichiometry estimation using Nanopolish resquiggling 
 
 This version is deprecated. If you still wish to use it, you can find the details and code [here](https://github.com/novoalab/nanoRMS/blob/master/README_nanoRMS_nanopolish.md) 
 
 
-## Predicting RNA modification stoichiometry using Tombo resquiggling 
+## RNA modification estimation stoichiometry using Tombo resquiggling 
 
 TO BE COMPLETED
 
@@ -108,7 +113,7 @@ Rscript --vanilla nanopolish_window.R test_data/positions test_data/data1_eventa
 ```
 
 
-### 2. Visualization of current intensity information in the form:
+### 2. Visualization of current intensity information:
 
 #### 2.1 Density plots
 
