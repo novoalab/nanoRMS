@@ -48,12 +48,12 @@ Using identified pseudouridine base-calling error signatures, nanoRMS can  predi
 Prediction of pseudouridine sites on mitochondrial ribosomal RNAs using three biological replicates:
 
 ```
-Rscript prediction_mitrRNA.R <epinanofile_rep1> <epinanofile_rep2> <epinanofile_rep3> 
+Rscript predict_singleSample.R <epinanofile_rep1> <epinanofile_rep2> <epinanofile_rep3> 
 ```
 
 Example using test data: 
 ```
-Rscript prediction_mitrRNA.R wt_epinano.csv sn3_epinano.csv sn36_epinano.csv
+Rscript predict_singleSample.R wt_epinano.csv sn3_epinano.csv sn36_epinano.csv
 ```
 Single sample de novo RNA modification prediction has been tested for predicting pseudouridine RNA modifications in mitochondrial rRNAs, and the novel predicted sites were afterwards validated using CMC-based probing followed by sequencing), validating 2 out of the 2 sites that were predicted in all 3 biological replicates. 
 
