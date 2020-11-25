@@ -25,8 +25,16 @@ RNA modifications are more robusty predicted when using pairwise conditions that
 However, nanoRMS can also predict pseudouridine RNA modifications de novo if the stoichiometry of modification is sufficiently high (e.g. this has been tested on mitochondrial rRNAs, and the novel predicted sites were afterwards validated using CMC-based probing followed by sequencing).
 
 ### a) Single sample RNA modification prediction
+Prediction of pseudouridine sites on mitochondrial ribosomal RNAs using three biological replicates
 
-OGUZHAN CODE HERE 
+```
+Rscript prediction_mitrRNA.R <epinanofile_rep1> <epinanofile_rep2> <epinanofile_rep3> 
+```
+
+Example using test data: 
+```
+Rscript prediction_mitrRNA.R wt_epinano.csv sn3_epinano.csv sn36_epinano.csv
+```
 
 ### b) Paired sample RNA modification prediction
 
