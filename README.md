@@ -25,7 +25,7 @@ Prediction and visualization of RNA modification stoichiometry in direct RNA seq
 ### 1. Extracting of base-calling features using Epinano-RMS 
 
 #### Create a dictionary file from reference fasta
-Please note that we are using  a modified version of [EpiNano] (https://github.com/enovoa/EpiNano/blob/master/README.md) that was specifically developed for nanoRMS. 
+Please note that we are using  a modified version of [EpiNano](https://github.com/enovoa/EpiNano/blob/master/README.md) that was specifically developed for nanoRMS. 
 
 Firstly, we need to create a dictionary file from the reference fasta file
 ```
