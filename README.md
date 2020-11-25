@@ -22,15 +22,17 @@ Prediction and visualization of RNA modification stoichiometry in direct RNA seq
 
 ## De novo prediction of RNA modified sites
 
-### Epinano-RMS analysis 
+### 1. Extracting of base-calling features using Epinano-RMS 
 
-#### Creating a dictionary file from reference fasta
-We need to create a dictionary file from the reference fasta file
+#### Create a dictionary file from reference fasta
+Please note that we are using  a modified version of [EpiNano] (https://github.com/enovoa/EpiNano/blob/master/README.md) that was specifically developed for nanoRMS. 
+
+Firstly, we need to create a dictionary file from the reference fasta file
 ```
 java -jar epinano_RMS/picard.jar CreateSequenceDictionary REFERENCE=reference.fasta OUTPUT= reference.fasta.dict
 ```
 
-#### Running Epinano-RMS
+#### Run Epinano-RMS
 Requires python3
 
 ```
@@ -42,7 +44,9 @@ Example using test data:
 python3 epinano_RMS/epinano_rms.py -R test_data/yeast_rRNA_ref -b test_data/wt_sorted.bam -s epinano_RMS/sam2tsv
 ```
 
-### a) Single sample RNA modification prediction
+### 2. Predict RNA modifications
+
+#### a) Single sample RNA modification prediction
 Using identified pseudouridine base-calling error signatures, nanoRMS can  predict RNA modifications de novo in single samples, as long as if the stoichiometry of modification is sufficiently high (i.e. to be distinguished from background base-calling error of direct RNA sequencing).
 
 Prediction of pseudouridine sites on mitochondrial ribosomal RNAs using three biological replicates:
@@ -57,7 +61,7 @@ Rscript predict_singleSample.R wt_epinano.csv sn3_epinano.csv sn36_epinano.csv
 ```
 Single sample de novo RNA modification prediction has been tested for predicting pseudouridine RNA modifications in mitochondrial rRNAs, and the novel predicted sites were afterwards validated using CMC-based probing followed by sequencing), validating 2 out of the 2 sites that were predicted in all 3 biological replicates. 
 
-### b) Paired sample RNA modification prediction
+#### b) Paired sample RNA modification prediction
 
 OGUZHAN CODE HERE 
 
