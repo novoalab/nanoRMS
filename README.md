@@ -7,8 +7,6 @@ Prediction and visualization of RNA modification stoichiometry in direct RNA seq
 ## Table of Contents  
 - [General Description](#General-description)
 - [De novo prediction of RNA modified sites](#De-novo-prediction-of-RNA-modified-sites)
-      - [Single sample RNA modification prediction (pseudouridine only)](##Single-sample-rna-modification-prediction)
-      - [Paired sample RNA modification prediction](##Paired-sample-rna-modification-prediction)
 - [Predicting RNA modification stoichiometry using Nanopolish resquiggling (not recommended)](#Predicting-RNA-modification-stoichiometry-using-nanopolish-resquiggling)
 - [Predicting RNA modification stoichiometry using Tombo resquiggling (recommended)](#Predicting-RNA-modification-stoichiometry-using-tombo-resquiggling)
 - [Visualization of per-read current intensities at individual sites](Visualization-of-per-read-current-intensities-at-individual-sites)
@@ -26,11 +24,11 @@ Prediction and visualization of RNA modification stoichiometry in direct RNA seq
 RNA modifications are more robusty predicted when using pairwise conditions that are being compared.  
 However, nanoRMS can also predict pseudouridine RNA modifications de novo if the stoichiometry of modification is sufficiently high (e.g. this has been tested on mitochondrial rRNAs, and the novel predicted sites were afterwards validated using CMC-based probing followed by sequencing).
 
-### Single sample RNA modification prediction
+### a) Single sample RNA modification prediction
 
 OGUZHAN CODE HERE 
 
-### Paired sample RNA modification prediction
+### b) Paired sample RNA modification prediction
 
 OGUZHAN CODE HERE 
 
