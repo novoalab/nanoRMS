@@ -106,7 +106,7 @@ Rscript --vanilla nanopolish_window.R test_data/positions test_data/data1_eventa
 ```
 
 
-### 2. Visualization of current intensity information in the form:
+### 2. Visualization of current intensity information:
 
 #### 2.1 Density plots
 
