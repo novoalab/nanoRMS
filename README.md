@@ -21,13 +21,11 @@ Prediction and visualization of RNA modification stoichiometry in direct RNA seq
 
 
 ## Predicting RNA modification stoichiometry using Nanopolish resquiggling 
-(not recommended)
 
 This version is deprecated. If you still wish to use it, you can find the details and code [here](https://github.com/novoalab/nanoRMS/blob/master/README_nanoRMS_nanopolish.md) 
 
 
 ## Predicting RNA modification stoichiometry using Tombo resquiggling 
-(recommended)
 
 TO BE COMPLETED
 
