@@ -7,7 +7,7 @@ Prediction and visualization of RNA modification stoichiometry in direct RNA seq
 ## Table of Contents  
 - [General Description](#General-description)
 - [Predicting RNA modification stoichiometry using Nanopolish resquiggling (not recommended)](#Predicting-RNA-modification-stoichiometry-using-Nanopolish-resquiggling-(not-recommended))
-- [Predicting RNA modification stoichiometry using Tombo resquiggling (recommended)](#Predicting-RNA-modification-stoichiometry-using-Tombo-resquiggling-(-recommended-))
+- [Predicting RNA modification stoichiometry using Tombo resquiggling (recommended)](#Predicting-RNA-modification-stoichiometry-using-Tombo-resquiggling)
 - [Visualization of per-read current intensities at individual sites](Visualization-of-per-read-current-intensities-at-individual-sites)
 - [Citation](#Citation) 
 - [Contact](#Contact) 
