@@ -7,8 +7,8 @@ Prediction and visualization of RNA modification stoichiometry in direct RNA seq
 ## Table of Contents  
 - [General Description](#General-description)
 - [De novo prediction of RNA modified sites](#De-novo-prediction-of-RNA-modified-sites)
-- [Predicting RNA modification stoichiometry using Nanopolish resquiggling (not recommended)](#Predicting-RNA-modification-stoichiometry-using-nanopolish-resquiggling)
-- [Predicting RNA modification stoichiometry using Tombo resquiggling (recommended)](#Predicting-RNA-modification-stoichiometry-using-tombo-resquiggling)
+- [Predict RNA modification stoichiometry using Nanopolish resquiggling (not recommended)](#Predict-RNA-modification-stoichiometry-using-nanopolish-resquiggling)
+- [Predict RNA modification stoichiometry using Tombo resquiggling (recommended)](#Predict-RNA-modification-stoichiometry-using-tombo-resquiggling)
 - [Visualization of per-read current intensities at individual sites](Visualization-of-per-read-current-intensities-at-individual-sites)
 - [Citation](#Citation) 
 - [Contact](#Contact) 
@@ -22,7 +22,7 @@ Prediction and visualization of RNA modification stoichiometry in direct RNA seq
 
 ## De novo prediction of RNA modified sites
 
-### 1. Extracting of base-calling features using Epinano-RMS 
+### 1. Extract base-calling features using Epinano-RMS 
 
 #### Create a dictionary file from reference fasta
 Please note that we are using  a modified version of [EpiNano](https://github.com/enovoa/EpiNano/blob/master/README.md) that was specifically developed for nanoRMS. 
@@ -66,12 +66,12 @@ Using identified pseudouridine base-calling error signatures, nanoRMS can  predi
 
 OGUZHAN CODE HERE 
 
-## Predicting RNA modification stoichiometry using Nanopolish resquiggling 
+## Predict RNA modification stoichiometry using Nanopolish resquiggling 
 
 This version is deprecated. If you still wish to use it, you can find the details and code [here](https://github.com/novoalab/nanoRMS/blob/master/README_nanoRMS_nanopolish.md) 
 
 
-## Predicting RNA modification stoichiometry using Tombo resquiggling 
+## Predict RNA modification stoichiometry using Tombo resquiggling 
 
 TO BE COMPLETED
 
