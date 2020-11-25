@@ -24,6 +24,26 @@ Prediction and visualization of RNA modification stoichiometry in direct RNA seq
 RNA modifications are more robusty predicted when using pairwise conditions that are being compared.  
 However, nanoRMS can also predict pseudouridine RNA modifications de novo if the stoichiometry of modification is sufficiently high (e.g. this has been tested on mitochondrial rRNAs, and the novel predicted sites were afterwards validated using CMC-based probing followed by sequencing).
 
+### Epinano-RMS analysis 
+
+#### Creating a dictionary file from reference fasta
+We need to create a dictionary file from the reference fasta file
+```
+java -jar epinano_RMS/picard.jar CreateSequenceDictionary REFERENCE=reference.fasta OUTPUT= reference.fasta.dict
+```
+
+#### Running Epinano-RMS
+Requires python3
+
+```
+python3 epinano_RMS/epinano_rms.py -R <reference_file> -b <bam_file> -s epinano_RMS/sam2tsv
+```
+Example using test data: 
+
+```
+python3 epinano_RMS/epinano_rms.py -R test_data/yeast_rRNA_ref -b test_data/wt_sorted.bam -s epinano_RMS/sam2tsv
+```
+
 ### a) Single sample RNA modification prediction
 Prediction of pseudouridine sites on mitochondrial ribosomal RNAs using three biological replicates
 
