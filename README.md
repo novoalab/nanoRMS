@@ -7,8 +7,8 @@ Prediction and visualization of RNA modification stoichiometry in direct RNA seq
 ## Table of Contents  
 - [General Description](#General-description)
 - [De novo prediction of RNA modified sites](#De-novo-prediction-of-RNA-modified-sites)
-- [Prediction of RNA modification stoichiometry using Nanopolish resquiggling (not recommended)](#Prediction-of-RNA-modification-stoichiometry-using-nanopolish-resquiggling)
-- [Prediction of RNA modification stoichiometry using Tombo resquiggling (recommended)](#Prediction-of-RNA-modification-stoichiometry-using-tombo-resquiggling)
+- [RNA modification stoichiometry estimation using Nanopolish resquiggling (not recommended)](#RNA-modification-stoichiometry-estimation-using-nanopolish-resquiggling)
+- [RNA modification stoichiometry estimation using Tombo resquiggling (recommended)](#RNA-modification-stoichiometry-estimation-using-tombo-resquiggling)
 - [Visualization of per-read current intensities at individual sites](Visualization-of-per-read-current-intensities-at-individual-sites)
 - [Citation](#Citation) 
 - [Contact](#Contact) 
@@ -66,12 +66,12 @@ Using identified pseudouridine base-calling error signatures, nanoRMS can  predi
 
 OGUZHAN CODE HERE 
 
-## Prediction of RNA modification stoichiometry using Nanopolish resquiggling 
+## RNA modification stoichiometry estimation using Nanopolish resquiggling 
 
 This version is deprecated. If you still wish to use it, you can find the details and code [here](https://github.com/novoalab/nanoRMS/blob/master/README_nanoRMS_nanopolish.md) 
 
 
-## Prediction of RNA modification stoichiometry using Tombo resquiggling 
+## RNA modification estimation stoichiometry using Tombo resquiggling 
 
 TO BE COMPLETED
 
