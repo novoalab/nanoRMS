@@ -6,7 +6,7 @@ Prediction and visualization of RNA modification stoichiometry in direct RNA seq
 
 ## Table of Contents  
 - [General Description](#General-description)
-- [Predicting RNA modification stoichiometry using Nanopolish resquiggling (not recommended)](#Predicting-RNA-modification-stoichiometry-using-nanopolish-resquiggling-(not-recommended))
+- [Predicting RNA modification stoichiometry using Nanopolish resquiggling (not recommended)](#Predicting-RNA-modification-stoichiometry-using-nanopolish-resquiggling)
 - [Predicting RNA modification stoichiometry using Tombo resquiggling (recommended)](#Predicting-RNA-modification-stoichiometry-using-Tombo-resquiggling)
 - [Visualization of per-read current intensities at individual sites](Visualization-of-per-read-current-intensities-at-individual-sites)
 - [Citation](#Citation) 
@@ -20,7 +20,8 @@ Prediction and visualization of RNA modification stoichiometry in direct RNA seq
 * NanoRMS can predict stoichiometry from Nanopolish resquiggled reads or from Tombo resquiggled reads. The latter is the recommended option.
 
 
-## Predicting RNA modification stoichiometry using Nanopolish resquiggling (not recommended)
+## Predicting RNA modification stoichiometry using Nanopolish resquiggling 
+(not recommended)
 
 This version is deprecated. If you still wish to use it, you can find the details and code [here](https://github.com/novoalab/nanoRMS/blob/master/README_nanoRMS_nanopolish.md) 
 
