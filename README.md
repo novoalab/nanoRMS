@@ -21,8 +21,6 @@ Prediction and visualization of RNA modification stoichiometry in direct RNA seq
 * NanoRMS can predict stoichiometry from Nanopolish resquiggled reads or from Tombo resquiggled reads. The latter is the recommended option.
 
 ## De novo prediction of RNA modified sites
-RNA modifications are more robusty predicted when using pairwise conditions that are being compared.  
-However, nanoRMS can also predict pseudouridine RNA modifications de novo if the stoichiometry of modification is sufficiently high (e.g. this has been tested on mitochondrial rRNAs, and the novel predicted sites were afterwards validated using CMC-based probing followed by sequencing).
 
 ### Epinano-RMS analysis 
 
@@ -45,7 +43,9 @@ python3 epinano_RMS/epinano_rms.py -R test_data/yeast_rRNA_ref -b test_data/wt_s
 ```
 
 ### a) Single sample RNA modification prediction
-Prediction of pseudouridine sites on mitochondrial ribosomal RNAs using three biological replicates
+Using identified pseudouridine base-calling error signatures, nanoRMS can  predict RNA modifications de novo in single samples, as long as if the stoichiometry of modification is sufficiently high (i.e. to be distinguished from background base-calling error of direct RNA sequencing).
+
+Prediction of pseudouridine sites on mitochondrial ribosomal RNAs using three biological replicates:
 
 ```
 Rscript prediction_mitrRNA.R <epinanofile_rep1> <epinanofile_rep2> <epinanofile_rep3> 
@@ -55,6 +55,7 @@ Example using test data:
 ```
 Rscript prediction_mitrRNA.R wt_epinano.csv sn3_epinano.csv sn36_epinano.csv
 ```
+Single sample de novo RNA modification prediction has been tested for predicting pseudouridine RNA modifications in mitochondrial rRNAs, and the novel predicted sites were afterwards validated using CMC-based probing followed by sequencing), validating 2 out of the 2 sites that were predicted in all 3 biological replicates. 
 
 ### b) Paired sample RNA modification prediction
 
