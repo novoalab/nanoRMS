@@ -14,10 +14,10 @@ Prediction and visualization of RNA modification stoichiometry in direct RNA seq
  
 
 ## General description
-* NanoRMS predicts modification stoichiometries by identifying reads that show distinct current intensity distributions and/or trace in the query dataset.
+* NanoRMS predicts modification stoichiometries by classifying reads into modified/unmodified, based on their per-read features (current intensity, dwell time and/or trace).
 * NanoRMS can be run in single mode (1sample) or paired mode (2 samples).
-* NanoRMS allows to run both supervised (e.g. KMEANS) and unsupervised algorithms (e.g. KNN)
-* NanoRMS can predict stoichiometry from Nanopolish resquiggled reads or from Tombo resquiggled reads. The later is the recommended option
+* NanoRMS can run both unsupervised (e.g. KMEANS, Aggregative Clustering, GMM) and supervised machine learning algorithms (e.g. KNN, Random Forest). The later will require pairwise samples where one of the conditions is a knockout.
+* NanoRMS can predict stoichiometry from Nanopolish resquiggled reads or from Tombo resquiggled reads. The latter is the recommended option.
 
 
 ## Predicting RNA modification stoichiometry using Nanopolish resquiggling (not recommended)
@@ -26,6 +26,8 @@ This version is deprecated. If you still wish to use it, you can find the detail
 
 
 ## Predicting RNA modification stoichiometry using Tombo resquiggling (recommended)
+
+TO BE COMPLETED
 
 
 ## Visualization of per-read current intensities at individual sites
