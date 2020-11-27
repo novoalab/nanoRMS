@@ -10,6 +10,7 @@ Prediction and visualization of RNA modification stoichiometry in direct RNA seq
 - [RNA modification stoichiometry estimation using Nanopolish resquiggling (not recommended)](#RNA-modification-stoichiometry-estimation-using-nanopolish-resquiggling)
 - [RNA modification stoichiometry estimation using Tombo resquiggling (recommended)](#RNA-modification-stoichiometry-estimation-using-tombo-resquiggling)
 - [Visualization of per-read current intensities at individual sites](Visualization-of-per-read-current-intensities-at-individual-sites)
+- [Dependencies and versions](#Dependencies-and-versions)
 - [Citation](#Citation) 
 - [Contact](#Contact) 
  
@@ -171,7 +172,10 @@ Rscript --vanilla nanopolish_pca.R test_data/sn34_window_file.tsv test_data/wt_w
 
 ![alt text](./img/pca.png "PCA")
 
+## Dependencies and versions
 
+Software | Version 
+--- | --- 
 
 ## Citation: 
 
