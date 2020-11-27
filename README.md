@@ -79,9 +79,9 @@ Rscript predict_twoSample_transcript.R ncRNA_normal_rep1_epinano.csv ncRNA_heats
 This version is deprecated. If you still wish to use it, you can find the details and code [here](https://github.com/novoalab/nanoRMS/blob/master/README_nanoRMS_nanopolish.md) 
 
 
-## RNA modification estimation stoichiometry using Tombo resquiggling 
+## RNA modification stoichiometry estimation using Tombo resquiggling 
 
-TO BE COMPLETED
+TO BE COMPLETED BY LESZEK
 
 
 ## Visualization of per-read current intensities at individual sites
