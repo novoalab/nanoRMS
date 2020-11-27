@@ -53,4 +53,4 @@ done; date
 - rRNA_stoichometry.ipynb: benchmarking of methods and features for varying stoichiometries (Fig S5C)  
 and estimation of modification frequency across all samples (Fig 3J)
 - rRNA_tombo_vs_nanopolish.ipynb: comparison of Nanopolish and Tombo (Fig S5 A-B)
-- mRNA.ipynb: 
+- mRNA.ipynb: prediction of RNA modification stoichiometries in mRNAs (Fig 6)
