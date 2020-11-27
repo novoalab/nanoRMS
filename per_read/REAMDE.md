@@ -1,5 +1,6 @@
+# NanoRMS: predicting NANOpore Rna Modification Stoichiometry
 
-
+Below you'll find information how to retrieve pre-read features and estimate modification stoichiometry from Nanopore raw data. 
 
 0. First install all dependencies
 - from conda: `conda install hdf5 minimap2`
