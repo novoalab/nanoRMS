@@ -81,7 +81,7 @@ This version is deprecated. If you still wish to use it, you can find the detail
 
 ## RNA modification stoichiometry estimation using Tombo resquiggling 
 
-TO BE COMPLETED BY LESZEK
+To use this version, you can find the details [here](https://github.com/novoalab/nanoRMS/blob/master/per_read/README.md)
 
 
 ## Visualization of per-read current intensities at individual sites
