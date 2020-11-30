@@ -406,6 +406,7 @@ def main ():
 #2 combine small files and produce varinats frequencies per ref-position
 #persite_var = prefix +'.per_site.var.csv'
 	df = dd.read_csv ("{}/small_*freq".format(tmp_dir))
+	df = df.compute()
 	df_fr = df[df['strand']=="+"]
 	out = prefix + '.per.site.fwd.csv'
 
