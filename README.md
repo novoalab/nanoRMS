@@ -10,6 +10,7 @@ Prediction and visualization of RNA modification stoichiometry in direct RNA seq
 - [RNA modification stoichiometry estimation using Nanopolish resquiggling (not recommended)](#RNA-modification-stoichiometry-estimation-using-nanopolish-resquiggling)
 - [RNA modification stoichiometry estimation using Tombo resquiggling (recommended)](#RNA-modification-stoichiometry-estimation-using-tombo-resquiggling)
 - [Visualization of per-read current intensities at individual sites](Visualization-of-per-read-current-intensities-at-individual-sites)
+- [Dependencies and versions](#Dependencies-and-versions)
 - [Citation](#Citation) 
 - [Contact](#Contact) 
  
@@ -78,9 +79,9 @@ Rscript predict_twoSample_transcript.R ncRNA_normal_rep1_epinano.csv ncRNA_heats
 This version is deprecated. If you still wish to use it, you can find the details and code [here](https://github.com/novoalab/nanoRMS/blob/master/README_nanoRMS_nanopolish.md) 
 
 
-## RNA modification estimation stoichiometry using Tombo resquiggling 
+## RNA modification stoichiometry estimation using Tombo resquiggling 
 
-TO BE COMPLETED
+To use this version, you can find the details [here](https://github.com/novoalab/nanoRMS/blob/master/per_read/README.md)
 
 
 ## Visualization of per-read current intensities at individual sites
@@ -171,7 +172,10 @@ Rscript --vanilla nanopolish_pca.R test_data/sn34_window_file.tsv test_data/wt_w
 
 ![alt text](./img/pca.png "PCA")
 
+## Dependencies and versions
 
+Software | Version 
+--- | --- 
 
 ## Citation: 
 
