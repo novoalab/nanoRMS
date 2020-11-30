@@ -83,6 +83,28 @@ This version is deprecated. If you still wish to use it, you can find the detail
 
 To use this version, you can find the details [here](https://github.com/novoalab/nanoRMS/blob/master/per_read/README.md)
 
+0. First download test data
+```bash
+(cd per_read && wget https://public-docs.crg.es/enovoa/public/lpryszcz/src/nanoRMS/per_read/guppy3.0.3.hac -q --show-progress -r -c -nc -np -nH --cut-dirs=6 --reject="index.html*")
+```
+
+1. Retrieve per-read features from all samples.
+```bash
+ref=per_read/guppy3.0.3.hac/Saccharomyces_cerevisiae.R64-1-1_firstcolumn.ncrna.fa
+per_read/get_features.py --rna -f $ref -t 6 -i per_read/guppy3.0.3.hac/*WT??C/workspace/*.fast5
+```
+
+2. Estimate modification frequency difference between two samples
+Note, you'll need to provide candidate positions that are likely modified. Those were identified ealier.
+Here, you just need to generate BED file. 
+```bash
+# prepare BED
+f=per_read/results/predictions_ncRNA_WT30C_WT45C.tsv.gz
+zgrep -v X.Ref $f |awk -F'\t' 'BEGIN {OFS = FS} {print $1,$2-1,$2,".",100,"+"}' > $f.bed
+
+# calculate modification frequency difference between control and sample of interest
+per_read/get_freq.py -f $ref -b $f.bed -o $f.bed.tsv.gz -1 per_read/guppy3.0.3.hac/*WT30C/workspace/*.fast5.bam -2 per_read/guppy3.0.3.hac/*WT45C/workspace/*.fast5.bam
+```
 
 ## Visualization of per-read current intensities at individual sites
 
