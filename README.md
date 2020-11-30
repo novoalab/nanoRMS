@@ -84,19 +84,20 @@ This version is deprecated. If you still wish to use it, you can find the detail
 To use this version, you can find the details [here](https://github.com/novoalab/nanoRMS/blob/master/per_read/README.md)
 
 0. First download test data
+This dataset is described in more details in per_read directory. 
 ```bash
 (cd per_read && wget https://public-docs.crg.es/enovoa/public/lpryszcz/src/nanoRMS/per_read/guppy3.0.3.hac -q --show-progress -r -c -nc -np -nH --cut-dirs=6 --reject="index.html*")
 ```
 
-1. Retrieve per-read features from all samples.
+1. Retrieve per-read features from all samples. 
 ```bash
 ref=per_read/guppy3.0.3.hac/Saccharomyces_cerevisiae.R64-1-1_firstcolumn.ncrna.fa
 per_read/get_features.py --rna -f $ref -t 6 -i per_read/guppy3.0.3.hac/*WT??C/workspace/*.fast5
 ```
 
-2. Estimate modification frequency difference between two samples
-Note, you'll need to provide candidate positions that are likely modified. Those were identified ealier.
-Here, you just need to generate BED file. 
+2. Estimate modification frequency difference between two samples  
+Note, you'll need to provide candidate positions that are likely modified. Those were identified ealier,
+so here we'll just generate BED file from existing candidate file. 
 ```bash
 # prepare BED
 f=per_read/results/predictions_ncRNA_WT30C_WT45C.tsv.gz
@@ -197,7 +198,18 @@ Rscript --vanilla nanopolish_pca.R test_data/sn34_window_file.tsv test_data/wt_w
 ## Dependencies and versions
 
 Software | Version 
---- | --- 
+--- | ---
+matplotlib | 3.1.2
+numba | 0.51.1
+numpy | 1.19.4
+ont-fast5-api | 3.1.6
+ont-tombo | 1.5.1
+openpyxl | 3.0.5
+pandas | 0.24.2
+scipy | 1.5.2
+seaborn | 0.11.0
+sklearn | 0.23.1
+
 
 ## Citation: 
 
