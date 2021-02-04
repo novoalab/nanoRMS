@@ -217,7 +217,7 @@ sklearn | 0.23.1
 
 ## Citation: 
 
-Begik O*, Lucas MC*, Ramirez JM, Milenkovic I, Cruciani S, Vieira HGS, Medina R, Liu H, Sas-Chen A, Mattick JS, Schwartz S and Novoa EM. Decoding ribosomal RNA modification dynamics at single molecule resolution. bioRxiv 2020. doi: https://doi.org/10.1101/2020.07.06.189969
+Begik O*, Lucas MC*, Pryszcz LP, Ramirez JM, Medina R, Milenkovic I, Cruciani S, Vieira HGS, Liu H, Sas-Chen A, Mattick JS, Schwartz S and Novoa EM. Quantitative profiling of native RNA modifications and their dynamics using nanopore sequencing. bioRxiv 2020. doi: https://doi.org/10.1101/2020.07.06.189969v3
 
 ## Contact
 Please open an issue in the GitHub repo if you have any questions/doubts/suggestions about how to use this software. Thanks!
