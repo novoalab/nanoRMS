@@ -238,10 +238,6 @@ def get_trace_for_reference_bases(a, read, rna, func=np.mean):
     """Return reference-aligned trace for tr (ref base), tA, tC, tG, tT"""
     def get_bidx_fwd(b): return base2idx[b] 
     def get_bidx_rev(b): return base2idx[base2complement[b]] 
-    def get_move_start_end_fwd(qi, alen): return qi, qi+1
-    def get_move_start_end_rev(qi, alen): 
-        qi = alen - 2 - qi
-        return qi, qi+1
     # trace for reference bases
     tr = np.zeros(a.reference_length, dtype="uint8")
     # trace and move data from read
@@ -257,18 +253,16 @@ def get_trace_for_reference_bases(a, read, rna, func=np.mean):
     # plus the strand matters
     if a.is_reverse: # for REV alg
         get_bidx = get_bidx_rev # take complement base
-        if rna: get_move_se = get_move_start_end_fwd # RNA: get move pos in fwd (since rev already)
-        else: get_move_se = get_move_start_end_rev   # DNA: get move pos in rev
+        if not rna: move_pos = move_pos[::-1] # reverse move_pos for DNA
     else: # for FWD alg
         get_bidx = get_bidx_fwd # take base
-        if rna: get_move_se = get_move_start_end_rev # RNA: get move pos in rev 
-        else: get_move_se = get_move_start_end_fwd   # DNA: get move pos in fwd
+        if rna: move_pos = move_pos[::-1] # reverse move_pos for RNA
     # process aligned bases - that's quite elegant, right? :P
     ## with_seq require MD tags: in minimap2 use --MD and -Y (soft-clip supplementary)
     for qi, ri, b in a.get_aligned_pairs(with_seq=True, matches_only=True): 
         # get start & end in trace-space
-        ms, me = get_move_se(qi, len(move_pos))
-        s, e = move_pos[ms], move_pos[me]
+        s, e = move_pos[qi:qi+2]
+        if s>e: s, e = e, s # fix s, e for reversed move_pos
         tr[ri-a.reference_start] = func(trace[s:e, get_bidx(b)], axis=0)
     return tr
 
