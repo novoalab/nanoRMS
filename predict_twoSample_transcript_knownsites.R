@@ -3,7 +3,7 @@
 #####################################################################
 ###################### BY OGUZHAN BEGIK #############################
 #####################################################################
-#Rscript predict_twoSample_transcript.R ncRNA_normal_rep1_epinano.csv ncRNA_heatshock_rep1_epinano.csv ncRNA_normal_rep2_epinano.csv ncRNA_heatshock_rep2_epinano.csv
+#Rscript predict_twoSample_transcript_knownsites.R ncRNA_normal_rep1_epinano.csv ncRNA_heatshock_rep1_epinano.csv ncRNA_normal_rep2_epinano.csv ncRNA_heatshock_rep2_epinano.csv
 
 
 ## Loading libraries

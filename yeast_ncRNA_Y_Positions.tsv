@@ -1,0 +1,95 @@
+gene	type	chr	genome_chr	gene_pos	genome_pos	chr_pos	Reference	Heat	Enzyme
+LSR1	snRNA	LSR1_snRNA	chrII	93	681770	chrII_681770	Schwartz 2014	No	None
+LSR1	snRNA	LSR1_snRNA	chrII	56	681807	chrII_681807	Schwartz 2014	No	None
+LSR1	snRNA	LSR1_snRNA	chrII	35	681828	chrII_681828	Schwartz 2014	No	Pus7
+LSR1	snRNA	LSR1_snRNA	chrII	42	681821	chrII_681821	Schwartz 2014	No	Cbf5
+LSR1	snRNA	LSR1_snRNA	chrII	44	681819	chrII_681819	Carlile 2014,Schwartz 2014	No	Pus1
+LSR1	snRNA	LSR1_snRNA	chrII	47	681817	chrII_681817	Schwartz 2014	No	None
+LSR1	snRNA	LSR1_snRNA	chrII	48	681816	chrII_681816	Schwartz 2014	No	None
+LSR1	snRNA	LSR1_snRNA	chrII	454	681409	chrII_681409	Schwartz 2014	Yes	None
+LSR1	snRNA	LSR1_snRNA	chrII	628	681235	chrII_681235	Schwartz 2014	Yes	None
+LSR1	snRNA	LSR1_snRNA	chrII	897	680966	chrII_680966	Schwartz 2014	Yes	None
+NME1	snoRNA	NME1_snoRNA	chrXIV	274	585860	chrXIV_585860	Carlile 2014,Schwartz 2014	No	Pus1
+snR11	snoRNA	snR11_snoRNA	chrXIII	206	652480	chrXIII_652480	Carlile 2014,Schwartz 2014	No	None
+snR161	snoRNA	snR161_snoRNA	chrII	99	307247	chrII_307247	Carlile 2014,Schwartz 2014	No	None
+snR17a	snoRNA	snR17a_snoRNA	chrXV	212	780475	chrXV_780475	Carlile 2014	No	Pus7
+snR17a	snoRNA	snR17a_snoRNA	chrXV	216	780480	chrXV_780480	Schwartz 2014	Yes	None
+snR17a	snoRNA	snR17a_snoRNA	chrXV	223	780486	chrXV_780486	Carlile 2014,Schwartz 2014	No	Cbf5
+snR17a	snoRNA	snR17a_snoRNA	chrXV	234	780497	chrXV_780497	Carlile 2014	No	None
+snR17a	snoRNA	snR17a_snoRNA	chrXVI	240	281121	chrXVI_281121	Carlile 2014	No	Pus1
+snR17a	snoRNA	snR17a_snoRNA	chrXV	268	780531	chrXV_780531	Carlile 2014	No	Pus1
+snR189	snoRNA	snR189_snoRNA	chrIII	36	178763	chrIII_178763	Carlile 2014,Schwartz 2014	No	None
+snR189	snoRNA	snR189_snoRNA	chrIII	53	178746	chrIII_178746	Carlile 2014	No	None
+snR189	snoRNA	snR189_snoRNA	chrIII	114	178685	chrIII_178685	Carlile 2014,Schwartz 2014	No	None
+snR189	snoRNA	snR189_snoRNA	chrIII	147	178652	chrIII_178652	Carlile 2014	No	None
+snR189	snoRNA	snR189_snoRNA	chrIII	149	178650	chrIII_178650	Carlile 2014,Schwartz 2014	Yes	Pus2
+snR19	snRNA	snR19_snRNA	chrXIV	6	230668	chrXIV_230668	Schwartz 2014,Carlile 2014	No	None
+snR19	snRNA	snR19_snRNA	chrXIV	259	230414	chrXIV_230414	Carlile 2014,Schwartz 2014	No	None
+snR19	snRNA	snR19_snRNA	chrXIV	415	230258	chrXIV_230258	Carlile 2014,Schwartz 2014	Yes	None
+snR191	snoRNA	snR191_snoRNA	chrXIV	39	722173	chrXIV_722173	Carlile 2014	No	None
+snR191	snoRNA	snR191_snoRNA	chrXIV	212	722000	chrXIV_722000	Carlile 2014	No	None
+snR24	snoRNA	snR24_snoRNA	chrXIII	26	500047	chrXIII_500047	Carlile 2014	No	None
+snR3	snoRNA	snR3_snoRNA	chrX	4	663752	chrX_663752	Carlile 2014,Schwartz 2014	Yes	None
+snR3	snoRNA	snR3_snoRNA	chrX	57	663805	chrX_663805	Carlile 2014	No	None
+snR3	snoRNA	snR3_snoRNA	chrX	149	663898	chrX_663898	Carlile 2014,Schwartz 2014	No	None
+snR30	snoRNA	snR30_snoRNA	chrXII	459	199242	chrXII_199242	Carlile 2014	No	Pus4
+snR35	snoRNA	snR35_snoRNA	chrXV	23	759508	chrXV_759508	Carlile 2014	No	None
+snR37	snoRNA	snR37_snoRNA	chrX	5	228475	chrX_228475	Schwartz 2014	No	None
+snR37	snoRNA	snR37_snoRNA	chrX	116	228364	chrX_228364	Carlile 2014	No	None
+snR37	snoRNA	snR37_snoRNA	chrX	185	228295	chrX_228295	Carlile 2014	No	None
+snR37	snoRNA	snR37_snoRNA	chrX	205	228275	chrX_228275	Schwartz 2014	Yes	None
+snR37	snoRNA	snR37_snoRNA	chrX	211	228269	chrX_228269	Schwartz 2014	Yes	None
+snR38	snoRNA	snR38_snoRNA	chrXI	57	283241	chrXI_283241	Carlile 2014	No	Pus2
+snR4	snoRNA	snR4_snoRNA	chrV	141	424838	chrV_424838	Carlile 2014,Schwartz 2014	No	snR49
+snR42	snoRNA	snR42_snoRNA	chrXI	46	559321	chrXI_559321	Schwartz 2014	Yes	None
+snR42	snoRNA	snR42_snoRNA	chrXI	75	559292	chrXI_559292	Carlile 2014	No	Pus2,4?
+snR42	snoRNA	snR42_snoRNA	chrXI	238	559129	chrXI_559129	Schwartz 2014	Yes	None
+snR43	snoRNA	snR43_snoRNA	chrIII	99	107614	chrIII_107614	Carlile 2014,Schwartz 2014	No	Pus3,4?
+snR43	snoRNA	snR43_snoRNA	chrIII	103	107610	chrIII_107610	Carlile 2014,Schwartz 2014	No	None
+snR44	snoRNA	snR44_snoRNA	chrXII	15	856724	chrXII_856724	Schwartz 2014	Yes	None
+snR44	snoRNA	snR44_snoRNA	chrXII	142	856851	chrXII_856851	Carlile 2014	No	None
+snR44	snoRNA	snR44_snoRNA	chrXII	170	856879	chrXII_856879	Carlile 2014	No	Pus7
+snR45	snoRNA	snR45_snoRNA	chrXVI	7	821738	chrXVI_821738	Schwartz 2014	No	None
+snR45	snoRNA	snR45_snoRNA	chrXVI	129	821860	chrXVI_821860	Carlile 2014	No	None
+snR45	snoRNA	snR45_snoRNA	chrXVI	130	821861	chrXVI_821861	Carlile 2014	No	None
+snR46	snoRNA	snR46_snoRNA	chrVII	91	545461	chrVII_545461	Carlile 2014,Schwartz 2014	No	Cbf5
+snR47	snoRNA	snR47_snoRNA	chrIV	37	541664	chrIV_541664	Carlile 2014,Schwartz 2014	No	Cbf5
+snR47	snoRNA	snR47_snoRNA	chrIV	73	541628	chrIV_541628	Carlile 2014	No	None
+snR48	snoRNA	snR48_snoRNA	chrVII	35	609618	chrVII_609618	Schwartz 2014	No	Cbf5
+snR48	snoRNA	snR48_snoRNA	chrVII	36	609619	chrVII_609619	Schwartz 2014	No	Cbf5
+snR5	snoRNA	snR5_snoRNA	chrXV	117	842519	chrXV_842519	Carlile 2014	No	None
+snR5	snoRNA	snR5_snoRNA	chrXV	120	842523	chrXV_842523	Schwartz 2014	No	Cbf5
+snR5	snoRNA	snR5_snoRNA	chrXV	126	842528	chrXV_842528	Schwartz 2014	No	None
+snR50	snoRNA	snR50_snoRNA	chrXV	46	259534	chrXV_259534	Carlile 2014	No	None
+snR63	snoRNA	snR63_snoRNA	chrIV	66	323407	chrIV_323407	Schwartz 2014	Yes	None
+snR63	snoRNA	snR63_snoRNA	chrIV	114	323358	chrIV_323358	Carlile 2014	No	Pus1
+snR64	snoRNA	snR64_snoRNA	chrXI	72	38882	chrXI_38882	Carlile 2014	No	Pus2
+snR64	snoRNA	snR64_snoRNA	chrXI	76	38886	chrXI_38886	Carlile 2014	No	None
+snR65	snoRNA	snR65_snoRNA	chrIII	61	177243	chrIII_177243	Schwartz 2014	No	None
+snR68	snoRNA	snR68_snoRNA	chrIX	20	97131	chrIX_97131	Schwartz 2014	No	None
+snR69	snoRNA	snR69_snoRNA	chrXI	37	364812	chrXI_364812	Carlile 2014,Schwartz 2014	No	Cbf5
+snR69	snoRNA	snR69_snoRNA	chrXI	62	364837	chrXI_364837	Carlile 2014	No	Pus2
+snR7-L	snRNA	snR7-L_snRNA	chrVII	99	939574	chrVII_939574	Carlile 2014,Schwartz 2014	No	Cbf5
+snR70	snoRNA	snR70_snoRNA	chrXVI	83	718968	chrXVI_718968	Carlile 2014	No	None
+snR70	snoRNA	snR70_snoRNA	chrXVI	89	718962	chrXVI_718962	Carlile 2014	No	Pus3,5?
+snR73	snoRNA	snR73_snoRNA	chrXIII	55	298361	chrXIII_298361	Carlile 2014,Schwartz 2014	No	snR49
+snR8	snoRNA	snR8_snoRNA	chrXV	142	832473	chrXV_832473	Carlile 2014,Schwartz 2014	Yes	Pus4
+snR82	snoRNA	snR82_snoRNA	chrVII	132	316919	chrVII_316919	Carlile 2014	No	Pus1
+snR83	snoRNA	snR83_snoRNA	chrXIII	106	626454	chrXIII_626454	Carlile 2014	No	None
+snR84	snoRNA	snR84_snoRNA	chrIV	226	1492800	chrIV_1492800	Carlile 2014	No	None
+snR84	snoRNA	snR84_snoRNA	chrIV	330	1492697	chrIV_1492697	Carlile 2014,Schwartz 2014	No	None
+snR84	snoRNA	snR84_snoRNA	chrIV	446	1492581	chrIV_1492581	Schwartz 2014	No	None
+snR84	snoRNA	snR84_snoRNA	chrIV	461	1492566	chrIV_1492566	Carlile 2014,Schwartz 2014	No	Pus1
+snR84	snoRNA	snR84_snoRNA	chrIV	463	1492564	chrIV_1492564	Carlile 2014,Schwartz 2014	No	None
+snR85	snoRNA	snR85_snoRNA	chrXIII	100	67839	chrXIII_67839	Carlile 2014,Schwartz 2014	No	None
+snR86	snoRNA	snR86_snoRNA	chrXIII	60	763054	chrXIII_763054	Carlile 2014	No	Pus1
+snR86	snoRNA	snR86_snoRNA	chrXIII	299	762815	chrXIII_762815	Carlile 2014	No	Pus1
+snR86	snoRNA	snR86_snoRNA	chrXIII	303	762811	chrXIII_762811	Schwartz 2014	No	None
+snR86	snoRNA	snR86_snoRNA	chrXIII	434	762680	chrXIII_762680	Carlile 2014,Schwartz 2014	No	None
+snR86	snoRNA	snR86_snoRNA	chrXIII	459	762655	chrXIII_762655	Carlile 2014,Schwartz 2014	Yes	Pus6
+snR86	snoRNA	snR86_snoRNA	chrXIII	540	762574	chrXIII_762574	Carlile 2014	No	None
+snR86	snoRNA	snR86_snoRNA	chrXIII	575	762539	chrXIII_762539	Carlile 2014	No	None
+snR86	snoRNA	snR86_snoRNA	chrXIII	669	762445	chrXIII_762445	Carlile 2014	No	None
+snR86	snoRNA	snR86_snoRNA	chrXIII	722	762392	chrXIII_762392	Carlile 2014	No	None
+snR86	snoRNA	snR86_snoRNA	chrXIII	855	762259	chrXIII_762259	Carlile 2014,Schwartz 2014	No	Pus1
+snR87	snoRNA	snR87_snoRNA	chrXI	57	431082	chrXI_431082	Carlile 2014	No	Pus3
