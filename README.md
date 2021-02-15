@@ -6,7 +6,7 @@ Prediction and visualization of RNA modification stoichiometry in direct RNA seq
 
 ## Table of Contents  
 - [General Description](#General-description)
-- [De novo prediction of RNA modified sites](#De-novo-prediction-of-RNA-modified-sites)
+- [Prediction of RNA modified sites](#Prediction-of-RNA-modified-sites)
 - [RNA modification stoichiometry estimation using Nanopolish resquiggling (not recommended)](#RNA-modification-stoichiometry-estimation-using-nanopolish-resquiggling)
 - [RNA modification stoichiometry estimation using Tombo resquiggling (recommended)](#RNA-modification-stoichiometry-estimation-using-tombo-resquiggling)
 - [Visualization of per-read current intensities at individual sites](Visualization-of-per-read-current-intensities-at-individual-sites)
@@ -21,7 +21,7 @@ Prediction and visualization of RNA modification stoichiometry in direct RNA seq
 * NanoRMS can run both unsupervised (e.g. KMEANS, Aggregative Clustering, GMM) and supervised machine learning algorithms (e.g. KNN, Random Forest). The later will require pairwise samples where one of the conditions is a knockout.
 * NanoRMS can predict stoichiometry from Nanopolish resquiggled reads or from Tombo resquiggled reads. The latter is the recommended option.
 
-## De novo prediction of RNA modified sites
+## Prediction of RNA modified sites
 
 ### 1. Extract base-calling features using Epinano-RMS 
 
@@ -47,24 +47,30 @@ python3 epinano_RMS/epinano_rms.py -R test_data/yeast_rRNA_ref -b test_data/wt_s
 
 ### 2. Predict RNA modifications
 
-#### a) Single sample RNA modification prediction
+#### a) Single sample RNA modification prediction (i.e. "de novo" prediction)
 
-Prediction of pseudouridine sites on mitochondrial ribosomal RNAs using three biological replicates:
+Single sample '*de novo*' RNA modification prediction has been tested for predicting pseudouridine RNA modifications in mitochondrial rRNAs, and the novel predicted sites were afterwards validated using CMC-based probing followed by sequencing), validating 2 out of the 2 sites that were predicted in all 3 biological replicates. 
 
+This code relies on the identification of pseudouridine base-calling error 'signatures', which allows us to predict RNA modifications de novo in individual samples, as long as the stoichiometry of modification is sufficiently high (i.e. to be distinguished from background base-calling error of direct RNA sequencing).
+
+
+General usage: 
 ```
 Rscript predict_singleSample.R <epinanofile_rep1> <epinanofile_rep2> <epinanofile_rep3> 
 ```
 
-Example using test data: 
+Example using test data (prediction of pseudouridine sites on mitochondrial ribosomal RNAs): 
 ```
 Rscript predict_singleSample.R wt_epinano.csv sn3_epinano.csv sn36_epinano.csv
 ```
-Single sample de novo RNA modification prediction has been tested for predicting pseudouridine RNA modifications in mitochondrial rRNAs, and the novel predicted sites were afterwards validated using CMC-based probing followed by sequencing), validating 2 out of the 2 sites that were predicted in all 3 biological replicates. 
 
-Using identified pseudouridine base-calling error signatures, nanoRMS can  predict RNA modifications de novo in single samples, as long as if the stoichiometry of modification is sufficiently high (i.e. to be distinguished from background base-calling error of direct RNA sequencing).
+#### b) Paired sample RNA modification prediction (i.e. "differential-error"-based prediction)
 
-#### b) Paired sample RNA modification prediction
+Pseudouridine is not always present in high stoichiometries (e.g. rRNAs), but can also be present in low stoichiometries (e.g. in mRNAs). Please note that pseudouridines in mRNAs cannot be accurately predicted using "de novo" mode, because the background nanopore 'error' is too similar to the 'error' caused by the presence of pseudouridine. 
+For such cases, we can predict differentially pseudouridylated sites by identifying which sites show pseudouridine differential error signatures between two conditions, as shown below. This type of pairwsie comparison can be done for WT-KO, or between two conditions (e.g. normal-heat stress). 
 
+
+General usage: 
 ```
 Rscript predict_twoSample_transcript.R <epinanofile_rep1_normal> <epinanofile_rep1_heatshock> <epinanofile_rep2_normal> <epinanofile_rep2_heatshock>
 ```
@@ -96,7 +102,7 @@ per_read/get_features.py --rna -f $ref -t 6 -i per_read/guppy3.0.3.hac/*WT??C/wo
 ```
 
 2. Estimate modification frequency difference between two samples  
-Note, you'll need to provide candidate positions that are likely modified. Those were identified ealier,
+Note, you'll need to provide candidate positions that are likely modified. Those were identified earlier (see ,
 so here we'll just generate BED file from existing candidate file. 
 ```bash
 # prepare BED
