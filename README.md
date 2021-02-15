@@ -102,7 +102,7 @@ per_read/get_features.py --rna -f $ref -t 6 -i per_read/guppy3.0.3.hac/*WT??C/wo
 ```
 
 2. Estimate modification frequency difference between two samples  
-Note, you'll need to provide candidate positions that are likely modified. Those were identified earlier -- please see above section **[1.2. Predict RNA modifications](#1.2.-Predict-RNA modifications)**. so here we'll just generate BED file from existing candidate file.
+Note, you'll need to provide candidate positions that are likely modified. Those were identified earlier -- please see above section **[1.2. Predict RNA modifications](https://github.com/novoalab/nanoRMS/blob/master/README.md#12-predict-rna-modifications)**. so here we'll just generate BED file from existing candidate file.
 
  
 ```bash
