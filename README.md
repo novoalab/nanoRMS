@@ -6,10 +6,10 @@ Prediction and visualization of RNA modification stoichiometry in direct RNA seq
 
 ## Table of Contents  
 - [General Description](#General-description)
-- [Prediction of RNA modified sites](#Prediction-of-RNA-modified-sites)
-- [RNA modification stoichiometry estimation using Nanopolish resquiggling (not recommended)](#RNA-modification-stoichiometry-estimation-using-nanopolish-resquiggling)
-- [RNA modification stoichiometry estimation using Tombo resquiggling (recommended)](#RNA-modification-stoichiometry-estimation-using-tombo-resquiggling)
-- [Visualization of per-read current intensities at individual sites](Visualization-of-per-read-current-intensities-at-individual-sites)
+- [1. Prediction of RNA modified sites](#1.-Prediction-of-RNA-modified-sites)
+- [2. RNA modification stoichiometry estimation using Nanopolish resquiggling (not recommended)](#2.-RNA-modification-stoichiometry-estimation-using-nanopolish-resquiggling)
+- [3. RNA modification stoichiometry estimation using Tombo resquiggling (recommended)](#3.-RNA-modification-stoichiometry-estimation-using-tombo-resquiggling)
+- [4. Visualization of per-read current intensities at individual sites](4.-Visualization-of-per-read-current-intensities-at-individual-sites)
 - [Dependencies and versions](#Dependencies-and-versions)
 - [Citation](#Citation) 
 - [Contact](#Contact) 
@@ -21,9 +21,9 @@ Prediction and visualization of RNA modification stoichiometry in direct RNA seq
 * NanoRMS can run both unsupervised (e.g. KMEANS, Aggregative Clustering, GMM) and supervised machine learning algorithms (e.g. KNN, Random Forest). The later will require pairwise samples where one of the conditions is a knockout.
 * NanoRMS can predict stoichiometry from Nanopolish resquiggled reads or from Tombo resquiggled reads. The latter is the recommended option.
 
-## Prediction of RNA modified sites
+## 1. Prediction of RNA modified sites
 
-### 1. Extract base-calling features using Epinano-RMS 
+### 1.1. Extract base-calling features using Epinano-RMS 
 
 #### Create a dictionary file from reference fasta
 Please note that we are using  a modified version of [EpiNano](https://github.com/enovoa/EpiNano/blob/master/README.md) that was specifically developed for nanoRMS. 
@@ -45,7 +45,7 @@ Example using test data:
 python3 epinano_RMS/epinano_rms.py -R test_data/yeast_rRNA_ref -b test_data/wt_sorted.bam -s epinano_RMS/sam2tsv
 ```
 
-### 2. Predict RNA modifications
+### 1.2. Predict RNA modifications
 
 #### a) Single sample RNA modification prediction (i.e. "de novo" prediction)
 
@@ -80,12 +80,12 @@ Example using test data:
 Rscript predict_twoSample_transcript.R ncRNA_normal_rep1_epinano.csv ncRNA_heatshock_rep1_epinano.csv ncRNA_normal_rep2_epinano.csv ncRNA_heatshock_rep2_epinano.csv
 ```
 
-## RNA modification stoichiometry estimation using Nanopolish resquiggling 
+## 2. RNA modification stoichiometry estimation using Nanopolish resquiggling 
 
 This version is deprecated. If you still wish to use it, you can find the details and code [here](https://github.com/novoalab/nanoRMS/blob/master/README_nanoRMS_nanopolish.md) 
 
 
-## RNA modification stoichiometry estimation using Tombo resquiggling 
+## 3. RNA modification stoichiometry estimation using Tombo resquiggling 
 
 To use this version, you can find the details [here](https://github.com/novoalab/nanoRMS/blob/master/per_read/README.md)
 
@@ -119,9 +119,9 @@ Note, the candidate position file (`-b $f.bed`) has to refer only to reference p
 otherwise the `get_freq.py` will fail with an error `ValueError: Found array with 0 sample(s) (shape=(0,6)) while a minimu of 1 is required`.  
 Please note that KMEANS does not accurately assign directionality of the stoichiometry change, whereas KNN does (because KMEANS randomly assigns one cluster as "modified" and another as "unmodified". Thus, to know the directionality of the change for KMEANS stoichiometry predictions, you will need to infer that from the directionality of mismatch error in that given position. If you don't care about the directionality of the change, but just about the effect size of the change, you can just take the absolute values of the predicted stoichiometry changes.
 
-## Visualization of per-read current intensities at individual sites
+## 4. Visualization of per-read current intensities at individual sites
 
-### 1. Data pre-processing
+### 4.1. Data pre-processing
 
 Firstly, generate a collapsed Nanopolish event align output, by collapsing all the multiple observations for a given position from a same read.
 
@@ -149,9 +149,9 @@ Rscript --vanilla nanopolish_window.R test_data/positions test_data/data1_eventa
 ```
 
 
-### 2. Visualization of current intensity information:
+### 4.2. Visualization of current intensity information:
 
-#### 2.1 Density plots
+#### 4.2.1 Density plots
 
 ```
 Rscript --vanilla density_nanopolish.R <window_file1> <window_file2> <window_file3(optional)> <window_file4(optional)>
@@ -166,7 +166,7 @@ Rscript --vanilla nanopolish_density_plot.R test_data/sn34_window_file.tsv test_
 ![alt text](./img/density.png "Density")
 
 
-#### 2.2. Mean current intensity plots centered in the modified sites
+#### 4.2.2. Mean current intensity plots centered in the modified sites
 ```
 Rscript --vanilla nanopolish_meanlineplot.R <window_file1> <window_file2> <window_file3(optional)> <window_file4(optional)>
 ```
@@ -180,7 +180,7 @@ Rscript --vanilla nanopolish_meanlineplot.R test_data/sn34_window_file.tsv test_
 ![alt text](./img/mean_current.png "Mean_current")
 
 
-#### 2.3 Per-read current intensity plots centered in the modified sites
+#### 4.2.3 Per-read current intensity plots centered in the modified sites
 ```
 Rscript --vanilla nanopolish_perreadlineplot.R <window_file1> <window_file2> <window_file3(optional)> <window_file4(optional)>
 ```
@@ -194,7 +194,7 @@ Rscript --vanilla nanopolish_perreadlineplot.R test_data/sn34_window_file.tsv te
 ![alt text](./img/per_read_current.png "Per_read")
 
 
-#### 2.4 PCA plots from the per-read 15-mer current intensity data
+#### 4.2.4 PCA plots from the per-read 15-mer current intensity data
 ```
 Rscript --vanilla nanopolish_pca.R <window_file1.tsv> <window_file2.tsv> <window_file3.tsv(optional)> <window_file4.tsv(optional)>
 ```
