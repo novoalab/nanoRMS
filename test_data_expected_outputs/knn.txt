@@ -1,3 +1,0 @@
-sample1	sample2
-sample1	1400	170
-sample2	299	3470
