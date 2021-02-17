@@ -26,7 +26,7 @@ Prediction and visualization of RNA modification stoichiometry in direct RNA seq
 ### 1.1. Extract base-calling features using Epinano-RMS 
 
 #### Create a dictionary file from reference fasta
-Please note that we are using  a modified version of [EpiNano](https://github.com/enovoa/EpiNano/blob/master/README.md) that was specifically developed for nanoRMS. 
+Please note that we are using  a modified version of [EpiNano](https://github.com/enovoa/EpiNano/blob/master/README.md) that was specifically developed for nanoRMS. EpiNano-RMS includes the proportion of mismatches that correspond to each base (C_freq, A_freq, G_freq, T_freq) in addition to the overall mismatch frequency).
 
 Firstly, we need to create a dictionary file from the reference fasta file
 ```
