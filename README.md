@@ -87,7 +87,7 @@ This version is deprecated. If you still wish to use it, you can find the detail
 
 ## 3. RNA modification stoichiometry estimation using Tombo resquiggling 
 
-To use this version, you can find the details [here](https://github.com/novoalab/nanoRMS/blob/master/per_read/README.md)
+To use this version, you can find the installation details [here](https://github.com/novoalab/nanoRMS/blob/master/per_read/README.md)
 
 0. First download test data
 This dataset is described in more details in per_read directory. 
