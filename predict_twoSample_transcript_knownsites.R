@@ -11,15 +11,6 @@ library(stringr)
 library(dplyr)
 library(VennDiagram)
 
-# Reading arguments from command line
-args = commandArgs(trailingOnly=TRUE)
-#Arguments
-input1 <- args[1]  #1st variable
-input2 <- args[2]  #2nd variable
-input3 <- args[3]  #3rd variable
-input4 <- args[4]  #3rd variable
-
-
 
 ############################################
 ### PART1#### IMPORTING DATA 
