@@ -117,7 +117,8 @@ per_read/get_freq.py -f $ref -b $f.bed -o $f.bed.tsv.gz -1 per_read/guppy3.0.3.h
 ![alt text](img/get_freq.png "Stoichometry output")
 
 Note, the candidate position file (`-b $f.bed`) has to refer only to reference positions that have some reads aligned -
-otherwise the `get_freq.py` will fail with an error `ValueError: Found array with 0 sample(s) (shape=(0,6)) while a minimu of 1 is required`.  
+otherwise the `get_freq.py` will report warnings about low coverage.
+You can change required minimum number of reads using `--mincov`, but it has to be at least 5 due to KNN requirements.  
 Please note that KMEANS does not accurately assign directionality of the stoichiometry change, whereas KNN does (because KMEANS randomly assigns one cluster as "modified" and another as "unmodified". Thus, to know the directionality of the change for KMEANS stoichiometry predictions, you will need to infer that from the directionality of mismatch error in that given position. If you don't care about the directionality of the change, but just about the effect size of the change, you can just take the absolute values of the predicted stoichiometry changes.
 
 ## 4. Visualization of per-read current intensities at individual sites
