@@ -49,7 +49,7 @@ def get_freq_diff(outfn, fasta, control, sample, bed, minCov=10, nn=1,
         if not ri%10: sys.stderr.write(" {:,} / {:,} {}:{}{}    \r".format(ri, len(region2data), ref, pos, strand))
         cov = list(map(len, data)) # get coverage of each sample
         if min(cov)<minCov:
-            sys.stderr.write("[WARNING] {}:{} skipped due to low coverage: %s\n".format(ref, pos, min(cov)))
+            sys.stderr.write("[WARNING] {}:{} skipped due to low coverage: {}\n".format(ref, pos, min(cov)))
             continue
         X = np.vstack(data) # stack data from both samples
         y = np.zeros(len(X)) # control
