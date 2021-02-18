@@ -5,7 +5,7 @@ TBD:
 - 
 """
 epilog="""Author: l.p.pryszcz+git@gmail.com
-Mizerów, 30/11/2020
+Mizerów/Barcelona, 30/11/2020
 """
 
 import os, sys, numpy as np, pandas as pd
@@ -26,7 +26,7 @@ def get_regions(bed):
             regions.append((chrom, pos+1, strand))
     return regions
 
-def get_freq_diff(outfn, fasta, control, sample, bed, nn=1, 
+def get_freq_diff(outfn, fasta, control, sample, bed, minCov=10, nn=1, 
                   features=["si", "tr"], names=("kmeans", "knn"),
                   clfs=(KMeans(n_clusters=2), KNeighborsClassifier())):
     """Report modification frequency for positive sites from BED file"""
@@ -48,6 +48,9 @@ def get_freq_diff(outfn, fasta, control, sample, bed, nn=1,
     for ri, ((ref, pos, strand), (mer, data)) in enumerate(region2data.items(), 1):
         if not ri%10: sys.stderr.write(" {:,} / {:,} {}:{}{}    \r".format(ri, len(region2data), ref, pos, strand))
         cov = list(map(len, data)) # get coverage of each sample
+        if min(cov)<minCov:
+            sys.stderr.write("[WARNING] {}:{} skipped due to low coverage: %s\n".format(ref, pos, min(cov)))
+            continue
         X = np.vstack(data) # stack data from both samples
         y = np.zeros(len(X)) # control
         y[len(data[0]):] = 1 # sample
@@ -75,13 +78,18 @@ def main():
     parser.add_argument("-o", "--output", default="mod_freq.tsv.gz", help="output name [%(default)s]")
     parser.add_argument("-b", "--bed", required=1, help="positions to test")
     parser.add_argument("-f", "--fasta", required=1, help="reference FASTA file")
+    parser.add_argument("-m", "--mincov", default=10, type=int, help="reference FASTA file")
 
     o = parser.parse_args()
     if o.verbose: 
         sys.stderr.write("Options: %s\n"%str(o))
-
+    # check parameters
+    if o.mincov<10:
+        sys.stderr.write("[ERROR] -m/--mincov must be at least 10")
+        sys.exit(1)
+        
     # encode tombo output into BAM files
-    get_freq_diff(o.output, o.fasta, o.control, o.sample, o.bed)
+    get_freq_diff(o.output, o.fasta, o.control, o.sample, o.bed, o.mincov)
         
 if __name__=='__main__': 
     t0 = datetime.now()

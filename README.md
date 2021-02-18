@@ -6,10 +6,10 @@ Prediction and visualization of RNA modification stoichiometry in direct RNA seq
 
 ## Table of Contents  
 - [General Description](#General-description)
-- [1. Prediction of RNA modified sites](#1.-Prediction-of-RNA-modified-sites)
-- [2. RNA modification stoichiometry estimation using Nanopolish resquiggling (not recommended)](#2.-RNA-modification-stoichiometry-estimation-using-nanopolish-resquiggling)
-- [3. RNA modification stoichiometry estimation using Tombo resquiggling (recommended)](#3.-RNA-modification-stoichiometry-estimation-using-tombo-resquiggling)
-- [4. Visualization of per-read current intensities at individual sites](4.-Visualization-of-per-read-current-intensities-at-individual-sites)
+- [1. Prediction of RNA modified sites](#1-prediction-of-rna-modified-sites)
+- [2. RNA modification stoichiometry estimation using Nanopolish resquiggling (not recommended)](#2-rna-modification-stoichiometry-estimation-using-nanopolish-resquiggling)
+- [3. RNA modification stoichiometry estimation using Tombo resquiggling (recommended)](#3-rna-modification-stoichiometry-estimation-using-tombo-resquiggling)
+- [4. Visualization of per-read current intensities at individual sites](#4-visualization-of-per-read-current-intensities-at-individual-sites)
 - [Dependencies and versions](#Dependencies-and-versions)
 - [Citation](#Citation) 
 - [Contact](#Contact) 
@@ -85,7 +85,7 @@ Rscript predict_twoSample_transcript.R ncRNA_normal_rep1_epinano.csv ncRNA_heats
 This version is deprecated. If you still wish to use it, you can find the details and code [here](https://github.com/novoalab/nanoRMS/blob/master/README_nanoRMS_nanopolish.md) 
 
 
-## 3. RNA modification stoichiometry estimation using Tombo resquiggling 
+## 3. RNA modification stoichiometry estimation using Tombo resquiggling
 
 To use this version, you can find the installation details [here](https://github.com/novoalab/nanoRMS/blob/master/per_read/README.md)
 
