@@ -67,7 +67,7 @@ Rscript predict_singleSample.R wt_epinano.csv sn3_epinano.csv sn36_epinano.csv
 #### b) Paired sample RNA modification prediction (i.e. "differential-error"-based prediction)
 
 Pseudouridine is not always present in high stoichiometries (e.g. rRNAs), but can also be present in low stoichiometries (e.g. in mRNAs). Please note that pseudouridines in mRNAs cannot be accurately predicted using "de novo" mode, because the background nanopore 'error' is too similar to the 'error' caused by the presence of pseudouridine. 
-For such cases, we can predict differentially pseudouridylated sites by identifying which sites show pseudouridine differential error signatures between two conditions, as shown below. This type of pairwsie comparison can be done for WT-KO, or between two conditions (e.g. normal-heat stress). 
+For such cases, we can predict differentially pseudouridylated sites by identifying which sites show pseudouridine differential error signatures between two conditions, as shown below. This type of pairwise comparison can be done for WT-KO, or between two conditions (e.g. normal-heat stress). 
 
 
 General usage: 
