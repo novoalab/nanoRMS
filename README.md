@@ -21,10 +21,12 @@ Prediction and visualization of RNA modification stoichiometry in direct RNA seq
 * NanoRMS can run both unsupervised (e.g. KMEANS, Aggregative Clustering, GMM) and supervised machine learning algorithms (e.g. KNN, Random Forest). The later will require pairwise samples where one of the conditions is a knockout.
 * NanoRMS can predict stoichiometry from Nanopolish resquiggled reads or from Tombo resquiggled reads. The latter is the recommended option.
 
-## Accuracy of stoichiometry predictions
+## Stoichiometry prediction of both highly and lowly modified RNAs
 * NanoRMS can perform stoichiometry prediction using either unsupervised (KMEANS) or supervised (KNN) classification algorithms. We illustrate its quantitative ability using synthetic molecules whose pseudouridine levels were confirmed using LC-MS/MS. 
-* NanoRMS incorporates TRACE as a feature to predict per-read modification (and thus stoichiometry). Most softwares typically rely only on the use of signal intensity (SI) and/or dwell time (DT) shifts. We find that the incorporation of TRACE greatly improves the prediction of RNA modification stoichiometry. 
+* NanoRMS incorporates **TRACE** (TR) as a feature to predict per-read modification (and thus stoichiometry). We find that the incorporation of TRACE greatly improves the prediction of RNA modification stoichiometry. Overall, we find that the best combination of features is TRACE + SIGNAL INTENSITY. 
+* NanoRMS stoichiometry predictions have been benchmarked on pseudouridine and 2-O-methylations in RNAs with different % modification. 
 
+![alt text](./img/stoichiometry.png "stoichiometry")
 
 
 ## 1. Prediction of RNA modified sites
