@@ -21,6 +21,12 @@ Prediction and visualization of RNA modification stoichiometry in direct RNA seq
 * NanoRMS can run both unsupervised (e.g. KMEANS, Aggregative Clustering, GMM) and supervised machine learning algorithms (e.g. KNN, Random Forest). The later will require pairwise samples where one of the conditions is a knockout.
 * NanoRMS can predict stoichiometry from Nanopolish resquiggled reads or from Tombo resquiggled reads. The latter is the recommended option.
 
+## Accuracy of stoichiometry predictions
+* NanoRMS can perform stoichiometry prediction using either unsupervised (KMEANS) or supervised (KNN) classification algorithms. We illustrate its quantitative ability using synthetic molecules whose pseudouridine levels were confirmed using LC-MS/MS. 
+* NanoRMS incorporates TRACE as a feature to predict per-read modification (and thus stoichiometry). Most softwares typically rely only on the use of signal intensity (SI) and/or dwell time (DT) shifts. We find that the incorporation of TRACE greatly improves the prediction of RNA modification stoichiometry. 
+
+
+
 ## 1. Prediction of RNA modified sites
 
 ### 1.1. Extract base-calling features using Epinano-RMS 
@@ -52,6 +58,13 @@ python3 epinano_RMS/epinano_rms.py -R test_data/yeast_rRNA_ref -b test_data/wt_s
 Single sample '*de novo*' RNA modification prediction has been tested for predicting pseudouridine RNA modifications in mitochondrial rRNAs, and the novel predicted sites were afterwards validated using CMC-based probing followed by sequencing), validating 2 out of the 2 sites that were predicted in all 3 biological replicates. 
 
 This code relies on the identification of pseudouridine base-calling error 'signatures', which allows us to predict RNA modifications de novo in individual samples, as long as the stoichiometry of modification is sufficiently high (i.e. to be distinguished from background base-calling error of direct RNA sequencing).
+Specifically, pseudouridine causes strong mismatch signatures in the modified position, largely in the form of C-to-U mismatches (see image below).
+
+
+![alt text](./img/c_to_u_signature.png "c_to_u_signature")
+
+
+![alt text](./img/denovo_pseudoU_detection.png "denovo_pseudoU_detection")
 
 
 General usage: 
