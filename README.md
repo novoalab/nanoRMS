@@ -55,10 +55,9 @@ python3 epinano_RMS/epinano_rms.py -R test_data/yeast_rRNA_ref -b test_data/wt_s
 
 #### a) Single sample RNA modification prediction (i.e. "de novo" prediction)
 
-Single sample '*de novo*' RNA modification prediction has been tested for predicting pseudouridine RNA modifications in mitochondrial rRNAs, and the novel predicted sites were afterwards validated using CMC-based probing followed by sequencing), validating 2 out of the 2 sites that were predicted in all 3 biological replicates. 
+Single sample '*de novo*' RNA modification prediction has been tested for predicting pseudouridine RNA modifications in mitochondrial rRNAs. The novel predicted sites were validated using CMC-based probing followed by sequencing (Nano-CMCseq), validating 2 out of the 2 sites that were predicted in all 3 biological replicates. 
 
-This code relies on the identification of pseudouridine base-calling error 'signatures', which allows us to predict RNA modifications de novo in individual samples, as long as the stoichiometry of modification is sufficiently high (i.e. to be distinguished from background base-calling error of direct RNA sequencing).
-Specifically, pseudouridine causes strong mismatch signatures in the modified position, largely in the form of C-to-U mismatches (see image below).
+'De novo' RNA modification prediction of pseudourdine-modified sites relies on the identification of pseudouridine base-calling error 'signatures', which allows us to predict RNA modifications de novo in individual samples, as long as the stoichiometry of modification is sufficiently high (i.e. to be distinguished from background base-calling error of direct RNA sequencing). Specifically, **pseudouridine causes strong mismatch signatures** in the modified position, largely **in the form of C-to-U mismatches** (see image below).
 
 
 ![alt text](./img/c_to_u_signature.png "c_to_u_signature")
