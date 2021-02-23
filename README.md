@@ -6,10 +6,10 @@ Prediction and visualization of RNA modification stoichiometry in direct RNA seq
 
 ## Table of Contents  
 - [General Description](#General-description)
-- [1. Prediction of RNA modified sites](#1.-Prediction-of-RNA-modified-sites)
-- [2. RNA modification stoichiometry estimation using Nanopolish resquiggling (not recommended)](#2.-RNA-modification-stoichiometry-estimation-using-nanopolish-resquiggling)
-- [3. RNA modification stoichiometry estimation using Tombo resquiggling (recommended)](#3.-RNA-modification-stoichiometry-estimation-using-tombo-resquiggling)
-- [4. Visualization of per-read current intensities at individual sites](4.-Visualization-of-per-read-current-intensities-at-individual-sites)
+- [1. Prediction of RNA modified sites](#1-prediction-of-rna-modified-sites)
+- [2. RNA modification stoichiometry estimation using Nanopolish resquiggling (not recommended)](#2-rna-modification-stoichiometry-estimation-using-nanopolish-resquiggling)
+- [3. RNA modification stoichiometry estimation using Tombo resquiggling (recommended)](#3-rna-modification-stoichiometry-estimation-using-tombo-resquiggling)
+- [4. Visualization of per-read current intensities at individual sites](#4-visualization-of-per-read-current-intensities-at-individual-sites)
 - [Dependencies and versions](#Dependencies-and-versions)
 - [Citation](#Citation) 
 - [Contact](#Contact) 
@@ -20,6 +20,14 @@ Prediction and visualization of RNA modification stoichiometry in direct RNA seq
 * NanoRMS can be run in single mode (1sample) or paired mode (2 samples).
 * NanoRMS can run both unsupervised (e.g. KMEANS, Aggregative Clustering, GMM) and supervised machine learning algorithms (e.g. KNN, Random Forest). The later will require pairwise samples where one of the conditions is a knockout.
 * NanoRMS can predict stoichiometry from Nanopolish resquiggled reads or from Tombo resquiggled reads. The latter is the recommended option.
+
+## Stoichiometry prediction of both highly and lowly modified RNAs
+* NanoRMS can perform stoichiometry prediction using either unsupervised (KMEANS) or supervised (KNN) classification algorithms. We illustrate its quantitative ability using synthetic molecules whose pseudouridine levels were confirmed using LC-MS/MS. 
+* NanoRMS incorporates **TRACE** (TR) as a feature to predict per-read modification (and thus stoichiometry). We find that the incorporation of TRACE greatly improves the prediction of RNA modification stoichiometry. Overall, we find that the best combination of features is TRACE + SIGNAL INTENSITY. 
+* NanoRMS stoichiometry predictions have been benchmarked on pseudouridine and 2-O-methylations in RNAs with different % modification. 
+
+![alt text](./img/stoichiometry.png "stoichiometry")
+
 
 ## 1. Prediction of RNA modified sites
 
@@ -49,9 +57,15 @@ python3 epinano_RMS/epinano_rms.py -R test_data/yeast_rRNA_ref -b test_data/wt_s
 
 #### a) Single sample RNA modification prediction (i.e. "de novo" prediction)
 
-Single sample '*de novo*' RNA modification prediction has been tested for predicting pseudouridine RNA modifications in mitochondrial rRNAs, and the novel predicted sites were afterwards validated using CMC-based probing followed by sequencing), validating 2 out of the 2 sites that were predicted in all 3 biological replicates. 
+Single sample '*de novo*' RNA modification prediction has been tested for predicting pseudouridine RNA modifications in mitochondrial rRNAs. The novel predicted sites were validated using CMC-based probing followed by sequencing (Nano-CMCseq), validating 2 out of the 2 sites that were predicted in all 3 biological replicates. 
 
-This code relies on the identification of pseudouridine base-calling error 'signatures', which allows us to predict RNA modifications de novo in individual samples, as long as the stoichiometry of modification is sufficiently high (i.e. to be distinguished from background base-calling error of direct RNA sequencing).
+'De novo' RNA modification prediction of pseudourdine-modified sites relies on the identification of pseudouridine base-calling error 'signatures', which allows us to predict RNA modifications de novo in individual samples, as long as the stoichiometry of modification is sufficiently high (i.e. to be distinguished from background base-calling error of direct RNA sequencing). Specifically, **pseudouridine causes strong mismatch signatures** in the modified position, largely **in the form of C-to-U mismatches** (see image below).
+
+
+![alt text](./img/c_to_u_signature.png "c_to_u_signature")
+
+
+![alt text](./img/denovo_pseudoU_detection.png "denovo_pseudoU_detection")
 
 
 General usage: 
@@ -67,7 +81,10 @@ Rscript predict_singleSample.R wt_epinano.csv sn3_epinano.csv sn36_epinano.csv
 #### b) Paired sample RNA modification prediction (i.e. "differential-error"-based prediction)
 
 Pseudouridine is not always present in high stoichiometries (e.g. rRNAs), but can also be present in low stoichiometries (e.g. in mRNAs). Please note that pseudouridines in mRNAs cannot be accurately predicted using "de novo" mode, because the background nanopore 'error' is too similar to the 'error' caused by the presence of pseudouridine. 
-For such cases, we can predict differentially pseudouridylated sites by identifying which sites show pseudouridine differential error signatures between two conditions, as shown below. This type of pairwsie comparison can be done for WT-KO, or between two conditions (e.g. normal-heat stress). 
+For such cases, we can predict differentially pseudouridylated sites by identifying which sites show pseudouridine differential error signatures between two conditions, as shown below. This type of pairwise comparison can be done for WT-KO, or between two conditions (e.g. normal-heat stress).  In the image below, some examples of heat-responsive sites that were identified using this script are shown. Differential-error based prediction can be applied to any type of RNA (mRNA, snoRNAs, snRNAs, rRNAs etc). 
+
+
+![alt text](./img/heat_responsive_sites.png "heat_responsive_sites")
 
 
 General usage: 
@@ -85,7 +102,7 @@ Rscript predict_twoSample_transcript.R ncRNA_normal_rep1_epinano.csv ncRNA_heats
 This version is deprecated. If you still wish to use it, you can find the details and code [here](https://github.com/novoalab/nanoRMS/blob/master/README_nanoRMS_nanopolish.md) 
 
 
-## 3. RNA modification stoichiometry estimation using Tombo resquiggling 
+## 3. RNA modification stoichiometry estimation using Tombo resquiggling
 
 To use this version, you can find the installation details [here](https://github.com/novoalab/nanoRMS/blob/master/per_read/README.md)
 
@@ -117,7 +134,8 @@ per_read/get_freq.py -f $ref -b $f.bed -o $f.bed.tsv.gz -1 per_read/guppy3.0.3.h
 ![alt text](img/get_freq.png "Stoichometry output")
 
 Note, the candidate position file (`-b $f.bed`) has to refer only to reference positions that have some reads aligned -
-otherwise the `get_freq.py` will fail with an error `ValueError: Found array with 0 sample(s) (shape=(0,6)) while a minimu of 1 is required`.  
+otherwise the `get_freq.py` will report warnings about low coverage.
+You can change required minimum number of reads using `--mincov`, but it has to be at least 5 due to KNN requirements.  
 Please note that KMEANS does not accurately assign directionality of the stoichiometry change, whereas KNN does (because KMEANS randomly assigns one cluster as "modified" and another as "unmodified". Thus, to know the directionality of the change for KMEANS stoichiometry predictions, you will need to infer that from the directionality of mismatch error in that given position. If you don't care about the directionality of the change, but just about the effect size of the change, you can just take the absolute values of the predicted stoichiometry changes.
 
 ## 4. Visualization of per-read current intensities at individual sites
