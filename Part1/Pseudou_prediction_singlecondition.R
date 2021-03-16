@@ -16,7 +16,7 @@ parser<- add_option(parser,c("-s", "--epinano2"), type="character", default=NULL
           help="second epinano file", metavar="character")
 parser<- add_option(parser,c("-t", "--epinano3"), type="character", default=NULL, 
           help="third epinano file", metavar="character")
-parser<- add_option(parser,c("-p", "--modpos"), type="character", default="RNA_Mod_Positions_rRNAYeast.tsv", 
+parser<- add_option(parser,c("-p", "--modpos"), type="character", default="positions/RNA_Mod_Positions_rRNAYeast.tsv", 
 	      help="mod positions file [default= %default]", metavar="character")
 parser <- add_option(parser, c("-m", "--misfreq"), type="numeric", default=0.137,
                 help="Mismatch frequency threshold [default= 0.137]",

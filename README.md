@@ -70,12 +70,12 @@ Single sample '*de novo*' RNA modification prediction has been tested for predic
 
 General usage: 
 ```
-Rscript predict_singleSample.R <epinanofile_rep1> <epinanofile_rep2> <epinanofile_rep3> 
+Rscript --vanilla Pseudou_prediction_singlecondition.R [options] -f <epinano_file1> (-s <epinano_file2> -t <epinano_file3>)
 ```
 
 Example using test data (prediction of pseudouridine sites on mitochondrial ribosomal RNAs): 
 ```
-Rscript predict_singleSample.R wt_epinano.csv sn3_epinano.csv sn36_epinano.csv
+Rscript --vanilla predict_singleSample.R WT_rRNA_Epinano.csv sn34KO_rRNA_Epinano.csv sn36KO_rRNA_Epinano.csv
 ```
 
 #### b) Paired sample RNA modification prediction (i.e. "differential-error"-based prediction)
@@ -86,16 +86,72 @@ For such cases, we can predict differentially pseudouridylated sites by identify
 
 ![alt text](./img/heat_responsive_sites.png "heat_responsive_sites")
 
-
+##### For Transcriptome mapped reads (Reads from one strand)
 General usage: 
 ```
-Rscript predict_twoSample_transcript.R <epinanofile_rep1_normal> <epinanofile_rep1_heatshock> <epinanofile_rep2_normal> <epinanofile_rep2_heatshock>
+Rscript --vanilla Pseudou_prediction_pairedcondition_transcript.R [options] -f <epinano_file1> -s <epinano_file2> 
 ```
 
 Example using test data: 
 ```
-Rscript predict_twoSample_transcript.R ncRNA_normal_rep1_epinano.csv ncRNA_heatshock_rep1_epinano.csv ncRNA_normal_rep2_epinano.csv ncRNA_heatshock_rep2_epinano.csv
+Rscript --vanilla Pseudou_prediction_pairedcondition_transcript.R WT_ncRNA_Normal_Rep1_Epinano.csv WT_ncRNA_HeatShock_Rep1_Epinano.csv
 ```
+
+##### For Genome mapped reads (Reads from both strands)
+We first need to process Epinano output and GTF files to convert them into BED files. Furthermore, we will intersect both using intersect from Bedtools.
+
+
+###### Convert Epinano output into BED
+General usage: 
+```
+./Epinano_to_BED.sh <epinano_file1>
+```
+
+Example using test data: 
+```
+./Epinano_to_BED.sh WT_rRNA_Epinano.csv
+```
+
+###### Convert GTF (Only CDS) output into BED
+General usage: 
+```
+Rscript --vanilla GTF_to_BED.R <GTF_File>
+```
+
+
+Example using test data: 
+```
+Rscript --vanilla GTF_to_BED.R Saccer64.gtf
+```
+
+
+###### Intersect Epinano_BED file and GTF_BED file
+Required tool : bedtools intersect
+
+General usage: 
+```
+bedtools intersect -a <Epinano_Bed> -b <GTF_Bed> -wa -wb > output.bed
+```
+
+Example using test data: 
+```
+bedtools intersect -a WT_mRNA_Normal_Epinano.csv.bed -b Saccer3.bed -wa -wb > WT_mRNA_Normal_Epinano_final.bed
+```
+
+
+
+
+
+General usage: 
+```
+Rscript --vanilla Pseudou_prediction_pairedcondition_genome.R [options] -f <epinano_file1> -s <epinano_file2> 
+```
+
+Example using test data: 
+```
+Rscript --vanilla Pseudou_prediction_pairedcondition_genome.R WT_mRNA_Normal_Epinano.csv WT_mRNA_HeatShock_Epinano.csv
+```
+
 
 ## 2. RNA modification stoichiometry estimation using Nanopolish resquiggling 
 
