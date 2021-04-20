@@ -75,7 +75,7 @@ Rscript --vanilla Pseudou_prediction_singlecondition.R [options] -f <epinano_fil
 
 Example using test data (prediction of pseudouridine sites on mitochondrial ribosomal RNAs): 
 ```
-Rscript --vanilla predict_singleSample.R WT_rRNA_Epinano.csv sn34KO_rRNA_Epinano.csv sn36KO_rRNA_Epinano.csv
+Rscript --vanilla Pseudou_prediction_singlecondition.R WT_rRNA_Epinano.csv sn34KO_rRNA_Epinano.csv sn36KO_rRNA_Epinano.csv
 ```
 
 #### b) Paired sample RNA modification prediction (i.e. "differential-error"-based prediction)
