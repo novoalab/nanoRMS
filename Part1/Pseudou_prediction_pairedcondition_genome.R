@@ -11,7 +11,7 @@ parser<- add_option(parser, c("-f", "--epinano1"), type="character", default=NUL
               help="first epinano file", metavar="character")
 parser<- add_option(parser,c("-s", "--epinano2"), type="character", default=NULL, 
           help="second epinano file", metavar="character")
-parser<- add_option(parser,c("-p", "--modpos"), type="character", default="positions/RNA_Mod_Positions_ncRNAYeast_HeatSensitive.tsv", 
+parser<- add_option(parser,c("-p", "--modpos"), type="character", default="positions/RNA_Mod_Positions_mRNAYeast_HeatSensitive.tsv", 
 	      help="mod positions file [default= %default]", metavar="character")
 parser <- add_option(parser, c("-m", "--misfreq"), type="numeric", default=0.137,
                 help="Mismatch frequency threshold [default= 0.137]",
@@ -38,7 +38,7 @@ library(data.table)
 ##FUNCTION DEFINED
 processing <- function(data) {
 	#Import the mod file
-	mod_file <- read.delim(opt$modpos, sep="", header=FALSE) #opt$modpos Mod positions file RNA_Mod_Positions_ncRNAYeast_HeatSensitive.tsv
+	mod_file <- read.delim(opt$modpos, sep="") #opt$modpos Mod positions file RNA_Mod_Positions_mRNAYeast_HeatSensitive.tsv
 	#seperate one column into multiple columns
 	columns <- str_split_fixed(data$V5, n=12,  pattern=",")
 	#Add these columns to the original table
@@ -92,7 +92,7 @@ processing <- function(data) {
 	data_subset_negative <- data_subset_negative[,c("Chr", "Pos", "Chr_Pos", "Base","Strand","cds_chr", "cds_start", "cds_end", "cds_strand","cds_name", "Coverage", "Mis", "C_freq")]
 	#Merge both
 	data_final <- rbind(data_subset_positive,data_subset_negative )
-	data_final_mods <- merge(data_final, mrna_mods, all.x=TRUE, by.y=c("Chr", "Genome_Pos", "Strand"), by.x=c("Chr", "Pos", "Strand"))
+	data_final_mods <- merge(data_final, mod_file, all.x=TRUE, by.y=c("Chr", "Genome_Pos", "Strand"), by.x=c("Chr", "Pos", "Strand"))
 	data_final_mods$Pseudouridine <- as.character(data_final_mods$Pseudouridine)
 	data_final_mods$Pseudouridine[is.na(data_final_mods$Pseudouridine)] <- "No"
 	data_final_mods$Gene_Name <- as.character(data_final_mods$Gene_Name)
@@ -136,7 +136,7 @@ if (!is.null(opt$epinano1) && is.null(opt$epinano2)) {
 	stop("At least two epinano input must be supplied (input file).n", call.=FALSE)
 } else if (!is.null(opt$epinano1) && !is.null(opt$epinano2)) {
 	#Importing files
-	data_rep1 <- read.delim(opt$epinano1 ,sep=",")
-	data_rep2 <- read.delim(opt$epinano2,sep=",")
+	data_rep1 <- read.delim(opt$epinano1,header=FALSE)
+	data_rep2 <- read.delim(opt$epinano2,header=FALSE)
 	difference(data_rep1, data_rep2)
 } 

@@ -109,7 +109,7 @@ General usage:
 
 Example using test data: 
 ```
-./Epinano_to_BED.sh WT_rRNA_Epinano.csv
+./Epinano_to_BED.sh WT_mRNA_Normal_Epinano.csv
 ```
 
 ###### Convert GTF (Only CDS) output into BED
@@ -137,9 +137,6 @@ Example using test data:
 ```
 bedtools intersect -a WT_mRNA_Normal_Epinano.csv.bed -b Saccer3.bed -wa -wb > WT_mRNA_Normal_Epinano_final.bed
 ```
-
-
-
 
 
 General usage: 
