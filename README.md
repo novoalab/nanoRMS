@@ -294,6 +294,11 @@ scipy | 1.5.2
 seaborn | 0.11.0
 sklearn | 0.23.1
 
+If you encounter `cannot convert float NAN to integer` error, 
+[make sure to downgrade numpy to version below 1.20](https://github.com/nanoporetech/tombo/issues/319#issuecomment-784127782)
+```
+pip install "numpy<1.20"
+```
 
 ## Citation: 
 
