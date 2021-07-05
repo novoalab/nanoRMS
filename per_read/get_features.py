@@ -243,6 +243,9 @@ def get_trace_for_reference_bases(a, read, rna, func=np.mean):
     # trace and move data from read
     bcgrp = read.get_latest_analysis("Basecall_1D")
     trace = read.get_analysis_dataset(bcgrp, "BaseCalled_template/Trace")
+    if trace is None:
+        logger("[ERROR] Trace table is missing in Fast5 file! Basecall Fast5 files again using --fast5_out option. ")
+        return tr
     move = read.get_analysis_dataset(bcgrp, "BaseCalled_template/Move")
     move_pos = np.append(np.argwhere(move==1).flatten(), len(trace)) # add end of trace
     # combine flip & flop probabilities

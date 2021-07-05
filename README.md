@@ -171,12 +171,18 @@ ref=per_read/guppy3.0.3.hac/Saccharomyces_cerevisiae.R64-1-1_firstcolumn.ncrna.f
 per_read/get_features.py --rna -f $ref -t 6 -i per_read/guppy3.0.3.hac/*WT??C/workspace/*.fast5
 ```
 
+Your Fast5 files have to be basecalled and contain FastQ entries,
+Move and Trace tables (this can be checked using `h5ls -r batch0.fast5 | less`). 
+Note, when basecalling is performed via MinKNOW, by default Move and Trace tables are not stored.
+In such case, you'll need to rebasecall your Fast5 files
+specifying `--fast5_out` parameter with `guppy_basecaller`. 
+
 2. Estimate modification frequency difference between two samples  
 Note, you'll need to provide candidate positions that are likely modified. Those were identified earlier -- please see above section **[1.2. Predict RNA modifications](https://github.com/novoalab/nanoRMS/blob/master/README.md#12-predict-rna-modifications)**. so here we'll just generate BED file from existing candidate file.
 
  
 ```bash
-# prepare BED
+# prepare BED - this is no longer needed step!
 f=per_read/results/predictions_ncRNA_WT30C_WT45C.tsv.gz
 zgrep -v X.Ref $f |awk -F'\t' 'BEGIN {OFS = FS} {print $1,$2-1,$2,".",100,"+"}' > $f.bed
 
