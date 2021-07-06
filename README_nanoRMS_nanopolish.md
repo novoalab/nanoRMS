@@ -174,6 +174,20 @@ Example using test data:
 Rscript --vanilla nanopolish_pca.R test_data/sn34_window_file.tsv test_data/wt_window_file.tsv
 ```
 
+
+#### Export each individual position for clustering
+```
+Rscript --vanilla nanopolish_export_each_position.R <window_file1.tsv> <window_file2.tsv> <window_file3.tsv(optional)> <window_file4.tsv(optional)>
+```
+
+Example using test data:
+
+```
+Rscript --vanilla nanopolish_export_each_position.R test_data/bc2_window_file.tsv
+```
+
+
+
 ![alt text](./img/pca.png "PCA")
 
 

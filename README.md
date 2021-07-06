@@ -75,7 +75,7 @@ Rscript --vanilla Pseudou_prediction_singlecondition.R [options] -f <epinano_fil
 
 Example using test data (prediction of pseudouridine sites on mitochondrial ribosomal RNAs): 
 ```
-Rscript --vanilla Pseudou_prediction_singlecondition.R WT_rRNA_Epinano.csv sn34KO_rRNA_Epinano.csv sn36KO_rRNA_Epinano.csv
+Rscript --vanilla Pseudou_prediction_singlecondition.R -f WT_rRNA_Epinano.csv -s sn34KO_rRNA_Epinano.csv -t sn36KO_rRNA_Epinano.csv
 ```
 
 #### b) Paired sample RNA modification prediction (i.e. "differential-error"-based prediction)
@@ -94,7 +94,7 @@ Rscript --vanilla Pseudou_prediction_pairedcondition_transcript.R [options] -f <
 
 Example using test data: 
 ```
-Rscript --vanilla Pseudou_prediction_pairedcondition_transcript.R WT_ncRNA_Normal_Rep1_Epinano.csv WT_ncRNA_HeatShock_Rep1_Epinano.csv
+Rscript --vanilla Pseudou_prediction_pairedcondition_transcript.R -f WT_ncRNA_Normal_Rep1_Epinano.csv -s WT_ncRNA_HeatShock_Rep1_Epinano.csv
 ```
 
 ##### For Genome mapped reads (Reads from both strands)
@@ -146,7 +146,7 @@ Rscript --vanilla Pseudou_prediction_pairedcondition_genome.R [options] -f <epin
 
 Example using test data: 
 ```
-Rscript --vanilla Pseudou_prediction_pairedcondition_genome.R WT_mRNA_Normal_Epinano.csv WT_mRNA_HeatShock_Epinano.csv
+Rscript --vanilla Pseudou_prediction_pairedcondition_genome.R -f WT_mRNA_Normal_Epinano.csv -s WT_mRNA_HeatShock_Epinano.csv
 ```
 
 
