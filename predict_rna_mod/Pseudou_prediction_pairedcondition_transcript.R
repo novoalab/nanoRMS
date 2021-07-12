@@ -109,6 +109,8 @@ difference <- function(data1, data2) {
 	write.table(merged_different, file="Paired_comparison_altering_sites_pU_predictions.tsv", quote=FALSE, sep="\t", row.names=FALSE)
 	merged_different$Pos0 <- merged_different$Pos -1 
 	merged_bed <- merged_different[,c("Chr", "Pos0","Pos")]
+	merged_bed$Name <- "."
+	merged_bed$Score <- 1	
 	merged_bed$Strand <- "+"
 	write.table(merged_bed, file="Paired_comparison_altering_sites_pU_predictions.bed", quote=FALSE, sep="\t", row.names=FALSE, col.names=FALSE)
 }

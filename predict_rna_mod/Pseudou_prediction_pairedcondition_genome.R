@@ -126,7 +126,9 @@ difference <- function(data1, data2) {
 	merged_different <- subset(merged3, abs(Mis.difference) > diff_thr)
 	write.table(merged_different, file="Paired_comparison_altering_sites_pU_predictions.tsv", quote=FALSE, sep="\t", row.names=FALSE)
 	merged_different$Pos0 <- merged_different$Pos -1 
-	merged_bed <- merged_different[,c("Chr", "Pos0","Pos", "Strand.data1" )]
+	merged_different$Name <- "."
+	merged_different$Score <- 1	
+	merged_bed <- merged_different[,c("Chr", "Pos0","Pos","Name","Score", "Strand.data1" )]
 	write.table(merged_bed, file="Paired_comparison_altering_sites_pU_predictions.bed", quote=FALSE, sep="\t", row.names=FALSE, col.names=FALSE)
 }
 
