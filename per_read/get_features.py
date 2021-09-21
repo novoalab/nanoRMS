@@ -96,31 +96,22 @@ def adjust_rsqgl_res(rsqgl_res, all_raw_signal, seq_samp_type, USE_START_CLIP_BA
 def map_read(a, faidx, seq_samp_type, std_ref, ref2len):
     """Get resquiggle result with read alignement info"""
     seq_data = tombo_helper.sequenceData(seq=a.seq, id=a.qname, mean_q_score=np.mean(a.query_qualities))
-    
-    chrm = a.reference_name
-    # subtract one to put into 0-based index
-    ref_start = a.reference_start #alignment.r_st
-    ref_end = a.reference_end #alignment.r_en
-
-    strand = "-" if a.is_reverse else "+" #'+' if alignment.strand == 1 else '-'
-    #'''
-    num_match = a.alen #alignment.mlen
-    num_ins, num_del, num_aligned = 0, 0, 0 
-    for op_len, op in a.cigar:
-        if op == 1: num_ins += op_len # insertion
-        elif op in (2,3): num_del += op_len # deletion or skipped region from ref ie intron
-        elif op in (0,7,8): num_aligned += op_len # match
-        
-    # store number of clipped bases relative to read sequence
-    if strand == '+':
-        num_start_clipped_bases = a.qstart
-        num_end_clipped_bases = len(seq_data.seq) - a.qend
-    else:
+    # get chrom, start and end
+    chrm, ref_start, ref_end = a.reference_name, a.reference_start, a.reference_end
+    # store strand & number of clipped bases relative to read sequence
+    if a.is_reverse:
+        strand = "-"
         num_start_clipped_bases = len(seq_data.seq) - a.qend
         num_end_clipped_bases = a.qstart
-
+    else:
+        strand = "+"
+        num_start_clipped_bases = a.qstart
+        num_end_clipped_bases = len(seq_data.seq) - a.qend
+    
+    # 'ID', 'Subgroup', 'ClipStart', 'ClipEnd', 'Insertions', 'Deletions', 'Matches', 'Mismatches'
     align_info = tombo_helper.alignInfo(seq_data.id, "", num_start_clipped_bases, num_end_clipped_bases,
-                                        num_ins, num_del, num_match, num_aligned - num_match)  
+                                        0, 0, a.alen, 0) # this isn't used anywhere, so just don't bother computing it!
+    
     # extract genome sequence from mappy aligner
     # expand sequence to get model levels for all sites (need to handle new
     # sequence coordinates downstream)
