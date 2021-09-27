@@ -45,12 +45,12 @@ java -jar epinano_RMS/picard.jar CreateSequenceDictionary REFERENCE=reference.fa
 Requires python3
 
 ```
-python3 epinano_RMS/epinano_rms.py -R <reference_file> -b <bam_file> -s epinano_RMS/sam2tsv
+python3 epinano_RMS/epinano_rms.py -R <reference_file> -b <bam_file> -s epinano_RMS/sam2tsv.jar
 ```
 Example using test data: 
 
 ```
-python3 epinano_RMS/epinano_rms.py -R test_data/yeast_rRNA_ref -b test_data/wt_sorted.bam -s epinano_RMS/sam2tsv
+python3 epinano_RMS/epinano_rms.py -R test_data/yeast_rRNA_ref -b test_data/wt_sorted.bam -s epinano_RMS/sam2tsv.jar
 ```
 
 ### 1.2. Predict RNA modifications
