@@ -260,6 +260,44 @@ def get_trace_for_reference_bases(a, read, rna, func=np.mean):
         tr[ri-a.reference_start] = func(trace[s:e, get_bidx(b)], axis=0)
     return tr
 
+def get_trace_for_all_bases(a, read, rna, func=np.mean):
+    """Return reference-aligned trace for tr (ref base), tA, tC, tG, tT"""
+    def get_bidx_fwd(b): return base2idx[b] 
+    def get_bidx_rev(b): return base2idx[base2complement[b]] 
+    # trace for reference bases
+    tr = np.zeros((a.reference_length,4), dtype="uint8") # one column per base
+    # trace and move data from read
+    bcgrp = read.get_latest_analysis("Basecall_1D")
+    trace = read.get_analysis_dataset(bcgrp, "BaseCalled_template/Trace")
+    if trace is None:
+        logger("[ERROR] Trace table is missing in Fast5 file! Basecall Fast5 files again using --fast5_out option. ")
+        return tr
+    move = read.get_analysis_dataset(bcgrp, "BaseCalled_template/Move")
+    move_pos = np.append(np.argwhere(move==1).flatten(), len(trace)) # add end of trace
+    # combine flip & flop probabilities
+    ## here we get sum of flip & flop. maybe get just one? but flop is usually lower...
+    trace[:, :len(bases)] += trace[:, len(bases):]
+    trace = trace[:, :len(bases)]
+    # here we need to remember that DNA 5'>3', but RNA 3'>5'
+    # plus the strand matters
+    if a.is_reverse: # for REV alg
+        get_bidx = get_bidx_rev # take complement base
+        if not rna: move_pos = move_pos[::-1] # reverse move_pos for DNA
+    else: # for FWD alg
+        get_bidx = get_bidx_fwd # take base
+        if rna: move_pos = move_pos[::-1] # reverse move_pos for RNA
+    # process aligned bases - that's quite elegant, right? :P
+    ## with_seq require MD tags: in minimap2 use --MD and -Y (soft-clip supplementary)
+    for qi, ri, b in a.get_aligned_pairs(with_seq=True, matches_only=True): 
+        # get start & end in trace-space
+        s, e = move_pos[qi:qi+2]
+        if s>e: s, e = e, s # fix s, e for reversed move_pos
+        tr[ri-a.reference_start,0] = func(trace[s:e, 0], axis=0)
+        tr[ri-a.reference_start,1] = func(trace[s:e, 1], axis=0)
+        tr[ri-a.reference_start,2] = func(trace[s:e, 2], axis=0)
+        tr[ri-a.reference_start,3] = func(trace[s:e, 3], axis=0)
+    return tr
+
 def process_fast5(fast5, ref, rna=True, sensitive=False):
     """Process individual Fast5 files"""
     outfn = "%s.bam"%fast5 #.d2r
@@ -304,7 +342,7 @@ def process_fast5(fast5, ref, rna=True, sensitive=False):
         dt = res.segs[1:]-res.segs[:-1]
         dt[dt>255] = 255
         # get reference-aligned base probabilities: tr (ref base)
-        tr = get_trace_for_reference_bases(a, res.read, rna) # this takes 189µs (>50%) of time!
+        tr = get_trace_for_all_bases(a, res.read, rna) # trA, trC, trG, trT 
         if a.is_reverse: si, dt = si[::-1], dt[::-1]
         # and finally set tags matching refseq
         ## but if alignment reaches seq end the end signal/probs will be wrong!
@@ -316,7 +354,10 @@ def process_fast5(fast5, ref, rna=True, sensitive=False):
         # get exonic tr
         exonic_pos = np.concatenate([np.arange(s, e) for s, e in blocks])
         tr = tr[exonic_pos-a.pos]
-        a.set_tag("tr", array("B", tr))
+        a.set_tag("trA", array("B", tr[:,0]))
+        a.set_tag("trC", array("B", tr[:,1]))
+        a.set_tag("trG", array("B", tr[:,2]))
+        a.set_tag("trT", array("B", tr[:,3]))
         # store read alignment with additional info
         bam_unsorted.write(a)
     # close tmp, sort, index & clean-up
