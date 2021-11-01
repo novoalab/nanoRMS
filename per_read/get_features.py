@@ -301,7 +301,9 @@ def get_trace_for_all_bases(a, read, rna, func=np.mean):
 def process_fast5(fast5, ref, rna=True, sensitive=False):
     """Process individual Fast5 files"""
     outfn = "%s.bam"%fast5 #.d2r
-    if os.path.isfile(outfn): return outfn
+
+    # uncomment if you don't wish to recompute previously computed bam files
+    # if os.path.isfile(outfn): return outfn
     faidx = pysam.FastaFile(ref)
     ref2len = {r: l for r, l in zip(faidx.references, faidx.lengths)}
     # load model & its parameters
@@ -323,6 +325,7 @@ def process_fast5(fast5, ref, rna=True, sensitive=False):
     # open unsorted bam for saving alignements with features
     tmp = tempfile.NamedTemporaryFile(delete=False); tmp.close()
     bam_unsorted = pysam.AlignmentFile(tmp.name, "wb", header=sam.header)
+
     for i, (res, err) in enumerate(resquiggle_reads(fast5, sam, ref, seq_samp_type, std_ref, rsqgl_params), 1):
         #if i>200: break
         if not i%100: sys.stderr.write(" %s - %s reads skipped: %s \r"%(i, sum(errors.values()), str(errors)))
@@ -332,6 +335,7 @@ def process_fast5(fast5, ref, rna=True, sensitive=False):
             continue
         # get pysam alignment object & exonic blocks
         a, blocks = res.a, res.align_info.blocks
+
         # get signal intensity means
         si = get_norm_mean(res.raw_signal, res.segs)
         # catch problems - here exonic seq will have different length
@@ -354,12 +358,21 @@ def process_fast5(fast5, ref, rna=True, sensitive=False):
         # get exonic tr
         exonic_pos = np.concatenate([np.arange(s, e) for s, e in blocks])
         tr = tr[exonic_pos-a.pos]
-        a.set_tag("trA", array("B", tr[:,0]))
-        a.set_tag("trC", array("B", tr[:,1]))
-        a.set_tag("trG", array("B", tr[:,2]))
-        a.set_tag("trT", array("B", tr[:,3]))
+
+        a.set_tag("tA", array("B", tr[:,0]))
+        a.set_tag("tC", array("B", tr[:,1]))
+        a.set_tag("tG", array("B", tr[:,2]))
+        a.set_tag("tT", array("B", tr[:,3]))
+
+        # add quality scores
+        a.set_tag("QQ", array("B", a.query_qualities))
+
+        # read id
+        a.set_tag('ID', a.qname)
+
         # store read alignment with additional info
         bam_unsorted.write(a)
+
     # close tmp, sort, index & clean-up
     bam_unsorted.close()
     pysam.sort("-o", outfn, tmp.name)
