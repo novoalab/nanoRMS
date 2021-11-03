@@ -301,7 +301,7 @@ def load_data(fasta, bams, regions, features, max_reads=1000, strands="+-", nn=1
                 region2data[(ref, pos)] = (mer, [np.hstack(c) for c in calls])
     return region2data
 
-def load_data_reps(fasta, bams, regions, features, strains, strains_unique, maxReads=10000, strands="+-", nn=1):
+def load_data_reps(fasta, bams, regions, features, strains, strains_unique, maxReads=100000, nn=1):
     """Return features for positions of interest"""
     # get storage
     k = 2*nn+1
@@ -316,7 +316,7 @@ def load_data_reps(fasta, bams, regions, features, strains, strains_unique, maxR
         ##this is for RNA, for DNA start start needs to be -dt_shift
         parsers = [bam2data(bam, ref, start-nn if start>=nn else 0, end+2*nn, True, 
                             nn, features, maxReads) for bam in bams]
-        refparser = fasta2bases(fasta, ref, start, end, strands)
+        refparser = fasta2bases(fasta, ref, start, end, n=nn)
         for ((pos, _, _strand, refbase, mer), *calls) in zip(refparser, *parsers):
             if _strand==strand:
                 sdata = [[], []] #np.hstack(c) for c in calls]
