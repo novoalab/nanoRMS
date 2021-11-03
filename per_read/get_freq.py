@@ -17,7 +17,7 @@ def get_regions(bed):
     """Load candidate positions from BED file"""
     regions = []
     for l in open(bed):
-        ldata = l[:-1].split("\t")
+        ldata = l[:-1].split(",")
         chrom, s, e = ldata[:3]
         s, e = int(s), int(e)
         if len(ldata)<6: strand = "+"
