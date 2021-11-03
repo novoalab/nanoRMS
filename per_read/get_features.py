@@ -265,7 +265,7 @@ def get_trace_for_all_bases(a, read, rna, func=np.mean):
     def get_bidx_fwd(b): return base2idx[b] 
     def get_bidx_rev(b): return base2idx[base2complement[b]] 
     # trace for reference bases
-    tr = np.zeros((a.reference_length,4), dtype="uint8") # one column per base
+    tr = np.zeros((a.reference_length,5), dtype="uint8") # one column per base + canonical col
     # trace and move data from read
     bcgrp = read.get_latest_analysis("Basecall_1D")
     trace = read.get_analysis_dataset(bcgrp, "BaseCalled_template/Trace")
@@ -296,6 +296,7 @@ def get_trace_for_all_bases(a, read, rna, func=np.mean):
         tr[ri-a.reference_start,1] = func(trace[s:e, 1], axis=0)
         tr[ri-a.reference_start,2] = func(trace[s:e, 2], axis=0)
         tr[ri-a.reference_start,3] = func(trace[s:e, 3], axis=0)
+        tr[ri-a.reference_start,4] = func(trace[s:e, get_bidx(b)], axis=0)
     return tr
 
 def process_fast5(fast5, ref, rna=True, sensitive=False):
@@ -346,7 +347,7 @@ def process_fast5(fast5, ref, rna=True, sensitive=False):
         dt = res.segs[1:]-res.segs[:-1]
         dt[dt>255] = 255
         # get reference-aligned base probabilities: tr (ref base)
-        tr = get_trace_for_all_bases(a, res.read, rna) # trA, trC, trG, trT 
+        tr = get_trace_for_all_bases(a, res.read, rna) # trA, trC, trG, trT, (canonical) tr
         if a.is_reverse: si, dt = si[::-1], dt[::-1]
         # and finally set tags matching refseq
         ## but if alignment reaches seq end the end signal/probs will be wrong!
@@ -363,6 +364,7 @@ def process_fast5(fast5, ref, rna=True, sensitive=False):
         a.set_tag("tC", array("B", tr[:,1]))
         a.set_tag("tG", array("B", tr[:,2]))
         a.set_tag("tT", array("B", tr[:,3]))
+        a.set_tag("tr", array("B", tr[:,4]))
 
         # add quality scores
         a.set_tag("QQ", array("B", a.query_qualities))
