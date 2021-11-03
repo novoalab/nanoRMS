@@ -71,8 +71,8 @@ def main():
         
     # encode tombo output into BAM files
     get_freq_diff(o.output, o.fasta, o.control, o.sample, o.bed, o.mincov, 
-                  nn=3)
                   features=["tr", "tA", "tC", "tG", "tT", "si", "dt0", "QQ",], 
+                  nn=2)
         
 if __name__=='__main__': 
     t0 = datetime.now()
