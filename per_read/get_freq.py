@@ -42,7 +42,7 @@ def get_freq_diff(outfn, fasta, control, sample, bed, minCov=10, nn=1,
     # load data
     logger("Loading features...\n")
     region2data = load_data_reps(fasta, control+sample, regions, features, strains, strains_unique, nn=nn)
-
+    
     pickle.dump(region2data, open(outfn, 'wb'))
     return 
     
@@ -71,6 +71,7 @@ def main():
         
     # encode tombo output into BAM files
     get_freq_diff(o.output, o.fasta, o.control, o.sample, o.bed, o.mincov, 
+                  features=["tA", "tC", "tG", "tT", "si", "dt0", "QQ",], 
                   nn=3)
         
 if __name__=='__main__': 
