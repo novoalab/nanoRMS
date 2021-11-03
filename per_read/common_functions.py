@@ -174,6 +174,10 @@ def bam2data(bam, ref, start, end, rna=True, nn=1, features=["si", "tr"],
     requested_tags = list(filter(lambda f: not f.startswith("dt"), features))
     if dt_shift or "dt0" in features: requested_tags.append("dt")
     # here only SI & MP # here dt_shift should be read from the feature
+
+    id_tags = np.empty(maxDepth, dtype=object) # store id per read 
+    id_tags[:] = ""
+
     data = np.empty((len(features), maxDepth, end-start), dtype=dtype)
     # solve missing trace at deletions in the read
     data[:] = -1 # store -1 instead of 0 (trace with -1 will be skipped)
@@ -187,7 +191,7 @@ def bam2data(bam, ref, start, end, rna=True, nn=1, features=["si", "tr"],
             # report data for reads from + & - strand separately
             for strand in (1, -1):
                 flt = strands[:readi, nn] == strand
-                yield data[:, :readi][:, flt, :2*nn+1] 
+                yield (id_tags[:readi].tolist(), data[:, :readi][:, flt, :2*nn+1])
             # strip position 0 from arrays
             data = data[:, :, 1:]
             strands = strands[:, 1:]
@@ -247,6 +251,9 @@ def bam2data(bam, ref, start, end, rna=True, nn=1, features=["si", "tr"],
             # and remaining features
             else:
                 data[j, readi, :re] = tags[k][s:e]
+        
+        id_tags[readi] = tags["ID"] if 'ID' in tags.keys() else ''
+
         readi += 1
         # clean-up only if maxDepth reached
         if readi>=maxDepth:
@@ -259,16 +266,18 @@ def bam2data(bam, ref, start, end, rna=True, nn=1, features=["si", "tr"],
                 ne[np.random.randint(0, len(ne), int(0.25*maxDepth))] = False
                 readi = ne.sum() # update readi
             # update strands & data
-            _strands, _data = np.zeros_like(strands), np.zeros_like(data)
+            _strands, _data, _id_tags = np.zeros_like(strands), np.zeros_like(data),  np.zeros_like(id_tags)
             _strands[:readi] = strands[ne]
             _data[:, :readi] = data[:, ne]
-            strands, data = _strands, _data
+            _id_tags[:readi] = id_tags[ne]
+            strands, data, id_tags = _strands, _data, _id_tags
     # report last bit from region
     for pos in range(strands.shape[1]-nn):
         # report data for reads from + & - strand separately
         for strand in (1, -1):
             flt = strands[:readi, pos+nn] == strand
-            yield data[:, :readi][:, flt, pos:pos+2*nn+1]
+
+            yield (id_tags[:readi].tolist(), data[:, :readi][:, flt, pos:pos+2*nn+1])
 
 # functions we'll need to load the data 
 def load_data(fasta, bams, regions, features, max_reads=1000, strands="+-", nn=1):
@@ -310,9 +319,13 @@ def load_data_reps(fasta, bams, regions, features, strains, strains_unique, maxR
         for ((pos, _, _strand, refbase, mer), *calls) in zip(refparser, *parsers):
             if _strand==strand:
                 sdata = [[], []] #np.hstack(c) for c in calls]
-                for c, s in zip(calls, strains): sdata[strain2idx[s]].append(np.hstack(c))
+                sid = [[], []]
+                for c, s in zip(calls, strains): 
+                    sdata[strain2idx[s]].append(np.hstack(c[1])) # feature data
+                    sid[strain2idx[s]].extend(c[0]) # read ids
                 # merge replicates
-                region2data[(ref, pos, strand)] = (mer, [np.vstack(sd) for sd in sdata])
+                region2data[(pos, strand)] = (mer, sid, [np.vstack(sd) for sd in sdata])
+
     return region2data
 
 def get_data_mix(unmod, mod, frac, max_reads):
