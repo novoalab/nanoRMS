@@ -161,7 +161,7 @@ def moving_average(a, n=5):
     return ret
 
 def bam2data(bam, ref, start, end, rna=True, nn=1, features=["si", "tr"],
-             maxDepth=10000, mapq=20, dtype="float16", verbose=1, logger=sys.stderr.write):
+             maxDepth=100000, mapq=20, dtype="float16", verbose=1, logger=sys.stderr.write):
     """Generator of data for consecutive positions from ref:start-end region"""
     sam = pysam.AlignmentFile(bam)#; print(ref, start, end)
     # get dt_shift
