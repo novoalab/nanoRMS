@@ -222,7 +222,8 @@ def bam2data(bam, ref, start, end, rna=True, nn=1, features=["si", "tr"],
                 blen = be-bs
                 for f in requested_tags:
                     #print(f, bs, be, be-bs, pe, be-pe)
-                    _tags[f][bs:be] = tags[f][pe:pe+blen]
+                    available = tags[f][pe:pe+blen]
+                    _tags[f][bs:bs+len(available)] = available
                 pe += blen
             # replace tags & udpate exonic strands
             tags = _tags
