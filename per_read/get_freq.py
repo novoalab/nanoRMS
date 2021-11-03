@@ -12,6 +12,7 @@ import os, sys, numpy as np, pandas as pd
 from datetime import datetime
 from get_features import VERSION, logger
 from common_functions import load_data_reps, get_freq, KMeans, KNeighborsClassifier
+import pickle
 
 def get_regions(bed):
     """Load candidate positions from BED file"""
@@ -42,29 +43,9 @@ def get_freq_diff(outfn, fasta, control, sample, bed, minCov=10, nn=1,
     logger("Loading features...\n")
     region2data = load_data_reps(fasta, control+sample, regions, features, strains, strains_unique, nn=nn)
 
-    # get modification frequency difference
-    logger("Calculating modification frequency difference...\n")
-    rows = []
-    for ri, ((ref, pos, strand), (mer, data)) in enumerate(region2data.items(), 1):
-        if not ri%10: sys.stderr.write(" {:,} / {:,} {}:{}{}    \r".format(ri, len(region2data), ref, pos, strand))
-        cov = list(map(len, data)) # get coverage of each sample
-        if min(cov)<minCov:
-            sys.stderr.write("[WARNING] {}:{} skipped due to low coverage: {}\n".format(ref, pos, min(cov)))
-            continue
-        X = np.vstack(data) # stack data from both samples
-        y = np.zeros(len(X)) # control
-        y[len(data[0]):] = 1 # sample
-        # here we train and predict on the same dataset
-        freqs = [get_freq(clf.fit(X, y).predict(X), cov) for clf in clfs]
-        freqs = np.diff(np.array(freqs), axis=1).flatten() # get diff between control and sample
-        rows.append((ref, pos, strand, min(cov), *freqs)) # store
-        
-    # get df with all predicitons
-    df = pd.DataFrame(rows, columns=["chrom", "pos", "strand", "min coverage", *["mod_freq diff %s"%n for n in names]])
-    # and store
-    df.to_csv(outfn, sep="\t", index=False)
-    logger("Done!")
-
+    pickle.dump(region2data, open(outfn, 'wb'))
+    return 
+    
 def main():
     import argparse
     usage   = "%(prog)s -v" #usage=usage, 
