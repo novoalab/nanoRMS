@@ -85,7 +85,7 @@ def main():
         sys.stderr.write("Options: %s\n"%str(o))
     # check parameters
     if o.mincov<10:
-        sys.stderr.write("[ERROR] -m/--mincov must be at least 5!")
+        sys.stderr.write("[ERROR] -m/--mincov must be at least 10!")
         sys.exit(1)
         
     # encode tombo output into BAM files
