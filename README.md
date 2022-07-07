@@ -308,7 +308,7 @@ pip install "numpy<1.20"
 
 ## Citation: 
 
-Begik O*, Lucas MC*, Pryszcz LP, Ramirez JM, Medina R, Milenkovic I, Cruciani S, Vieira HGS, Liu H, Sas-Chen A, Mattick JS, Schwartz S and Novoa EM. Quantitative profiling of native RNA modifications and their dynamics using nanopore sequencing. bioRxiv 2020. doi: https://doi.org/10.1101/2020.07.06.189969v3
+Begik O*, Lucas MC*, Pryszcz LP, Ramirez JM, Medina R, Milenkovic I, Cruciani S, Vieira HGS, Liu H, Sas-Chen A, Mattick JS, Schwartz S and Novoa EM. Quantitative profiling of pseudouridylation dynamics in native RNAs with nanopore sequencing. Nat Biotechnol 39, 1278–1291 (2021). https://doi.org/10.1038/s41587-021-00915-6
 
 ## Contact
 Please open an issue in the GitHub repo if you have any questions/doubts/suggestions about how to use this software. Thanks!
