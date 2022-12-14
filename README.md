@@ -61,6 +61,8 @@ Single sample '*de novo*' RNA modification prediction has been tested for predic
 
 'De novo' RNA modification prediction of pseudourdine-modified sites relies on the identification of pseudouridine base-calling error 'signatures', which allows us to predict RNA modifications de novo in individual samples, as long as the stoichiometry of modification is sufficiently high (i.e. to be distinguished from background base-calling error of direct RNA sequencing). Specifically, **pseudouridine causes strong mismatch signatures** in the modified position, largely **in the form of C-to-U mismatches** (see image below).
 
+Please note that thresholds mentioned on the paper in Figure 5, and Methods section are written incorrectly. The correct thresholds are following : Mismatch frequency : 0.137, C frequency : 0.578.
+
 
 ![alt text](./img/c_to_u_signature.png "c_to_u_signature")
 
