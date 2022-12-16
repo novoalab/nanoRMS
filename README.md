@@ -67,7 +67,7 @@ Please note that thresholds mentioned on the paper in Figure 5, and Methods sect
 ![alt text](./img/c_to_u_signature.png "c_to_u_signature")
 
 
-![alt text](./img/denovo_pseudoU_detection.png "denovo_pseudoU_detection")
+![alt text](./img/denovo_pseudoU_detection.png "pseudoU_detection")
 
 
 General usage: 
