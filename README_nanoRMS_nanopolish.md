@@ -201,7 +201,7 @@ R --vanilla < read_clustering.R --args <file1.tsv> <file2.tsv> kmeans
 
 Example using test data:
 ```
-R --vanilla < read_clustering.R --args test_data/25s_2880.wt.15mer.perread.h.tsv test_data/25s_2880.sn34.15mer.perread.h.tsv kmeans
+R --vanilla < visualization_per_read/read_clustering.R --args visualization_per_read/test_data/25s_2880.wt.15mer.perread.h.tsv visualization_per_read/test_data/25s_2880.sn34.15mer.perread.h.tsv kmeans
 ```
 
 
@@ -211,7 +211,7 @@ R --vanilla < read_clustering.R --args <file1.ts>v <file2.tsv> kmeans_pca
 ```
 Example using test data:
 ```
-R --vanilla < read_clustering.R --args test_data/25s_2880.wt.15mer.perread.h.tsv test_data/25s_2880.sn34.15mer.perread.h.tsv kmeans_pca
+R --vanilla < visualization_per_read/read_clustering.R --args visualization_per_read/test_data/25s_2880.wt.15mer.perread.h.tsv visualization_per_read/test_data/25s_2880.sn34.15mer.perread.h.tsv kmeans_pca
 ```
 
 ![alt text](./img/KMEANS_PCA_plots.png "KMEANS_PCA_plots")
@@ -226,13 +226,13 @@ R --vanilla < read_clustering.R --args <file1.tsv> <file2_UNM.tsv> <validation_s
 
 Example using test data:
 ```
-R --vanilla < read_clustering.R --args test_data/25s_2880.wt.15mer.perread.h.tsv test_data/25s_2880.sn34.15mer.perread.h.tsv knn
+R --vanilla < visualization_per_read/read_clustering.R --args visualization_per_read/test_data/25s_2880.wt.15mer.perread.h.tsv visualization_per_read/test_data/25s_2880.sn34.15mer.perread.h.tsv knn
 ```
 
 Example using test data that includes predictions in independent validation data:
 
 ```
-R --vanilla < read_clustering.R --args test_data/25s_2880.wt.15mer.perread.h.tsv test_data/25s_2880.sn34.15mer.perread.h.tsv test_data/25s_2880.sn3.15mer.perread.h.tsv test_data/25s_2880.sn36.15mer.perread.h.tsv  knn_validation
+R --vanilla < visualization_per_read/read_clustering.R --args visualization_per_read/test_data/25s_2880.wt.15mer.perread.h.tsv visualization_per_read/test_data/25s_2880.sn34.15mer.perread.h.tsv visualization_per_read/test_data/25s_2880.sn3.15mer.perread.h.tsv visualization_per_read/test_data/25s_2880.sn36.15mer.perread.h.tsv  knn_validation
 ```
 
 
